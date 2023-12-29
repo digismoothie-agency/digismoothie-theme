@@ -217,17 +217,17 @@
         "template--16527774908601__298fc5f7-a42a-4ebf-919e-be481754ad49-product-1": {
           "type": "product",
           "settings": {
-            "featured_product": "",
-            "vertical": 77,
-            "horizontal": 87
+            "featured_product": "the-3p-fulfilled-snowboard",
+            "vertical": 50,
+            "horizontal": 18
           }
         },
         "template--16527774908601__298fc5f7-a42a-4ebf-919e-be481754ad49-product-2": {
           "type": "product",
           "settings": {
-            "featured_product": "blue-jeans",
-            "vertical": 78,
-            "horizontal": 60
+            "featured_product": "selling-plans-ski-wax",
+            "vertical": 90,
+            "horizontal": 58
           }
         }
       },
@@ -239,10 +239,11 @@
         "title": "Shop the look",
         "heading_size": "h2",
         "heading_position": "left",
+        "image": "shopify:\/\/shop_images\/max-kukurudziak-_8h7TrklnHQ-unsplash.jpg",
         "indent_image": false,
         "image_position": "left",
-        "hotspot_style": "bag",
-        "hotspot_color": "#000000"
+        "hotspot_style": "plus",
+        "hotspot_color": "#c0a1fa"
       }
     }
   },
