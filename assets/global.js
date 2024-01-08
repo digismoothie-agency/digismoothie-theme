@@ -1280,31 +1280,31 @@ class HotSpots extends HTMLElement {
     this.colorImages = this.querySelectorAll('.grid-product__color-image');
     this.colorSwatches = this.querySelectorAll('.color-swatch--with-image');
 
-    this._bindEvents();
+    this.bindEvents();
 
     if (this.colorImages.length) {
-      this._colorSwatchHovering();
+      this.colorSwatchHovering();
     }
   }
 
-  _colorSwatchHovering() {
+  colorSwatchHovering() {
     this.colorSwatches.forEach(swatch => {
       swatch.addEventListener('mouseenter', function() {
-        this._setActiveColorImage(swatch);
+        this.setActiveColorImage(swatch);
       }.bind(this));
 
       swatch.addEventListener('touchstart', function(evt) {
         evt.preventDefault();
-        this._setActiveColorImage(swatch);
+        this.setActiveColorImage(swatch);
       }.bind(this), {passive: true});
 
       swatch.addEventListener('mouseleave', function() {
-        this._removeActiveColorImage(swatch);
+        this.removeActiveColorImage(swatch);
       }.bind(this));
     });
   }
 
-  _setActiveColorImage(swatch) {
+  setActiveColorImage(swatch) {
     var id = swatch.dataset.variantId;
     var image = swatch.dataset.variantImage;
 
@@ -1331,32 +1331,32 @@ class HotSpots extends HTMLElement {
     if (gridItem) gridItem.setAttribute('href', variantUrl);
   }
 
-  _removeActiveColorImage(swatch) {
+  removeActiveColorImage(swatch) {
     const id = swatch.dataset.variantId;
     this.querySelector(`.grid-product__color-image--${id}`).classList.remove('is-active');
   }
 
   /* Setup event listeners */
-  _bindEvents() {
+  bindEvents() {
     this.buttons.forEach(button => {
       const id = button.dataset.button;
 
       button.addEventListener('click', e => {
         e.preventDefault();
         e.stopPropagation();
-        this._showContent(id);
+        this.showContent(id);
       });
     });
 
     // Display active hotspot block on theme editor select
     document.addEventListener('shopify:block:select', (e) => {
       const blockId = e.detail.blockId;
-      this._showContent(`${blockId}`);
+      this.showContent(`${blockId}`);
     });
   }
 
   /* Toggle sidebar content */
-  _showContent(id) {
+  showContent(id) {
     // Hide all hotspotBlock
     // Show the hotspotBlock with the id
     this.hotspotBlocks.forEach((block) => {
