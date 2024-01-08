@@ -1,4 +1,4 @@
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .hotspots-section .index-section {
     margin-bottom: 10px;
   }
@@ -23,7 +23,7 @@
   width: 70%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .hotspots {
     width: 100%;
   }
@@ -58,7 +58,7 @@
   transform: translate(-50%, -50%);
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .hotspot__button {
     padding: 6px;
   }
@@ -120,7 +120,7 @@
   padding-right: 0;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .page-width .hotspots__content {
     padding-left: 0;
   }
@@ -131,13 +131,13 @@
   padding-right: 40px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .page-width.is-reverse .hotspots__content {
     padding-right: 20px;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .hotspots__content {
     padding: 1rem 20px 0;
     width: 100%;
@@ -159,7 +159,7 @@
   position: static;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .hotspot-content__block {
     align-items: center;
     padding-top: 0;
@@ -186,7 +186,7 @@
   margin-left: 0;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .hotspot-content__block .grid-product__tag {
     left: 0;
     right: auto;
@@ -198,7 +198,7 @@
   padding-top: 10px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .hotspot-content__block .grid-item__meta,
   .hotspot-content__block .grid-product__meta {
     display: flex;
@@ -219,7 +219,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 749px) {
   .hotspot-content__block .grid-product {
     padding-left: 0;
     padding-right: 0;
