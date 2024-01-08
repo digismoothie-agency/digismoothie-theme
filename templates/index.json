@@ -7,7 +7,9 @@
           "type": "heading",
           "settings": {
             "heading": "Image banner",
-            "heading_size": "h0"
+            "heading_size": "h0",
+            "heading_element_custom": false,
+            "heading_element": "h2"
           }
         },
         "text": {
@@ -21,7 +23,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify:\/\/collections\/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -41,9 +43,78 @@
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "scheme-3",
+        "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
+      }
+    },
+    "c913e227-6f8f-4562-b84c-660fe7e3aab5": {
+      "type": "tabs",
+      "blocks": {
+        "template--21590728442049__c913e227-6f8f-4562-b84c-660fe7e3aab5-tab-1": {
+          "type": "tab",
+          "settings": {
+            "title": "Tab title",
+            "heading_element_custom": false,
+            "heading_element": "h4",
+            "icon": "check_mark",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A erat nam at lectus urna duis convallis. Urna duis convallis convallis tellus id. Adipiscing vitae proin sagittis nisl rhoncus. Lorem dolor sed viverra ipsum nunc aliquet bibendum.<\/p>",
+            "page": ""
+          }
+        },
+        "template--21590728442049__c913e227-6f8f-4562-b84c-660fe7e3aab5-tab-2": {
+          "type": "tab",
+          "settings": {
+            "title": "Tab title",
+            "heading_element_custom": false,
+            "heading_element": "h4",
+            "icon": "eye",
+            "row_content": "<p>Dictumst quisque sagittis purus sit amet volutpat consequat. Risus nec feugiat in fermentum posuere urna nec tincidunt. Enim sed faucibus turpis in eu. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer. Lorem ipsum dolor sit amet consectetur. Sagittis nisl rhoncus mattis rhoncus urna neque.<\/p>",
+            "page": ""
+          }
+        },
+        "template--21590728442049__c913e227-6f8f-4562-b84c-660fe7e3aab5-tab-3": {
+          "type": "tab",
+          "settings": {
+            "title": "Tab title",
+            "heading_element_custom": false,
+            "heading_element": "h4",
+            "icon": "apple",
+            "row_content": "<p>Nunc consequat interdum varius sit amet mattis vulputate enim. Mi ipsum faucibus vitae aliquet nec ullamcorper sit amet risus. Non blandit massa enim nec dui.<\/p>",
+            "page": ""
+          }
+        },
+        "template--21590728442049__c913e227-6f8f-4562-b84c-660fe7e3aab5-tab-4": {
+          "type": "tab",
+          "settings": {
+            "title": "Tab title with long text",
+            "heading_element_custom": false,
+            "heading_element": "h4",
+            "icon": "none",
+            "row_content": "<p>Leo integer malesuada nunc vel risus commodo viverra maecenas. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Tristique et egestas quis ipsum suspendisse ultrices gravida. Adipiscing elit duis tristique sollicitudin nibh sit. Malesuada fames ac turpis egestas integer eget aliquet nibh. Eget nulla facilisi etiam dignissim. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Leo in vitae turpis massa. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Elit sed vulputate mi sit amet.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--21590728442049__c913e227-6f8f-4562-b84c-660fe7e3aab5-tab-1",
+        "template--21590728442049__c913e227-6f8f-4562-b84c-660fe7e3aab5-tab-2",
+        "template--21590728442049__c913e227-6f8f-4562-b84c-660fe7e3aab5-tab-3",
+        "template--21590728442049__c913e227-6f8f-4562-b84c-660fe7e3aab5-tab-4"
+      ],
+      "settings": {
+        "heading": "Collapsible content",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "heading_element_custom": false,
+        "heading_element": "h2",
+        "layout": "none",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
       }
     },
     "rich_text": {
@@ -53,7 +124,9 @@
           "type": "heading",
           "settings": {
             "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_element_custom": false,
+            "heading_element": "h2"
           }
         },
         "text": {
@@ -68,10 +141,14 @@
         "text"
       ],
       "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "scheme-1",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
       }
     },
     "featured_collection": {
@@ -79,19 +156,31 @@
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "full_width": false,
         "show_view_all": false,
-        "swipe_on_mobile": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": false,
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 28,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
       }
     },
     "collage": {
@@ -127,22 +216,32 @@
         "heading_size": "h2",
         "desktop_layout": "left",
         "mobile_layout": "collage",
+        "card_styles": "product-card-wrapper",
         "color_scheme": "scheme-1",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
       }
     },
     "video": {
       "type": "video",
       "settings": {
         "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
         "color_scheme": "scheme-1",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
       }
     },
     "multicolumn": {
@@ -191,16 +290,21 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "swipe_on_mobile": false,
         "color_scheme": "scheme-1",
         "columns_mobile": "1",
+        "swipe_on_mobile": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
       }
     }
   },
   "order": [
     "image_banner",
+    "c913e227-6f8f-4562-b84c-660fe7e3aab5",
     "rich_text",
     "featured_collection",
     "collage",
