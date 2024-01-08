@@ -74,7 +74,7 @@
 }
 
 @media screen and (max-width:749px) {
-    .page-width {
+    .tabs .page-width {
         padding-left: 0;
         padding-right: 0;
     }
