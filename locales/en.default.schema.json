@@ -2870,6 +2870,12 @@
         "name": "Page"
       }
     },
+    "popup": {
+      "name": "Pop-up",
+      "text": "Here write your popup message",
+      "button_text": "Click me",
+      "checkmark_label": "Hide the popup window"
+    },
     "quick-order-list": {
       "name": "Quick order list",
       "settings": {
