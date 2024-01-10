@@ -212,6 +212,10 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   display: none !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .visually-hidden {
   position: absolute !important;
   overflow: hidden;
