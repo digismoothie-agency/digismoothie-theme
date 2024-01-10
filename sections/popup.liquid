@@ -9,8 +9,28 @@
       >
         {% render 'icon-close' %}
       </button>
-      <h2>Heading</h2>
-      <p>text</p>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <h2>{{ block.settings.heading }}</h2>
+          {%- when 'text' -%}
+            <p>{{ block.settings.text }}</p>
+          {%- when 'button' -%}
+            {%- if block.settings.button_label != blank -%}
+              <a
+                {% if block.settings.button_link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ block.settings.button_link }}"
+                {% endif %}
+                class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.button_label | escape }}
+              </a>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
     </div>
   </div>
 </div>
@@ -31,14 +51,14 @@
   "blocks": [
     {
       "type": "heading",
-      "name": "t:sections.rich-text.blocks.heading.name",
+      "name": "t:sections.image-banner.blocks.heading.name",
       "limit": 3,
       "settings": [
         {
           "type": "inline_richtext",
           "id": "heading",
-          "default": "Talk about your brand",
-          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+          "default": "Image banner",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
         },
         {
           "type": "select",
@@ -73,7 +93,7 @@
               "label": "t:sections.all.heading_size.options__6.label"
             }
           ],
-          "default": "h1",
+          "default": "h2",
           "label": "t:sections.all.heading_size.label"
         },
         {
@@ -137,43 +157,26 @@
     },
     {
       "type": "button",
-      "name": "t:sections.rich-text.blocks.buttons.name",
-      "limit": 2,
+      "name": "t:sections.image-with-text.blocks.button.name",
+      "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "button_label",
           "default": "Button label",
-          "label": "t:sections.rich-text.blocks.buttons.settings.button_label_1.label",
-          "info": "t:sections.rich-text.blocks.buttons.settings.button_label_1.info"
+          "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+          "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
         },
         {
           "type": "url",
           "id": "button_link",
-          "label": "t:sections.rich-text.blocks.buttons.settings.button_link_1.label"
+          "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
         },
         {
           "type": "checkbox",
           "id": "button_style_secondary",
           "default": false,
-          "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_1.label"
-        },
-        {
-          "type": "text",
-          "id": "button_label_2",
-          "label": "t:sections.rich-text.blocks.buttons.settings.button_label_2.label",
-          "info": "t:sections.rich-text.blocks.buttons.settings.button_label_2.info"
-        },
-        {
-          "type": "url",
-          "id": "button_link_2",
-          "label": "t:sections.rich-text.blocks.buttons.settings.button_link_2.label"
-        },
-        {
-          "type": "checkbox",
-          "id": "button_style_secondary_2",
-          "default": false,
-          "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_2.label"
+          "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
         }
       ]
     }
@@ -187,6 +190,9 @@
         },
         {
           "type": "text"
+        },
+        {
+          "type": "button"
         }
       ]
     }
