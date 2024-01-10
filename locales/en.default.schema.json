@@ -3169,10 +3169,16 @@
               "label": "Product"
             },
             "vertical": {
-              "label": "Vertical position"
+              "label": "Vertical position desktop"
             },
             "horizontal": {
-              "label": "Horizontal position"
+              "label": "Horizontal position desktop"
+            },
+            "vertical_mobile": {
+              "label": "Vertical position mobile"
+            },
+            "horizontal_mobile": {
+              "label": "Horizontal position mobile"
             }
           }
         },
@@ -3195,10 +3201,16 @@
               "label": "Button link"
             },
             "vertical": {
-              "label": "Vertical position"
+              "label": "Vertical position desktop"
             },
             "horizontal": {
-              "label": "Horizontal position"
+              "label": "Horizontal position desktop"
+            },
+            "vertical_mobile": {
+              "label": "Vertical position mobile"
+            },
+            "horizontal_mobile": {
+              "label": "Horizontal position mobile"
             }
           }
         }
