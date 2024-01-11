@@ -219,7 +219,9 @@
           "settings": {
             "featured_product": "the-3p-fulfilled-snowboard",
             "vertical": 50,
-            "horizontal": 18
+            "horizontal": 18,
+            "vertical_mobile": 48,
+            "horizontal_mobile": 24
           }
         },
         "template--16527774908601__298fc5f7-a42a-4ebf-919e-be481754ad49-product-2": {
@@ -227,7 +229,9 @@
           "settings": {
             "featured_product": "selling-plans-ski-wax",
             "vertical": 90,
-            "horizontal": 58
+            "horizontal": 58,
+            "vertical_mobile": 75,
+            "horizontal_mobile": 56
           }
         }
       },
@@ -238,7 +242,10 @@
       "settings": {
         "title": "Shop the look",
         "heading_size": "h2",
+        "heading_element_custom": false,
+        "heading_element": "h2",
         "heading_position": "left",
+        "color_scheme": "",
         "image": "shopify:\/\/shop_images\/max-kukurudziak-_8h7TrklnHQ-unsplash.jpg",
         "indent_image": false,
         "image_position": "left",
