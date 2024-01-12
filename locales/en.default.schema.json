@@ -3479,15 +3479,27 @@
             "label": "Right"
           }
         },
+        "tabs_alignment": {
+          "label": "Tabs alignment",
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Center"
+          },
+          "options__3": {
+            "label": "Right"
+          }
+        },
+        "enable_desktop_slider": {
+          "info": "Settings for collection content in tab"
+        },
         "layout": {
           "label": "Layout",
           "options__1": {
-            "label": "No container"
+            "label": "Full width"
           },
           "options__2": {
-            "label": "Row container"
-          },
-          "options__3": {
             "label": "Section container"
           }
         },
@@ -3497,8 +3509,8 @@
         }
       },
       "blocks": {
-        "collapsible_row": {
-          "name": "Collapsible row",
+        "tab": {
+          "name": "Tab",
           "settings": {
             "heading": {
               "info": "Include a heading that explains the content.",
@@ -3509,6 +3521,9 @@
             },
             "page": {
               "label": "Row content from page"
+            },
+            "collection": {
+              "label": "Content from collection"
             },
             "icon": {
               "label": "Icon",
