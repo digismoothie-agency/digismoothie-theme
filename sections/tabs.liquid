@@ -18,18 +18,18 @@
   }
   
   {% for block in section.blocks %}
-    .tab__swithcer#tab-{{ forloop.index }}:checked ~  .tabs__content_wrapper .tabs__content#tab__{{ forloop.index }} {
+    .tab__switcher#{{ block.id }}:checked ~  .tabs__content_wrapper .tabs__content#{{ block.id }} {
         opacity: 1;
         visibility: visible;
         position: relative;
     }   
 
-    .tab__swithcer#tab-{{ forloop.index }}:checked ~ .tab__heading_wrapper #tab__lable_{{ forloop.index }}::after {
+    .tab__switcher#{{ block.id }}:checked ~ .tab__heading_wrapper #{{ block.id }}::after {
       opacity: 1;
       visibility: visible;
     }
 
-    .tab__swithcer#tab-{{ forloop.index }}:checked ~ .tab__heading_wrapper #tab__lable_{{ forloop.index }} {
+    .tab__switcher#{{ block.id }}:checked ~ .tab__heading_wrapper #{{ block.id }} {
       background-color: transparent;
       opacity: 1;
     }
@@ -47,7 +47,7 @@
         {% else %}
           {%
             render 'headings',
-            heading_size: section.settings.heading_element1,
+            heading_size: section.settings.heading_element,
             heading_element: section.settings.heading_element,
             title: section.settings.heading,
             class: 'title inline-richtext',
@@ -58,10 +58,10 @@
     <div class="tabs-wrapper">
       {% for block in section.blocks %}
           <input type="radio" 
-            name="tabset" 
-            id="tab-{{ forloop.index }}" 
-            aria-controls="tab__{{ forloop.index }}" 
-            class="tab__swithcer"
+            name="tabset__{{ section.id }}" 
+            id="{{ block.id }}" 
+            aria-controls="{{ block.id }}" 
+            class="tab__switcher"
             {% if forloop.index == 1 %}
               checked
             {% endif %}
@@ -70,8 +70,9 @@
       <div class="tab__heading_wrapper">
         {% for block in section.blocks %}
           <label class="tab__heading"
-            for="tab-{{ forloop.index }}"
-            id="tab__lable_{{ forloop.index }}"
+            for="{{ block.id }}"
+            id="{{ block.id }}"
+            aria-controls="{{ block.id }}" 
           >
             {% render 'icon-accordion', icon: block.settings.icon %}
             {% unless block.settings.heading_element_custom %}
@@ -93,7 +94,7 @@
       <div class="tabs__content_wrapper">
         {% for block in section.blocks %}
           <div class="tabs__content"
-            id="tab__{{ forloop.index }}"
+            id="{{ block.id }}"
           >
             {{ block.settings.row_content }}
             {{ block.settings.page.content }}
