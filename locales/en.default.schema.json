@@ -3516,14 +3516,17 @@
               "info": "Include a heading that explains the content.",
               "label": "Heading"
             },
+            "header_alternative_content": {
+              "content": "Alternative content"
+            },
             "row_content": {
-              "label": "Row content"
+              "label": "Tab content"
             },
             "page": {
-              "label": "Row content from page"
+              "label": "Content from a page"
             },
             "collection": {
-              "label": "Content from collection"
+              "label": "Products from a collection"
             },
             "icon": {
               "label": "Icon",
