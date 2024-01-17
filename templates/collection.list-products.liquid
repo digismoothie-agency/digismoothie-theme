@@ -1,0 +1,46 @@
+{% layout none %}
+
+{%- liquid
+  assign params = canonical_url | split: 'all?type=' | last | split: '+'
+  for param in params
+    if param contains 'handle_'
+      assign product_handle = param | split: 'handle_' | last
+    elsif param contains 'sectionid_'
+      assign section_id = param | split: 'sectionid_' | last
+    elsif param contains 'index_'
+      assign index = param | split: 'index_' | last
+    elsif param contains 'imageRatio_'
+      assign image_ratio = param | split: 'imageRatio_' | last
+    elsif param contains 'imageShape_'
+      assign image_shape = param | split: 'imageShape_' | last
+    elsif param contains 'showSecondaryImage_'
+      assign show_secondary_image = param | split: 'showSecondaryImage_' | last
+    elsif param contains 'showVendor_'
+      assign show_vendor = param | split: 'showVendor_' | last
+    elsif param contains 'showRating_'
+      assign show_rating = param | split: 'showRating_' | last
+    elsif param contains 'showQuickAdd_'
+      assign enable_quick_add = param | split: 'showQuickAdd_' | last
+    endif
+  endfor
+
+  assign found_product = all_products[product_handle]
+-%}
+
+{%- if found_product and found_product != blank -%}
+  <li
+    id="Slide-{{ section_id }}-{{ index }}"
+    class="grid__item slider__slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+  >
+    {% render 'card-product',
+      card_product: found_product,
+      media_aspect_ratio: image_ratio,
+      image_shape: image_shape,
+      show_secondary_image: show_secondary_image,
+      show_vendor: show_vendor,
+      show_rating: show_rating,
+      show_quick_add: enable_quick_add,
+      section_id: section_id
+    %}
+  </li>
+{%- endif -%}
