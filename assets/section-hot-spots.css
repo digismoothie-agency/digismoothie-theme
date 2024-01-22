@@ -14,8 +14,8 @@
 }
 
 .hotspots__title {
-  padding-top: 1.5rem;
   width: 100%;
+  margin-bottom: 3rem;
 }
 
 .hotspots {
@@ -274,6 +274,14 @@
   height: 20px;
   vertical-align: middle;
   width: 20px;
+}
+
+.hotspots-section .icon.icon-bag g {
+  stroke-width: 5;
+}
+
+.hotspots-section .icon.icon-plus {
+  stroke-width: 0.5;
 }
 
 .hotspots-section .text-left {

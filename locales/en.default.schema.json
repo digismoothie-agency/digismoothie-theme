@@ -3126,9 +3126,6 @@
           "label": "Image",
           "info": "Recommended a square ratio for optimal mobile experience"
         },
-        "indent_image": {
-          "label": "Full page width"
-        },
         "image_position": {
           "label": "Image position",
           "options": {

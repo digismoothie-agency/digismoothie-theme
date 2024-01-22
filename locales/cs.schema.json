@@ -1557,7 +1557,7 @@
             "label": "Od nejnižšího počtu produktů po nejvyšší"
           }
         },
-        "image_ratio": {
+        "": {
           "label": "Poměr obrázku",
           "info": "Přidejte obrázky tak, že začnete upravovat kolekce. [Zjistit více](https://help.shopify.com/manual/products/collections)",
           "options__1": {

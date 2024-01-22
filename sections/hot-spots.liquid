@@ -1,27 +1,44 @@
 {{ 'section-hot-spots.css' | asset_url | stylesheet_tag }}
 
 {% assign bgBrightness = section.settings.hotspot_color | brightness_difference: '#fff' %}
-{% style %}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
   {% for block in section.blocks %}
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 {{ section.settings.hotspot_color | color_modify: 'alpha', 0.5 }}; }
-      100% { box-shadow: 0 0 0 10px {{ section.settings.hotspot_color | color_modify: 'alpha', 0 }}; }
+      0% {
+        box-shadow: 0 0 0 0 {{ section.settings.hotspot_color | color_modify: 'alpha', 0.5 }};
+      }
+      100% {
+        box-shadow: 0 0 0 10px {{ section.settings.hotspot_color | color_modify: 'alpha', 0 }};
+      }
     }
 
-    .{{ section.id }} .hotspot__button--{{ block.id }} {
+    .section-{{ section.id }} .hotspot__button--{{ block.id }} {
       left: {{ block.settings.horizontal_mobile }}%;
       top: {{ block.settings.vertical_mobile }}%;
       background-color: {{ section.settings.hotspot_color }};
       animation: pulse 2s infinite;
     }
+
     @media screen and (min-width: 750px) {
-      .{{ section.id }} .hotspot__button--{{ block.id }} {
+      .section-{{ section.id }} .hotspot__button--{{ block.id }} {
         left: {{ block.settings.horizontal }}%;
         top: {{ block.settings.vertical }}%;
       }
     }
 
-    .{{ section.id }} .hotspot__button--{{ block.id }}:hover {
+    .section-{{ section.id }} .hotspot__button--{{ block.id }}:hover {
       {% if bgBrightness < 125 %}
         background-color: {{ section.settings.hotspot_color | color_darken: 10 }};
       {% else %}
@@ -30,41 +47,49 @@
     }
   {% endfor %}
 
-  .{{ section.id }} .hotspot__button path {
-    {% if bgBrightness < 125 %}
-      stroke: #000 !important;
-    {% else %}
-      stroke: #fff !important;
-    {% endif %}
+  .section-{{ section.id }} .hotspot__button path {
+  {% if bgBrightness < 125 %}
+    stroke: #000 !important;
+  {% else %}
+    stroke: #fff !important;
+  {% endif %}
   }
 
-  .{{ section.id }} .hotspot__button circle {
-    {% if bgBrightness < 125 %}
-      fill: #000 !important;
-    {% else %}
-      fill: #fff !important;
-    {% endif %}
+  .section-{{ section.id }} .hotspot__button circle {
+  {% if bgBrightness < 125 %}
+    fill: #000 !important;
+  {% else %}
+    fill: #fff !important;
+  {% endif %}
   }
 
-  .{{ section.id }} .hotspot__button .icon-plus path {
-    {% if bgBrightness < 125 %}
-      fill: #000 !important;
-      stroke: transparent;
-    {% else %}
-      fill: #fff !important;
-      stroke: transparent;
-    {% endif %}
+  .section-{{ section.id }} .hotspot__button .icon-plus path {
+  {% if bgBrightness < 125 %}
+    fill: #000 !important; stroke: transparent;
+  {% else %}
+    fill: #fff !important; stroke: transparent;
+  {% endif %}
   }
-{% endstyle %}
 
-<div class="index-section {{ section.id }} {{ bgBrightness }} color-{{ section.settings.color_scheme }} scroll-trigger animate--fade-in"
-{% if settings.animations_reveal_on_scroll %}
-  data-cascade
-  style="--animation-order: {{ forloop.index }};"
-{% endif %}
+  .section-{{ section.id }} .hotspot__button .icon-tag {
+  {% if bgBrightness < 125 %}
+    fill: #000 !important; stroke: transparent;
+  {% else %}
+    fill: #fff !important; stroke: transparent;
+  {% endif %}
+    stroke: {{ section.settings.hotspot_color }};
+  }
+{%- endstyle -%}
+
+<div
+  class="index-section section-{{ section.id }} {{ bgBrightness }} color-{{ section.settings.color_scheme }} scroll-trigger animate--fade-in {% unless section.settings.full_width %} page-width {% endunless %} section-{{ section.id }}-padding"
+  {% if settings.animations_reveal_on_scroll %}
+    data-cascade
+    style="--animation-order: {{ forloop.index }};"
+  {% endif %}
 >
   {% if section.settings.title != blank %}
-    <div class="page-width text-{{ section.settings.heading_position }}">
+    <div class="{% if section.settings.full_width %}page-width{% endif %} text-{{ section.settings.heading_position }}">
       {% unless section.settings.heading_element_custom %}
         <h2 class="hotspots__title {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
       {% else %}
@@ -78,21 +103,18 @@
       {% endunless %}
     </div>
   {% endif %}
-  <hot-spots class="hotspots-wrapper {% unless section.settings.indent_image %}page-width{% endunless %} {% if section.settings.image_position == 'right' %}is-reverse{% endif %} scroll-trigger animate--fade-in"
+  <hot-spots
+    class="hotspots-wrapper {% if section.settings.image_position == 'right' %}is-reverse{% endif %} scroll-trigger animate--fade-in"
     {% if settings.animations_reveal_on_scroll %}
       data-cascade
       style="--animation-order: {{ forloop.index }};"
     {% endif %}
-    >
-
+  >
     <div class="hotspots">
       <div class="hotspots__image">
         <div class="grid__image-ratio">
           {% if section.settings.image != blank %}
-            {%- render 'image-element',
-              image: section.settings.image,
-              lazy: true
-            -%}
+            {%- render 'image-element', image: section.settings.image, lazy: true -%}
           {% else %}
             {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
           {% endif %}
@@ -118,29 +140,32 @@
     </div>
     <div class="hotspots__content" data-block-container>
       {% for block in section.blocks %}
-        <div class="hotspot-content__block {% if forloop.index0 == 0 %}is-active{% endif %}" data-block-type="{{ block.type }}" data-hotspot-block="{{ block.id }}" {{ block.shopify_attributes }}>
+        <div
+          class="hotspot-content__block {% if forloop.index0 == 0 %}is-active{% endif %}"
+          data-block-type="{{ block.type }}"
+          data-hotspot-block="{{ block.id }}"
+          {{ block.shopify_attributes }}
+        >
           {% case block.type %}
             {% when 'product' %}
               {%- assign product = block.settings.featured_product -%}
               {% if block.settings.featured_product != blank %}
-                {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: section.settings.image_ratio,
-                    image_shape: section.settings.image_shape,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_rating: section.settings.show_rating,
-                    show_quick_add: section.settings.enable_quick_add,
-                    section_id: section.id
+                {%
+                  render 'card-product',
+                  card_product: block.settings.featured_product,
+                  media_aspect_ratio: block.settings.image_ratio,
+                  show_secondary_image: block.settings.show_secondary_image,
+                  section_id: section.id,
                 %}
               {% else %}
-              {%- for i in (1..1) -%}
-                  {%- assign placeholder_image = 'product-apparel-' | append: forloop.rindex -%}
-                  {% render 'card-product',
-                    show_vendor: section.settings.show_vendor,
-                    placeholder_image: placeholder_image
-                  %}
-              {%- endfor -%}
+                {%- assign placeholder_image = 'product-apparel-' | append: forloop.rindex -%}
+                {% render 'card-product',
+                  card_product: product,
+                  media_aspect_ratio: block.settings.image_ratio,
+                  show_secondary_image: block.settings.show_secondary_image,
+                  section_id: section.id,
+                  placeholder_image: placeholder_image
+                %}
               {% endif %}
             {% when 'paragraph' %}
               {% if block.settings.subheading != blank %}
@@ -155,7 +180,9 @@
               {% endif %}
 
               {% if block.settings.button_text != blank %}
-                <a href="{{ block.settings.button_link }}" class="button button--secondary">{{ block.settings.button_text }}</a>
+                <a href="{{ block.settings.button_link }}" class="button button--secondary">
+                  {{- block.settings.button_text -}}
+                </a>
               {% endif %}
           {% endcase %}
         </div>
@@ -172,6 +199,12 @@
   "class": "hotspots-section",
   "max_blocks": 8,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": false,
+      "label": "t:sections.all.full_width.label"
+    },
     {
       "type": "text",
       "id": "title",
@@ -215,50 +248,6 @@
       "label": "t:sections.all.heading_size.label"
     },
     {
-      "type": "header",
-      "content": "t:sections.all.heading_element_header.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "heading_element_custom",
-      "label": "t:sections.all.heading_element_custom.label",
-      "info": "t:sections.all.heading_element_custom.info",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "heading_element",
-      "options": [
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_element.options__1.label"
-        },
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_element.options__2.label"
-        },
-        {
-          "value": "h3",
-          "label": "t:sections.all.heading_element.options__3.label"
-        },
-        {
-          "value": "h4",
-          "label": "t:sections.all.heading_element.options__4.label"
-        },
-        {
-          "value": "h5",
-          "label": "t:sections.all.heading_element.options__5.label"
-        },
-        {
-          "value": "h6",
-          "label": "t:sections.all.heading_element.options__6.label"
-        }
-      ],
-      "default": "h2",
-      "label": "t:sections.all.heading_element.label",
-      "info": "t:sections.all.heading_element.info"
-    },
-    {
       "type": "select",
       "id": "heading_position",
       "label": "t:sections.hotspots.settings.heading_position.label",
@@ -289,12 +278,6 @@
       "id": "image",
       "label": "t:sections.hotspots.settings.image.label",
       "info": "t:sections.hotspots.settings.image.info"
-    },
-    {
-      "type": "checkbox",
-      "label": "t:sections.hotspots.settings.indent_image.label",
-      "id": "indent_image",
-      "default": false
     },
     {
       "type": "select",
@@ -341,6 +324,98 @@
       "id": "hotspot_color",
       "label": "t:sections.hotspots.settings.hotspot_color.label",
       "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_mobile_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.mobile_padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.mobile_padding_bottom",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.heading_element_header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_element_custom",
+      "label": "t:sections.all.heading_element_custom.label",
+      "info": "t:sections.all.heading_element_custom.info",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "heading_element",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_element.options__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_element.options__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.heading_element.options__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.heading_element.options__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.heading_element.options__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.heading_element.options__6.label"
+        }
+      ],
+      "default": "h2",
+      "label": "t:sections.all.heading_element.label",
+      "info": "t:sections.all.heading_element.info"
     }
   ],
   "blocks": [
@@ -392,6 +467,36 @@
           "max": 90,
           "step": 1,
           "unit": "%"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.featured-collection.settings.header.content"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+            },
+            {
+              "value": "portrait",
+              "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+            },
+            {
+              "value": "square",
+              "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+            }
+          ],
+          "default": "adapt",
+          "label": "t:sections.featured-collection.settings.image_ratio.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_secondary_image",
+          "default": false,
+          "label": "t:sections.featured-collection.settings.show_secondary_image.label"
         }
       ]
     },
@@ -475,14 +580,18 @@
           "type": "product",
           "settings": {
             "vertical": 25,
-            "horizontal": 25
+            "horizontal": 25,
+            "vertical_mobile": 39,
+            "horizontal_mobile": 80
           }
         },
         {
           "type": "product",
           "settings": {
             "vertical": 75,
-            "horizontal": 65
+            "horizontal": 65,
+            "vertical_mobile": 60,
+            "horizontal_mobile": 25
           }
         }
       ]
