@@ -947,6 +947,10 @@ summary::-webkit-details-marker {
   }
 }
 
+.grid--reverse {
+  flex-direction: row-reverse;
+}
+
 .grid--gapless.grid {
   column-gap: 0;
   row-gap: 0;
@@ -1367,6 +1371,15 @@ button.shopify-payment-button__button--unbranded {
 
 .button--small {
   padding: 1.2rem 2.6rem;
+}
+
+.button--link {
+  background: none;
+  color: black;
+  text-decoration: underline;
+  border: none;
+  box-shadow: none;
+  color: rgb(var(--color-link));
 }
 
 /* Button - other */

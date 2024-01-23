@@ -1,5 +1,5 @@
-<div class="popup hidden" id="popup">
-  <div class="popup-content">
+<div class="popup hidden color-{{ section.settings.color_scheme }}" id="popup">
+  <div class="popup-box">
     <button
       id="close_button"
       type="button"
@@ -7,49 +7,51 @@
     >
       {% render 'icon-close' %}
     </button>
-    {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'heading' -%}
-          <h2>{{ block.settings.heading }}</h2>
-        {%- when 'text' -%}
-          <p>{{ block.settings.text }}</p>
-        {%- when 'button' -%}
-          {%- if block.settings.button_label != blank -%}
-            <a
-              {% if block.settings.button_link == blank %}
-                role="link" aria-disabled="true"
-              {% else %}
-                href="{{ block.settings.button_link }}"
-              {% endif %}
-              class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-              {{ block.shopify_attributes }}
+    <div class="popup-content {% if section.settings.layout_row == true %} grid {% endif %} {% if section.settings.layout_row_right == true %} grid--reverse {% endif %}">
+      <div class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}">
+        {%- if section.settings.image != blank -%}
+          {%- assign image_size_2x = section.settings.image_width | times: 2 | at_most: 5760 -%}
+          <div
+            class="popup-block__image-wrapper"
+            style="max-width: min(100%, {{ section.settings.image_width }}px);"
+          >
+            <img
+              srcset="{{ section.settings.image | image_url: width: section.settings.image_width }}, {{ section.settings.image | image_url: width: image_size_2x }} 2x"
+              src="{{ section.settings.image | image_url: width: 760 }}"
+              alt="{{ section.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.height }}"
             >
-              {{ block.settings.button_label | escape }}
-            </a>
-          {%- endif -%}
-        {%- when 'image' -%}
-          <div class="popup_image">
-            {%- if block.settings.image != blank -%}
-              {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
-              <div
-                class="footer-block__image-wrapper"
-                style="max-width: min(100%, {{ block.settings.image_width }}px);"
-              >
-                <img
-                  srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
-                  src="{{ block.settings.image | image_url: width: 760 }}"
-                  alt="{{ block.settings.image.alt | escape }}"
-                  loading="lazy"
-                  width="{{ block.settings.image.width }}"
-                  height="{{ block.settings.image.height }}"
-                >
-              </div>
-            {%- else -%}
-              {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
-            {%- endif -%}
           </div>
-      {%- endcase -%}
-    {%- endfor -%}
+        {%- endif -%}
+      </div>
+      <div class="popup_blocks {{ section.settings.content_alignment }} {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <h2>{{ block.settings.heading }}</h2>
+            {%- when 'text' -%}
+              <p>{{ block.settings.text }}</p>
+            {%- when 'button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="{% if block.settings.button_style_secondary %} button--secondary button{% elsif block.settings.button_style_link %} button--link {% else %} button--primary button{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+            {%- when 'image' -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
   </div>
 </div>
 
@@ -58,12 +60,52 @@
   "name": "t:sections.popup.name",
   "tag": "section",
   "class": "section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
     {
       "type": "checkbox",
       "id": "layout_row",
       "label": "Do you want your content to be displayed in a row?",
-      "default": true
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "layout_row_right",
+      "label": "Do you want your image on the right?",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
     }
   ],
   "blocks": [
@@ -75,7 +117,7 @@
         {
           "type": "inline_richtext",
           "id": "heading",
-          "default": "Image banner",
+          "default": "Popup header",
           "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
         },
         {
@@ -195,27 +237,12 @@
           "id": "button_style_secondary",
           "default": false,
           "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
-        }
-      ]
-    },
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
         },
         {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 250,
-          "step": 5,
-          "unit": "px",
-          "label": "Image width",
-          "default": 100
+          "type": "checkbox",
+          "id": "button_style_link",
+          "default": false,
+          "label": "t:sections.image-with-text.blocks.button.settings.link_style_button.label"
         }
       ]
     }
@@ -232,9 +259,6 @@
         },
         {
           "type": "button"
-        },
-        {
-          "type": "image"
         }
       ]
     }
@@ -253,16 +277,27 @@
     top: 0;
   }
 
-  .popup-content {
+  #popup {
+    background: rgba(var(--color-foreground), 0.2);
+  }
+
+  .popup-box {
     position: absolute;
     max-width: 700px;
+    min-width: 300px;
     height: auto;
     background-color: white;
     left: 50%;
-    top: 20%;
-    transform: translate(-50%);
-    padding: 2rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem;
     border-radius: var(--border-radius);
+    max-height: 80%;
+    padding: 1.5rem 3rem;
+  }
+
+  .popup_blocks > * {
+    margin: 1rem auto;
   }
 
   .popup_image svg {
@@ -276,16 +311,38 @@
   }
 
   .popup #close_button {
-    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    background-color: rgb(var(--color-background));
     border-radius: 50%;
-    padding: 10px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
+    padding: 1.2rem;
+    margin: 0 0 1rem auto;
+    top: 1.5rem;
+    width: 4rem;
+  }
+
+  .popup_blocks .button {
+    width: 100%;
   }
 
   @media screen and (max-width: 767px) {
+  }
+
+  @media screen and (max-width: 990px) {
+    .popup-content .grid--2-col {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
     .popup-content {
+      padding-right: 4.4rem;
+    }
+
+    .popup-box {
       padding: 4rem;
     }
   }
