@@ -61,8 +61,8 @@
   "settings": [
     {
       "type": "checkbox",
-      "id": "show_popup_window",
-      "label": "t:sections.all.popup.checkmark_label",
+      "id": "layout_row",
+      "label": "Do you want your content to be displayed in a row?",
       "default": true
     }
   ],
@@ -255,19 +255,39 @@
 
   .popup-content {
     position: absolute;
-    width: 50%;
+    max-width: 700px;
     height: auto;
     background-color: white;
-    border: 10px solid black;
     left: 50%;
-    top: 30%;
+    top: 20%;
     transform: translate(-50%);
-    margin-top: 10px;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+  }
+
+  .popup_image svg {
+    max-height: 30rem;
+    width: auto;
   }
 
   .popup .icon {
     height: auto;
     width: 2.2rem;
+  }
+
+  .popup #close_button {
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .popup-content {
+      padding: 4rem;
+    }
   }
 {% endstylesheet %}
 
