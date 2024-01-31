@@ -2,6 +2,7 @@
   <div class="popup-box">
     <button
       id="close_button"
+      class="close-button"
       type="button"
       aria-label="{{ 'accessibility.close' | t }}"
     >
@@ -286,7 +287,7 @@
     max-width: 700px;
     min-width: 300px;
     height: auto;
-    background-color: white;
+    background-color: rgb(var(--color-background));
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -311,11 +312,13 @@
   }
 
   .popup #close_button {
+    border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+    color: rgba(var(--color-foreground), 0.55);
+    background-color: rgb(var(--color-background));
     display: flex;
     align-items: center;
     justify-content: center;
     position: sticky;
-    background-color: rgb(var(--color-background));
     border-radius: 50%;
     padding: 1.2rem;
     margin: 0 0 1rem auto;
@@ -349,8 +352,25 @@
 {% endstylesheet %}
 
 <script>
+  // Function for popup close button and keeping the popup closed even you reload.
+  // Button close store the value 0 and key show in the session storage and if the value is 0 and key show the popup will be hidden.
+
   document.addEventListener('DOMContentLoaded', function () {
     const closeX = document.getElementById('close_button');
+
+    const popup = document.getElementById('popup');
+
+    // I need to add this on function bellow
+
+    popup.addEventListener('click', (event) => {
+      //console.log(event.target);
+      if (event.target == popup) {
+        sessionStorage.setItem('show', 0);
+        window.location.reload();
+      }
+    });
+
+    // I need to add this on function bellow - END
 
     closeX.addEventListener('click', function () {
       sessionStorage.setItem('show', 0);
