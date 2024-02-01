@@ -124,8 +124,8 @@
       "min": 1,
       "max": 100,
       "step": 1,
-      "unit": "m",
-      "label": "Opt time in minutes",
+      "unit": "d",
+      "label": "Opt time in days",
       "default": 5
     }
   ],
@@ -372,42 +372,64 @@
 {% endstylesheet %}
 
 <script>
-  // Function for popup close button and keeping the popup closed even you reload.
-  // Button close store the value 0 and key show in the session storage and if the value is 0 and key show the popup will be hidden.
+  document.addEventListener('DOMContentLoaded', function () {
 
-  console.log('popup');
+    // Function for popup close button and keeping the popup closed even you reload page
+    // In store editor you can choose delay to show popup and also time when the popup will appear again after closing it
+    // We are using session storage to keep the popup closed even after page reload
+    setTimeout(function () {
+      const closeX = document.getElementById('close_button');
+      const popup = document.getElementById('popup');
 
-  setTimeout(function () {
-    const closeX = document.getElementById('close_button');
+      // -------- Probably, I need to add this on function bellow where the closing button function is -----------
 
-    const popup = document.getElementById('popup');
+      // This is for closing the popup when clicking outside of it
+      popup.addEventListener('click', (event) => {
+        if (event.target == popup) {
+          sessionStorage.setItem('hide', 0);
+          window.location.reload();
+        }
+      });
 
-    // I need to add this on function bellow
+      // -------- I need to add this on function bellow where the closing button function is  - END ----------
 
-    popup.addEventListener('click', (event) => {
-      //console.log(event.target);
-      if (event.target == popup) {
-        sessionStorage.setItem('show', 0);
+      // This is for closing the popup when clicking on the close button
+      closeX.addEventListener('click', function () {
+        sessionStorage.setItem('hide', 0);
+
+        if (sessionStorage.getItem('hide', 0)) {
+          document.getElementById('popup').classList.add('hidden');
+        }
+
+        // After is stored in session storage value and key and added the class hidden,
+        // we need to reload the page to close the popup
+
+        // -------- Is here any better way to do this? To hide the popup imidiately after click and avoid reload? ---------
         window.location.reload();
-      }
-    });
+      });
 
-    // I need to add this on function bellow - END
-
-    closeX.addEventListener('click', function () {
-      sessionStorage.setItem('show', 0);
-
-      if (sessionStorage.getItem('show', 0)) {
+      if (sessionStorage.getItem('hide', 0)) {
         document.getElementById('popup').classList.add('hidden');
+      } else {
+        document.getElementById('popup').classList.add('show');
+        document.body.classList.add('overflow-hidden');
       }
 
-      window.location.reload();
-    });
+      // If body contains div with .popup.show add on body class .overflow-hidden
+    }, {{ section.settings.delay }}000);
 
-    if (sessionStorage.getItem('show', 0)) {
-      document.getElementById('popup').classList.add('hidden');
-    } else {
-      document.getElementById('popup').classList.add('show');
-    }
-  }, {{ section.settings.delay }}000); // do I rea
+
+    const countDays = ({{ section.settings.opt_time }} * 86400000);
+    // delete session storage after time setup by admin (time setup in days)
+    setTimeout(function () {
+      sessionStorage.removeItem('hide', 0); //
+    }, countDays);
+
+
+
+    // clear session storage once per session
+
+    // ---------- needs to be added ------------
+
+  });
 </script>
