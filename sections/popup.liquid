@@ -344,6 +344,7 @@
     margin: 0 0 1rem auto;
     top: 1.5rem;
     width: 4rem;
+    z-index: 2;
   }
 
   .popup_blocks .button {
@@ -386,9 +387,16 @@
 
     document.addEventListener('click', function(event) {
       const elementClicked = event.target;
-      if ( elementClicked == closedButton ) {
+      if (elementClicked == popup) {
         closePopup()
-      } else if (elementClicked == popup) {
+      } else if (elementClicked == closedButton) {
+        closePopup()
+      }
+    });
+
+    popup.addEventListener('click', function(event) {
+      const elementClicked = event.target;
+      if ( elementClicked == closedButton ) {
         closePopup()
       }
     });
