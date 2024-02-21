@@ -7,7 +7,9 @@
           "type": "heading",
           "settings": {
             "heading": "Image banner",
-            "heading_size": "h0"
+            "heading_size": "h0",
+            "heading_element_custom": false,
+            "heading_element": "h2"
           }
         },
         "text": {
@@ -21,11 +23,11 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style": "primary",
             "button_label_2": "",
             "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_2": "primary"
           }
         }
       },
@@ -41,6 +43,7 @@
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "scheme-3",
+        "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
@@ -53,13 +56,16 @@
           "type": "heading",
           "settings": {
             "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_element_custom": false,
+            "heading_element": "h2"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
+            "text_size": "--s0"
           }
         }
       },
@@ -68,10 +74,17 @@
         "text"
       ],
       "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "scheme-1",
         "full_width": true,
+        "text_block_custom_width": false,
+        "text_block_custom_width_desktop": 780,
+        "text_block_custom_width_tablet": 500,
         "padding_top": 40,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
       }
     },
     "featured_collection": {
@@ -79,70 +92,49 @@
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "full_width": false,
         "show_view_all": false,
-        "swipe_on_mobile": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": false,
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 28,
-        "padding_bottom": 36
-      }
-    },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
-      "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
       }
     },
     "video": {
       "type": "video",
       "settings": {
         "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
         "color_scheme": "scheme-1",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
       }
     },
     "multicolumn": {
@@ -182,6 +174,7 @@
         "column3"
       ],
       "settings": {
+        "full_width": false,
         "title": "",
         "heading_size": "h1",
         "image_width": "third",
@@ -191,11 +184,94 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "swipe_on_mobile": false,
+        "button_style": "primary",
         "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "columns_mobile": "1",
+        "swipe_on_mobile": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
+      }
+    },
+    "collage_TYWkVb": {
+      "type": "collage",
+      "blocks": {
+        "image_UGPxEd": {
+          "type": "image",
+          "settings": {
+            "column_span": 2,
+            "row_span": 2
+          }
+        },
+        "product_3zNKrd": {
+          "type": "product",
+          "settings": {
+            "column_span": 1,
+            "row_span": 2,
+            "product": "",
+            "second_image": true,
+            "show_product_info": true
+          }
+        },
+        "product_i87hgg": {
+          "type": "product",
+          "settings": {
+            "column_span": 1,
+            "row_span": 2,
+            "product": "",
+            "second_image": false,
+            "show_product_info": false
+          }
+        },
+        "collection_8LXNYt": {
+          "type": "collection",
+          "settings": {
+            "column_span": 1,
+            "row_span": 2,
+            "collection": "",
+            "collection_info_background_color": "",
+            "collection_info_text_color": ""
+          }
+        },
+        "video_QLBMjD": {
+          "type": "video",
+          "settings": {
+            "column_span": 3,
+            "row_span": 2,
+            "muted": true,
+            "autoplay": true,
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": "Describe the video"
+          }
+        }
+      },
+      "block_order": [
+        "image_UGPxEd",
+        "product_3zNKrd",
+        "product_i87hgg",
+        "collection_8LXNYt",
+        "video_QLBMjD"
+      ],
+      "settings": {
+        "full_width": false,
+        "heading": "Multimedia collage",
+        "heading_size": "h2",
+        "collage_items_height": 170,
+        "collage_items_height_mobile": 120,
+        "color_scheme": "",
+        "card_border_thickness": 1,
+        "card_border_opacity": 5,
+        "card_corner_radius": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
       }
     }
   },
@@ -203,8 +279,8 @@
     "image_banner",
     "rich_text",
     "featured_collection",
-    "collage",
     "video",
-    "multicolumn"
+    "multicolumn",
+    "collage_TYWkVb"
   ]
 }
