@@ -23,9 +23,9 @@
     tabindex="-1"
   >
     <button
-      id="ModalClose-{{ section.id }} close_button"
+      id="ModalClose-{{ section.id }}"
       type="button"
-      class="product-popup-modal__toggle"
+      class="product-popup-modal__toggle close_button"
       aria-label="{{ 'accessibility.close' | t }}"
     >
       {% render 'icon-close' %}
@@ -341,36 +341,51 @@
       max-width: 100%;
     }
   }
+
+  .product-popup-modal svg {
+    pointer-events: none;
+  }
 {% endstylesheet %}
 
 <script>
-  const popup = document.getElementById('popup');
-  const closedButton = document.getElementById('close_button');
-  // setup modal open by default
+  // setup modal open everywhere, not only on product page
 
-  // if clicked in close button or outside from popup window keep the window closed by saving the value in cookies
+  // <--->
+
+  // function to setup key and value in cookies after click on close button or outside from popup window
+
+  const popup = document.getElementById('popup');
+  const closedButton = document.getElementById('ModalClose-{{ section.id }}');
+  const ageOfCookie = 1000 * 60 * 60 * 24;
+
+  {% comment %} 1000*60*60*24 * {{ section.settings.days }} {% endcomment %}
 
   function setupCookies() {
-    // when click on close button save value "hidden=0" in cookies  for 5 days
-    document.cookie = 'hidden=0; max-age=432000';
+    // when click on close button save value "popup=0" in cookies for 5 days
+    document.cookie = 'popup=0' + ';max-age=' + ageOfCookie;
   }
 
   document.addEventListener('click', function (event) {
     const elementClicked = event.target;
-    if (elementClicked == popup) {
+    console.log(elementClicked, closedButton);
+    if (elementClicked == closedButton) {
       setupCookies();
-    } else if (elementClicked == closedButton) {
+    } else if (elementClicked != popup) {
       setupCookies();
     }
   });
 
-  // if the value in cookies is "hidden=0" add class hidden to modal-dialog
+  // if the value in cookies is "popup=0" add class hidden to modal-dialog
 
-  if (document.cookie.indexOf('hidden=0') > -1) {
+  if (document.cookie.indexOf('popup=0') > -1) {
     document.getElementById('PopupModal-{{ section.id }}').classList.add('hidden');
   }
 
-  // DELAY
+  // DELAY for welcome popup
+
+  // <--->
 
   // Clear cookie value after time setup by admin
+
+  // <--->
 </script>
