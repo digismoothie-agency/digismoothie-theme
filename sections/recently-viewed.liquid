@@ -28,7 +28,7 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} isolate gradient">
+<div class="color-{{ section.settings.color_scheme }} isolate gradient hidden" id="section-{{ section.id }}">
   <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width title-wrapper--self-padded-tablet-down collection__title--desktop-slider">
       {%- if section.settings.title != blank -%}
@@ -105,6 +105,7 @@
 
     if (recentlyViewedProductHandles) {
       recentlyViewedProductHandles = JSON.parse(recentlyViewedProductHandles.split('=')[1]);
+      document.getElementById('section-{{ section.id }}').classList.remove('hidden');
     } else {
       return;
     }
