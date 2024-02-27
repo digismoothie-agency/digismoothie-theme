@@ -56,14 +56,14 @@
       {%- endif -%}
     </div>
 
-    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if section.settings.full_width == false %} page-width-desktop{% endif %} slider-component-desktop{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %} page-width{% if section.settings.full_width == false %} page-width-desktop{% endif %} slider-component-desktop{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
         id="Slider-{{ section.id }}"
-        class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down slider slider--desktop slider--tablet grid--peek"
+        class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
         role="list"
         aria-label="{{ 'general.slider.name' | t }}"
       ></ul>
-      <div class="slider-buttons no-js-hidden">
+      <div class="slider-buttons no-js-hidden hidden" id="section-{{ section.id }}-slider-buttons">
         <button
           type="button"
           class="slider-button slider-button--prev"
@@ -99,17 +99,46 @@
 
 <script>
   (function () {
+    const section = document.getElementById('section-{{ section.id }}');
+    const sliderElement = document.getElementById('Slider-{{ section.id }}');
+    const sliderButtons = document.getElementById('section-{{ section.id }}-slider-buttons');
+    const columnsDesktop = {{ section.settings.columns_desktop }};
+    const columnsMobile = {{ section.settings.columns_mobile }};
+    let showDesktopSlider = false;
+    let showMobileSlider = false;
+
     let recentlyViewedProductHandles = document.cookie
       .split('; ')
       .find((row) => row.startsWith('recentlyViewedProductHandles='));
 
     if (recentlyViewedProductHandles) {
       recentlyViewedProductHandles = JSON.parse(recentlyViewedProductHandles.split('=')[1]);
-      document.getElementById('section-{{ section.id }}').classList.remove('hidden');
+      section.classList.remove('hidden');
+
+      if (recentlyViewedProductHandles.length > columnsDesktop) {
+        showDesktopSlider = true;
+      }
+      
+      if (recentlyViewedProductHandles.length > columnsMobile) {
+        showMobileSlider = true;
+      }
     } else {
       return;
     }
 
+    if (showDesktopSlider || showMobileSlider) {
+      sliderElement.classList.add('slider');
+      sliderButtons.classList.remove('hidden');
+
+      if (showDesktopSlider) {
+        sliderElement.classList.add('slider--desktop');
+      }
+
+      if (showMobileSlider) {
+        sliderElement.classList.add('slider--tablet', 'slider--peek');
+      }
+    }
+    
     Promise.all(
       recentlyViewedProductHandles.map((handle, index) => {
         const paramsObject = {
@@ -137,7 +166,6 @@
         const combinedData = dataArray.join('');
         const parser = new DOMParser();
         const parsedHTML = parser.parseFromString(combinedData, 'text/html');
-        const sliderElement = document.getElementById('Slider-{{ section.id }}');
 
         while (parsedHTML.body.firstChild) {
           sliderElement.appendChild(parsedHTML.body.firstChild);
