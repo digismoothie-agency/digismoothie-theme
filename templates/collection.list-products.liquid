@@ -9,18 +9,38 @@
       assign section_id = param | split: 'sectionid_' | last
     elsif param contains 'index_'
       assign index = param | split: 'index_' | last
-    elsif param contains 'imageRatio_'
-      assign image_ratio = param | split: 'imageRatio_' | last
-    elsif param contains 'imageShape_'
-      assign image_shape = param | split: 'imageShape_' | last
-    elsif param contains 'showSecondaryImage_'
-      assign show_secondary_image = param | split: 'showSecondaryImage_' | last
-    elsif param contains 'showVendor_'
-      assign show_vendor = param | split: 'showVendor_' | last
-    elsif param contains 'showRating_'
-      assign show_rating = param | split: 'showRating_' | last
-    elsif param contains 'showQuickAdd_'
-      assign enable_quick_add = param | split: 'showQuickAdd_' | last
+    elsif param contains 'imageratio_'
+      assign image_ratio = param | split: 'imageratio_' | last
+    elsif param contains 'imageshape_'
+      assign image_shape = param | split: 'imageshape_' | last
+    elsif param contains 'showsecondaryimage_'
+      assign show_secondary_image = param | split: 'showsecondaryimage_' | last
+      if show_secondary_image == 'true'
+        assign show_secondary_image = true
+      else
+        assign show_secondary_image = false
+      endif
+    elsif param contains 'showvendor_'
+      assign show_vendor = param | split: 'showvendor_' | last
+      if show_vendor == 'true'
+        assign show_vendor = true
+      else
+        assign show_vendor = false
+      endif
+    elsif param contains 'showrating_'
+      assign show_rating = param | split: 'showrating_' | last
+      if show_rating == 'true'
+        assign show_rating = true
+      else
+        assign show_rating = false
+      endif
+    elsif param contains 'showquickadd_'
+      assign enable_quick_add = param | split: 'showquickadd_' | last
+      if enable_quick_add == 'true'
+        assign enable_quick_add = true
+      else
+        assign enable_quick_add = false
+      endif
     endif
   endfor
 
