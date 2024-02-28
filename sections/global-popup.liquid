@@ -20,22 +20,29 @@
     </button>
     <div class="global-popup-modal__content-info">
       <div class="popup-content {% if section.settings.layout_row == true %} grid {% endif %} {% if section.settings.layout_row_right == true %} grid--reverse {% endif %}">
-        <div
-          class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}"
-          style="
-            background: url('{{ section.settings.image | img_url: 'master' }}');
-            background-repeat: no-repeat, repeat;
-            background-size: cover;
-            {% if section.settings.layout_row != true %}min-height: 300px;{% endif %}
-          "
-        >
-          {% if section.settings.image %}<br>{% endif %}
+        <div class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}">
+          {%- if section.settings.image != blank -%}
+            {%- assign image_size_2x = section.settings.image_width | times: 2 | at_most: 5760 -%}
+            <div
+              class="popup-block__image-wrapper"
+              style="max-width: min(100%, {{ section.settings.image_width }}px);"
+            >
+              <img
+                srcset="{{ section.settings.image | image_url: width: section.settings.image_width }}, {{ section.settings.image | image_url: width: image_size_2x }} 2x"
+                src="{{ section.settings.image | image_url: width: 760 }}"
+                alt="{{ section.settings.image.alt | escape }}"
+                loading="lazy"
+                width="{{ section.settings.image.width }}"
+                height="{{ section.settings.image.height }}"
+              >
+            </div>
+          {%- endif -%}
         </div>
         <div class="popup_blocks {{ section.settings.content_alignment }} {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'heading' -%}
-                <h2 class="{{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
+                <h2>{{ block.settings.heading }}</h2>
               {%- when 'text' -%}
                 <p>{{ block.settings.text }}</p>
               {%- when 'button' -%}
@@ -98,13 +105,13 @@
     {
       "type": "checkbox",
       "id": "layout_row",
-      "label": "Do you want your content to be displayed in a row on desktop?",
+      "label": "Do you want your content to be displayed in a row?",
       "default": false
     },
     {
       "type": "checkbox",
       "id": "layout_row_right",
-      "label": "If content is in row, do you want your image on the right?",
+      "label": "Do you want your image on the right?",
       "default": false
     },
     {

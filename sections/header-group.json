@@ -51,10 +51,10 @@
       "settings": {
       }
     },
-    "popup_duplicated_XKpiiL": {
-      "type": "popup-duplicated",
+    "global_popup_pLHPHY": {
+      "type": "global-popup",
       "blocks": {
-        "heading_89zCGh": {
+        "heading_gpijHt": {
           "type": "heading",
           "settings": {
             "heading": "Popup header",
@@ -63,13 +63,13 @@
             "heading_element": "h2"
           }
         },
-        "text_ymHc8j": {
+        "text_UPWeQa": {
           "type": "text",
           "settings": {
             "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
           }
         },
-        "button_7RJUCQ": {
+        "button_BYiwRx": {
           "type": "button",
           "settings": {
             "button_label": "Button label",
@@ -80,9 +80,9 @@
         }
       },
       "block_order": [
-        "heading_89zCGh",
-        "text_ymHc8j",
-        "button_7RJUCQ"
+        "heading_gpijHt",
+        "text_UPWeQa",
+        "button_BYiwRx"
       ],
       "settings": {
         "color_scheme": "",
@@ -91,7 +91,8 @@
         "layout_row_right": false,
         "image": "shopify:\/\/shop_images\/hero-digismoothie.png",
         "delay": 5,
-        "opt_time": 5
+        "opt_time": 5,
+        "cookie_checkmark": true
       }
     }
   },
@@ -99,6 +100,6 @@
     "announcement-bar",
     "header",
     "popup_m7RxFJ",
-    "popup_duplicated_XKpiiL"
+    "global_popup_pLHPHY"
   ]
 }
