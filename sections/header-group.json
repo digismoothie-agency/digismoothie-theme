@@ -46,11 +46,6 @@
         "mobile_padding_bottom": 24
       }
     },
-    "popup_m7RxFJ": {
-      "type": "popup",
-      "settings": {
-      }
-    },
     "global_popup_pLHPHY": {
       "type": "global-popup",
       "blocks": {
@@ -58,7 +53,7 @@
           "type": "heading",
           "settings": {
             "heading": "Popup header",
-            "heading_size": "h2",
+            "heading_size": "h4",
             "heading_element_custom": false,
             "heading_element": "h2"
           }
@@ -91,15 +86,14 @@
         "layout_row_right": false,
         "image": "shopify:\/\/shop_images\/hero-digismoothie.png",
         "delay": 5,
-        "opt_time": 5,
-        "cookie_checkmark": true
+        "cookie_checkmark": true,
+        "opt_time": 5
       }
     }
   },
   "order": [
     "announcement-bar",
     "header",
-    "popup_m7RxFJ",
     "global_popup_pLHPHY"
   ]
 }

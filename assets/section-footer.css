@@ -401,14 +401,12 @@
   }
 }
 
-.footer-block__image-wrapper,
-.popup-block__image-wrapper {
+.footer-block__image-wrapper {
   margin-bottom: 2rem;
   overflow: hidden !important;
 }
 
-.footer-block__image-wrapper img,
-.popup-block__image-wrapper img {
+.footer-block__image-wrapper img {
   display: block;
   height: auto;
   max-width: 100%;
