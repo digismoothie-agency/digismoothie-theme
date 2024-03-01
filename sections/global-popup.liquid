@@ -298,10 +298,6 @@
 {% endschema %}
 
 <script>
-  // setup modal open everywhere, not only on product page
-
-  // <---> !!! IMPORTANT !!! <--->
-
   // function to setup key and value in cookies after click on close button or outside from popup window
   document.addEventListener('DOMContentLoaded', function () {
 
@@ -317,16 +313,13 @@
       function setupCookies() {
         if (clearCookieCheckmark == true) {
           document.cookie = 'popup=0; path=/';
-          console.log('cookie checkmaark true');
         } else {
           document.cookie = 'popup=0' + ';max-age=' + ageOfCookie;
-          console.log('cookie checkmaark false');
         }
       }
 
       document.addEventListener('click', function (event) {
         const elementClicked = event.target;
-        console.log(elementClicked, closedButton);
         if (elementClicked == closedButton) {
           setupCookies();
         } else if (elementClicked != popup) {
