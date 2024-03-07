@@ -1,13 +1,11 @@
 {{ 'section-global-popup.css' | asset_url | stylesheet_tag }}
 
-<a href="/" class="global-popup-modal__button link no-js"> Link </a>
-
 <modal-dialog id="PopupModal-{{ section.id }}" class="global-popup-modal">
   <div
     role="dialog"
     aria-label="text"
     aria-modal="true"
-    class="global-popup-modal__content"
+    class="global-popup-modal__content color-{{ section.settings.color_scheme }}"
     tabindex="-1"
   >
     <button
@@ -98,13 +96,13 @@
     {
       "type": "checkbox",
       "id": "layout_row",
-      "label": "Do you want your content to be displayed in a row on desktop?",
+      "label": "t:sections.global_popup.horizontal_display",
       "default": false
     },
     {
       "type": "checkbox",
       "id": "layout_row_right",
-      "label": "If content is in row, do you want your image on the right?",
+      "label": "t:sections.global_popup.horizontal_display_layout",
       "default": false
     },
     {
@@ -119,14 +117,14 @@
       "max": 100,
       "step": 1,
       "unit": "s",
-      "label": "Delay time in seconds",
+      "label": "t:sections.global_popup.delay",
       "default": 5
     },
     {
       "type": "checkbox",
       "id": "cookie_checkmark",
       "default": false,
-      "label": "Do you want to display popup after closing browser again?"
+      "label": "t:sections.global_popup.display_after_close"
     },
     {
       "type": "range",
@@ -135,7 +133,7 @@
       "max": 100,
       "step": 1,
       "unit": "d",
-      "label": "Or do you want to display popup in a few days again?",
+      "label": "t:sections.global_popup.display_in_days",
       "default": 5
     }
   ],
@@ -143,7 +141,7 @@
     {
       "type": "heading",
       "name": "t:sections.image-banner.blocks.heading.name",
-      "limit": 3,
+      "limit": 1,
       "settings": [
         {
           "type": "inline_richtext",
@@ -236,7 +234,7 @@
     {
       "type": "text",
       "name": "t:sections.rich-text.blocks.text.name",
-      "limit": 3,
+      "limit": 1,
       "settings": [
         {
           "type": "richtext",
@@ -297,40 +295,48 @@
 }
 {% endschema %}
 
-<script>
-  // function to setup key and value in cookies after click on close button or outside from popup window
-  document.addEventListener('DOMContentLoaded', function () {
+{% if request.design_mode %}
+  <script>
+    document.getElementById('PopupModal-{{ section.id }}').setAttribute('open', '');
+  </script>
+{% endif %}
 
-    // setup of delay time for popup
-    setTimeout(function () {
-      document.getElementById('PopupModal-{{ section.id }}').setAttribute('open', '');
+{% if request.design_mode != true %}
+  <script>
+    // function to setup key and value in cookies after click on close button or outside from popup window
+    document.addEventListener('DOMContentLoaded', function () {
 
-      const popup = document.getElementById('popup');
-      const closedButton = document.getElementById('ModalClose-{{ section.id }}');
-      const ageOfCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
-      const clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
+      // setup of delay time for popup
+      setTimeout(function () {
+        document.getElementById('PopupModal-{{ section.id }}').setAttribute('open', '');
 
-      function setupCookies() {
-        if (clearCookieCheckmark == true) {
-          document.cookie = 'popup=0; path=/';
-        } else {
-          document.cookie = 'popup=0' + ';max-age=' + ageOfCookie;
+        const popup = document.getElementById('popup');
+        const closedButton = document.getElementById('ModalClose-{{ section.id }}');
+        const ageOfCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
+        const clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
+
+        function setupCookies() {
+          if (clearCookieCheckmark == true) {
+            document.cookie = '_global_popup=0; path=/';
+          } else {
+            document.cookie = '_global_popup=0' + ';max-age=' + ageOfCookie;
+          }
         }
-      }
 
-      document.addEventListener('click', function (event) {
-        const elementClicked = event.target;
-        if (elementClicked == closedButton) {
-          setupCookies();
-        } else if (elementClicked != popup) {
-          setupCookies();
+        document.addEventListener('click', function (event) {
+          const elementClicked = event.target;
+          if (elementClicked == closedButton) {
+            setupCookies();
+          } else if (elementClicked != popup) {
+            setupCookies();
+          }
+        });
+
+        if (document.cookie.indexOf('_global_popup=0') > -1) {
+          document.getElementById('PopupModal-{{ section.id }}').classList.add('hidden');
         }
-      });
+      },  {{ section.settings.delay }}000);
 
-      if (document.cookie.indexOf('popup=0') > -1) {
-        document.getElementById('PopupModal-{{ section.id }}').classList.add('hidden');
-      }
-    },  {{ section.settings.delay }}000);
-
-  });
-</script>
+    });
+  </script>
+{% endif %}
