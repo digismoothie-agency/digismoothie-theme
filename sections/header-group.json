@@ -45,10 +45,55 @@
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24
       }
+    },
+    "global_popup_7t6tCj": {
+      "type": "global-popup",
+      "blocks": {
+        "heading_zLYmn8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Popup header",
+            "heading_size": "h2",
+            "heading_element_custom": false,
+            "heading_element": "h2"
+          }
+        },
+        "text_pEVAEk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "button_D8A8Di": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_style_link": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zLYmn8",
+        "text_pEVAEk",
+        "button_D8A8Di"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "layout_row": false,
+        "layout_row_right": false,
+        "image": "shopify:\/\/shop_images\/hero-digismoothie.png",
+        "delay": 5,
+        "cookie_checkmark": false,
+        "opt_time": 5
+      }
     }
   },
   "order": [
     "announcement-bar",
-    "header"
+    "header",
+    "global_popup_7t6tCj"
   ]
 }
