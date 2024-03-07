@@ -45,54 +45,10 @@
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24
       }
-    },
-    "global_popup_TzHMnk": {
-      "type": "global-popup",
-      "blocks": {
-        "heading_JRP4Y7": {
-          "type": "heading",
-          "settings": {
-            "heading": "Popup header",
-            "heading_size": "h2",
-            "heading_element_custom": false,
-            "heading_element": "h2"
-          }
-        },
-        "text_4H3XnU": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        },
-        "button_VMBKLt": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "shopify:\/\/collections",
-            "button_style_secondary": false,
-            "button_style_link": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_JRP4Y7",
-        "text_4H3XnU",
-        "button_VMBKLt"
-      ],
-      "settings": {
-        "color_scheme": "",
-        "content_alignment": "center",
-        "layout_row": false,
-        "layout_row_right": false,
-        "delay": 5,
-        "cookie_checkmark": false,
-        "opt_time": 5
-      }
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "global_popup_TzHMnk"
+    "header"
   ]
 }
