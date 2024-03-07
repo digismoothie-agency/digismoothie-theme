@@ -53,7 +53,7 @@
           "type": "heading",
           "settings": {
             "heading": "Popup header",
-            "heading_size": "h1",
+            "heading_size": "h2",
             "heading_element_custom": false,
             "heading_element": "h2"
           }
