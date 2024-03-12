@@ -82,8 +82,8 @@
       "settings": {
         "color_scheme": "scheme-1",
         "content_alignment": "center",
-        "layout_row": true,
-        "layout_row_right": true,
+        "layout_row": false,
+        "layout_row_right": false,
         "image": "shopify:\/\/shop_images\/hero-digismoothie.png",
         "delay": 5,
         "cookie_checkmark": false,
