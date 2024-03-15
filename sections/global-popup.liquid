@@ -1,7 +1,10 @@
+{%- assign popupModalId = 'PopupModal-' | append: section.id -%}
+{%- assign modalCloseId = 'ModalClose-' | append: section.id -%}
+
 {{ 'section-global-popup.css' | asset_url | stylesheet_tag }}
 
 <modal-dialog
-  id="PopupModal-{{ section.id }}"
+  id="{{ popupModalId }}"
   class="global-popup-modal"
   {%- if request.design_mode %}
     open
@@ -15,7 +18,7 @@
     tabindex="-1"
   >
     <button
-      id="ModalClose-{{ section.id }}"
+      id="{{ modalCloseId }}"
       type="button"
       class="global-popup-modal__toggle close_button"
       aria-label="{{ 'accessibility.close' | t }}"
@@ -311,10 +314,10 @@
   // function to setup key and value in cookies after click on close button or outside from popup window
 
   const popup = document.getElementById('popup');
-  const closedButton = document.getElementById('ModalClose-{{ section.id }}');
+  const closedButton = document.getElementById('{{ modalCloseId }}');
   const ageOfCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
   const clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
-  var popupModal = document.getElementById('PopupModal-{{ section.id }}');
+  const popupModal = document.getElementById('{{ popupModalId }}');
 
   if (!Shopify.designMode) {
     // setup of delay time for popup
