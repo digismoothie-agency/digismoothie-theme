@@ -31,9 +31,10 @@
           <div
             class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}"
             style="
-              background: url('{{ section.settings.image | image_url: width: 500 }}');
+              background: url('{{ section.settings.image | image_url: width: 800 }}');
               background-repeat: no-repeat, repeat;
               background-size: cover;
+              background-position: center;
               {% if section.settings.layout_row != true %}min-height: 300px;{% endif %}
             "
           >

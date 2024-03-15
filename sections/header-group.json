@@ -52,7 +52,7 @@
         "heading_JKgRbN": {
           "type": "heading",
           "settings": {
-            "heading": "Popup header Popup header",
+            "heading": "Popup header",
             "heading_size": "h0",
             "heading_element_custom": false,
             "heading_element": "h2"

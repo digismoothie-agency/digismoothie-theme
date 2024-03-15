@@ -197,6 +197,7 @@ div.global-popup-modal__content-info > * {
   .popup-content .grid--2-col {
     width: 100%;
     max-width: 100%;
+    min-height: 300px;
   }
 }
 
