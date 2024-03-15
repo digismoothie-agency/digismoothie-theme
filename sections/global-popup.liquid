@@ -1,6 +1,12 @@
 {{ 'section-global-popup.css' | asset_url | stylesheet_tag }}
 
-<modal-dialog id="PopupModal-{{ section.id }}" class="global-popup-modal">
+<modal-dialog
+  id="PopupModal-{{ section.id }}"
+  class="global-popup-modal"
+  {%- if request.design_mode %}
+    open
+  {% endif -%}
+>
   <div
     role="dialog"
     aria-label="text"
@@ -18,17 +24,23 @@
     </button>
     <div class="global-popup-modal__content-info">
       <div class="popup-content {% if section.settings.layout_row == true %} grid {% endif %} {% if section.settings.layout_row_right == true %} grid--reverse {% endif %}">
-        <div
-          class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}"
-          style="
-            background: url('{{ section.settings.image | img_url: 'master' }}');
-            background-repeat: no-repeat, repeat;
-            background-size: cover;
-            {% if section.settings.layout_row != true %}min-height: 300px;{% endif %}
-          "
-        >
-          {% if section.settings.image %}<br>{% endif %}
-        </div>
+        {% if section.settings.image %}
+          <div
+            class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}"
+            style="
+              background: url('{{ section.settings.image | image_url: width: 500 }}');
+              background-repeat: no-repeat, repeat;
+              background-size: cover;
+              {% if section.settings.layout_row != true %}min-height: 300px;{% endif %}
+            "
+          >
+            {% if section.settings.image %}<br>{% endif %}
+          </div>
+        {% else %}
+          <div class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+          </div>
+        {% endif %}
         <div class="popup_blocks {{ section.settings.content_alignment }} {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -295,48 +307,39 @@
 }
 {% endschema %}
 
-{% if request.design_mode %}
-  <script>
-    document.getElementById('PopupModal-{{ section.id }}').setAttribute('open', '');
-  </script>
-{% endif %}
+<script>
+  // function to setup key and value in cookies after click on close button or outside from popup window
 
-{% if request.design_mode != true %}
-  <script>
-    // function to setup key and value in cookies after click on close button or outside from popup window
-    document.addEventListener('DOMContentLoaded', function () {
+  const popup = document.getElementById('popup');
+  const closedButton = document.getElementById('ModalClose-{{ section.id }}');
+  const ageOfCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
+  const clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
+  var popupModal = document.getElementById('PopupModal-{{ section.id }}');
 
-      // setup of delay time for popup
-      setTimeout(function () {
-        document.getElementById('PopupModal-{{ section.id }}').setAttribute('open', '');
-
-        const popup = document.getElementById('popup');
-        const closedButton = document.getElementById('ModalClose-{{ section.id }}');
-        const ageOfCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
-        const clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
-
-        function setupCookies() {
-          if (clearCookieCheckmark == true) {
-            document.cookie = '_global_popup=0; path=/';
-          } else {
-            document.cookie = '_global_popup=0' + ';max-age=' + ageOfCookie;
-          }
+  if (!Shopify.designMode) {
+    // setup of delay time for popup
+    setTimeout(function () {
+      popupModal.setAttribute('open', '');
+      function setupCookies() {
+        if (clearCookieCheckmark == true) {
+          document.cookie = '_global_popup=0; path=/';
+        } else {
+          document.cookie = '_global_popup=0' + ';max-age=' + ageOfCookie;
         }
+      }
 
-        document.addEventListener('click', function (event) {
-          const elementClicked = event.target;
-          if (elementClicked == closedButton) {
-            setupCookies();
-          } else if (elementClicked != popup) {
-            setupCookies();
-          }
-        });
-
-        if (document.cookie.indexOf('_global_popup=0') > -1) {
-          document.getElementById('PopupModal-{{ section.id }}').classList.add('hidden');
+      document.addEventListener('click', function (event) {
+        const elementClicked = event.target;
+        if (elementClicked == closedButton) {
+          setupCookies();
+        } else if (elementClicked != popup) {
+          setupCookies();
         }
-      },  {{ section.settings.delay }}000);
+      });
 
-    });
-  </script>
-{% endif %}
+      if (document.cookie.indexOf('_global_popup=0') > -1) {
+        document.getElementById('PopupModal-{{ section.id }}').classList.add('hidden');
+      }
+    },  {{ section.settings.delay }}000);
+  }
+</script>
