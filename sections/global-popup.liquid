@@ -312,38 +312,9 @@
 {% endschema %}
 
 <script>
-  // function to setup key and value in cookies after click on close button or outside from popup window
-
-  const popup = document.getElementById('popup');
-  const closedButton = document.getElementById('{{ modalCloseId }}');
-  const ageOfCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
-  const clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
-  const popupModal = document.getElementById('{{ popupModalId }}');
-
-  if (!Shopify.designMode) {
-    // setup of delay time for popup
-    setTimeout(function () {
-      popupModal.setAttribute('open', '');
-      function setupCookies() {
-        if (clearCookieCheckmark == true) {
-          document.cookie = '_global_popup=0; path=/';
-        } else {
-          document.cookie = '_global_popup=0' + ';max-age=' + ageOfCookie;
-        }
-      }
-
-      document.addEventListener('click', function (event) {
-        const elementClicked = event.target;
-        if (elementClicked == closedButton) {
-          setupCookies();
-        } else if (elementClicked != popup) {
-          setupCookies();
-        }
-      });
-
-      if (document.cookie.indexOf('_global_popup=0') > -1) {
-        document.getElementById('PopupModal-{{ section.id }}').classList.add('hidden');
-      }
-    },  {{ section.settings.delay }}000);
-  }
+  window.ageOfPopupCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
+  window.clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
+  window.popupDelay = {{ section.settings.delay }} * 1000;
+  window.popupModalId = '{{ popupModalId }}';
+  window.modalCloseId = '{{ modalCloseId }}';
 </script>
