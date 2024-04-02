@@ -543,7 +543,7 @@ class ModalDialog extends HTMLElement {
   }
 
   connectedCallback() {
-    if (this.moved) return;
+    if (this.moved || this.classList.contains('global-popup-modal')) return;
     this.moved = true;
     document.body.appendChild(this);
   }
@@ -1426,34 +1426,29 @@ const popupModal = document.getElementById(window.popupModalId);
 const popupDelay = window.popupDelay;
 
 function setupPopupCookies() {
+  if (document.cookie.indexOf('_global_popup=0') > -1) return;
+
   // setup of delay time for popup
   setTimeout(function () {
     popupModal.setAttribute('open', '');
-
-    // function set up the key and value in cookies based on section settings
-    function setupCookies() {
-      if (clearCookieCheckmark == true) {
-        document.cookie = '_global_popup=0; path=/';
-      } else {
-        document.cookie = '_global_popup=0' + ';max-age=' + ageOfCookie;
-      }
-    }
-
-    // The event listener to close the popup if you click on close button or anywhere else then popup
-    document.addEventListener('click', function (event) {
-      const elementClicked = event.target;
-      if (elementClicked == closedButton || elementClicked != popup) {
-        setupCookies();
-      }
-    });
-
-    // Checking if the cookie value is setup, if yes it hide the element
-    if (document.cookie.indexOf('_global_popup=0') > -1) {
-      document.getElementById('PopupModal-{{ section.id }}').classList.add('hidden');
-    }
   }, popupDelay);
+
+  // function set up the key and value in cookies based on section settings
+  function setupCookies() {
+    if (clearCookieCheckmark == true) {
+      document.cookie = '_global_popup=0; path=/';
+    } else {
+      document.cookie = '_global_popup=0' + ';max-age=' + ageOfCookie;
+    }
+  }
+
+  // The event listener to close the popup if you click on close button or anywhere else then popup
+  document.addEventListener('click', function (event) {
+    const elementClicked = event.target;
+    if (elementClicked == closedButton || elementClicked != popup) {
+      setupCookies();
+    }
+  });
 }
 
 setupPopupCookies();
-
-document.addEventListener('shopify:section:load', setupPopupCookies);

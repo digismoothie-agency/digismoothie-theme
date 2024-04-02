@@ -6,9 +6,6 @@
 <modal-dialog
   id="{{ popupModalId }}"
   class="global-popup-modal"
-  {%- if request.design_mode %}
-    open
-  {% endif -%}
 >
   <div
     role="dialog"
@@ -73,6 +70,22 @@
     </div>
   </div>
 </modal-dialog>
+
+<script>
+  window.ageOfPopupCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
+  window.clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
+  window.popupDelay = {{ section.settings.delay }} * 1000;
+  window.popupModalId = '{{ popupModalId }}';
+  window.modalCloseId = '{{ modalCloseId }}';
+
+  if (Shopify.designMode) {
+    document.addEventListener('shopify:section:load', function (event) {
+      if (event.detail.sectionId === '{{ section.id }}') {
+        document.getElementById('{{ popupModalId }}').setAttribute('open', '');
+      }
+    })
+  }
+</script>
 
 {% schema %}
 {
@@ -310,11 +323,3 @@
   ]
 }
 {% endschema %}
-
-<script>
-  window.ageOfPopupCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
-  window.clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
-  window.popupDelay = {{ section.settings.delay }} * 1000;
-  window.popupModalId = '{{ popupModalId }}';
-  window.modalCloseId = '{{ modalCloseId }}';
-</script>
