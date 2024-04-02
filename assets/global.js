@@ -1417,7 +1417,8 @@ if (Shopify.designMode) {
   });
 }
 
-// function to setup key and value in cookies after click on close button or outside from popup window
+// welcome popup script
+
 const popup = document.getElementById('popup');
 const closedButton = document.getElementById(window.modalCloseId);
 const ageOfCookie = window.ageOfPopupCookie;
@@ -1428,7 +1429,6 @@ const popupDelay = window.popupDelay;
 function setupPopupCookies() {
   if (document.cookie.indexOf('_global_popup=0') > -1) return;
 
-  // setup of delay time for popup
   setTimeout(function () {
     popupModal.setAttribute('open', '');
   }, popupDelay);
@@ -1442,7 +1442,6 @@ function setupPopupCookies() {
     }
   }
 
-  // The event listener to close the popup if you click on close button or anywhere else then popup
   document.addEventListener('click', function (event) {
     const elementClicked = event.target;
     if (elementClicked == closedButton || elementClicked != popup) {
