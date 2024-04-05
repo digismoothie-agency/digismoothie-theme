@@ -3127,7 +3127,7 @@
           "info": "Recommended a square ratio for optimal mobile experience"
         },
         "image_position": {
-          "label": "Image position",
+          "label": "Image position (desktop only, mobile will be optimized)",
           "options": {
             "left": {
               "label": "Left"

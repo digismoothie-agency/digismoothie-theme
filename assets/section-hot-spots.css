@@ -1,6 +1,6 @@
 @media only screen and (max-width: 749px) {
   .hotspots-section .index-section {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
   }
 }
 
@@ -60,7 +60,7 @@
 
 @media only screen and (max-width: 749px) {
   .hotspot__button {
-    padding: 6px;
+    padding: 0.5rem;
   }
 }
 
@@ -71,7 +71,7 @@
 }
 
 .hotspot__button-content {
-  border-radius: 5px;
+  border-radius: 0.5rem;
   box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.2);
   left: 50%;
   min-width: 5rem;
@@ -93,12 +93,12 @@
 
 .hotspot__button-content:before {
   border-style: solid;
-  border-width: 0 5px 10px 5px;
+  border-width: 0 0.5rem 1rem 0.5rem;
   content: '';
   height: 0;
   left: 50%;
   position: absolute;
-  top: -10px;
+  top: -1rem;
   transform: translateX(-50%);
   width: 0;
 }
@@ -111,7 +111,7 @@
 .hotspots__content {
   align-items: center;
   display: flex;
-  padding: 24px;
+  padding: 2.4rem;
   width: 30%;
 }
 
@@ -124,22 +124,27 @@
   .page-width .hotspots__content {
     padding-left: 0;
   }
+
+  .hotspot-content__block .card-wrapper {
+    max-width: 70%;
+    margin-inline: auto;
+  }
 }
 
 .page-width.is-reverse .hotspots__content {
   padding-left: 0;
-  padding-right: 40px;
+  padding-right: 4rem;
 }
 
 @media only screen and (max-width: 749px) {
   .page-width.is-reverse .hotspots__content {
-    padding-right: 20px;
+    padding-right: 2rem;
   }
 }
 
 @media only screen and (max-width: 749px) {
   .hotspots__content {
-    padding: 1rem 20px 0;
+    padding: 1rem 2rem 0;
     width: 100%;
   }
 }
@@ -195,7 +200,7 @@
 
 .hotspot-content__block .grid-item__meta,
 .hotspot-content__block .grid-product__meta {
-  padding-top: 10px;
+  padding-top: 1rem;
 }
 
 @media only screen and (max-width: 749px) {
@@ -205,7 +210,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    padding-left: 10px;
+    padding-left: 1rem;
     padding-top: 0;
     text-align: left;
   }
@@ -244,11 +249,11 @@
   }
 
   [data-grid-style='grey-round'] .hotspot-content__block .grid-item__link {
-    border-radius: 10px 0 0 10px;
+    border-radius: 1rem 0 0 1rem;
   }
 
   [data-grid-style='white-round'] .hotspot-content__block .grid-item__link {
-    border-radius: 10px 0 0 10px;
+    border-radius: 1rem 0 0 1rem;
   }
 
   .hotspot-content__block .grid-product__image-mask,
@@ -258,9 +263,9 @@
   }
 
   .hotspot-content__block .grid-product__actions {
-    left: 10px;
+    left: 1rem;
     right: auto;
-    top: 10px;
+    top: 1rem;
   }
 }
 
@@ -271,9 +276,9 @@
 .hotspots-section .icon {
   fill: currentColor;
   display: inline-block;
-  height: 20px;
+  height: 2rem;
   vertical-align: middle;
-  width: 20px;
+  width: 2rem;
 }
 
 .hotspots-section .icon.icon-bag g {
@@ -294,4 +299,11 @@
 
 .hotspots-section .text-right {
   text-align: right;
+}
+
+@media only screen and (max-width: 749px) {
+  .hotspots-section .icon {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
 }
