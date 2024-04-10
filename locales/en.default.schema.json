@@ -2949,7 +2949,7 @@
     },
     "global_popup": {
       "horizontal_display":"Display content horizontally on desktop?",
-      "horizontal_display_layout":"Put image to the right (if displayed horizontally)",
+      "horizontal_display_layout":"Align image right (if displayed horizontally)",
       "delay": "Delay time in seconds",
       "display_after_close":"Display popup after closing browser again",
       "display_in_days":"Or display popup in a few days again?"

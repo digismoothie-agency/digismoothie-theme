@@ -72,11 +72,13 @@
 </modal-dialog>
 
 <script>
-  window.ageOfPopupCookie = 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }};
-  window.clearCookieCheckmark = {{ section.settings.cookie_checkmark }};
-  window.popupDelay = {{ section.settings.delay }} * 1000;
-  window.popupModalId = '{{ popupModalId }}';
-  window.modalCloseId = '{{ modalCloseId }}';
+  window.globalPopup = {
+    ageOfPopupCookie: 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }},
+    clearCookieCheckmark: {{ section.settings.cookie_checkmark }},
+    popupDelay: {{ section.settings.delay }} * 1000,
+    popupModalId: '{{ popupModalId }}',
+    modalCloseId: '{{ modalCloseId }}'
+  };
 
   if (Shopify.designMode) {
     document.addEventListener('shopify:section:load', function (event) {
@@ -175,7 +177,7 @@
         {
           "type": "inline_richtext",
           "id": "heading",
-          "default": "Popup header",
+          "default": "Popup heading",
           "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
         },
         {
