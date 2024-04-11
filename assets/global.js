@@ -1420,11 +1420,11 @@ if (Shopify.designMode) {
 // welcome popup script
 
 const popup = document.getElementById('popup');
-const closedButton = document.getElementById(window.modalCloseId);
-const ageOfCookie = window.ageOfPopupCookie;
-const clearCookieCheckmark = window.clearCookieCheckmark;
-const popupModal = document.getElementById(window.popupModalId);
-const popupDelay = window.popupDelay;
+const closedButton = document.getElementById(window.globalPopup.modalCloseId);
+const ageOfCookie = window.globalPopup.ageOfPopupCookie;
+const clearCookieCheckmark = window.globalPopup.clearCookieCheckmark;
+const popupModal = document.getElementById(window.globalPopup.popupModalId);
+const popupDelay = window.globalPopup.popupDelay;
 
 function setupPopupCookies() {
   if (document.cookie.indexOf('_global_popup=0') > -1) return;

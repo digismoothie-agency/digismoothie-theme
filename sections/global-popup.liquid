@@ -83,7 +83,7 @@
   if (Shopify.designMode) {
     document.addEventListener('shopify:section:load', function (event) {
       if (event.detail.sectionId === '{{ section.id }}') {
-        document.getElementById('{{ popupModalId }}').setAttribute('open', '');
+        document.getElementById(window.globalPopup.popupModalId).setAttribute('open', '');
       }
     })
   }
