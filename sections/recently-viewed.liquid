@@ -28,7 +28,10 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} isolate gradient hidden" id="section-{{ section.id }}">
+<div
+  class="color-{{ section.settings.color_scheme }} isolate gradient{% unless request.design_mode %} hidden{% endunless %}"
+  id="section-{{ section.id }}"
+>
   <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width title-wrapper--self-padded-tablet-down collection__title--desktop-slider">
       {%- if section.settings.title != blank -%}
@@ -56,13 +59,31 @@
       {%- endif -%}
     </div>
 
-    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %} page-width{% if section.settings.full_width == false %} page-width-desktop{% endif %} slider-component-desktop{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %} page-width{% if section.settings.full_width == false %} page-width-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
         id="Slider-{{ section.id }}"
         class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
         role="list"
         aria-label="{{ 'general.slider.name' | t }}"
-      ></ul>
+      >
+        {% if request.design_mode %}
+          {%- for i in (1..4) -%}
+            <li
+              class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              {% endif %}
+            >
+              {%- assign placeholder_image = 'product-apparel-' | append: forloop.rindex -%}
+              {% render 'card-product',
+                show_vendor: section.settings.show_vendor,
+                placeholder_image: placeholder_image
+              %}
+            </li>
+          {%- endfor -%}
+        {% endif %}
+      </ul>
       <div class="slider-buttons no-js-hidden hidden" id="section-{{ section.id }}-slider-buttons">
         <button
           type="button"
@@ -100,6 +121,7 @@
 <script>
   (function () {
     const section = document.getElementById('section-{{ section.id }}');
+    const sliderComponent = section.querySelector('slider-component');
     const sliderElement = document.getElementById('Slider-{{ section.id }}');
     const sliderButtons = document.getElementById('section-{{ section.id }}-slider-buttons');
     const columnsDesktop = {{ section.settings.columns_desktop }};
@@ -131,10 +153,13 @@
       sliderButtons.classList.remove('hidden');
 
       if (showDesktopSlider) {
+        sliderComponent.classList.add('slider-component-desktop');
+        sliderComponent.classList.remove('page-width-desktop');
         sliderElement.classList.add('slider--desktop');
       }
 
       if (showMobileSlider) {
+        sliderComponent.classList.remove('page-width');
         sliderElement.classList.add('slider--tablet', 'slider--peek');
       }
     }
@@ -156,6 +181,8 @@
         const params = Object.entries(paramsObject)
           .map(([key, value]) => `${key}_${value}`)
           .join('+');
+        
+        console.log(params)
 
         return fetch(`/collections/all?type=${params}&view=list-products`, {
           method: 'GET',
