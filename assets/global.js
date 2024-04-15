@@ -184,28 +184,16 @@ class QuantityInput extends HTMLElement {
     event.preventDefault();
     const previousValue = this.input.value;
 
-    if (event.target.name === 'plus') {
-      if ((parseInt(this.input.dataset.min) > parseInt(this.input.step)) && this.input.value == 0) {
-        this.input.value = this.input.dataset.min;
-      } else {
-        this.input.stepUp()
-      } 
-    } else {
-      this.input.stepDown();
-    }
-    
+    event.target.name === 'plus' ? this.input.stepUp() : this.input.stepDown();
     if (previousValue !== this.input.value) this.input.dispatchEvent(this.changeEvent);
-
-    if ((this.input.dataset.min === previousValue) &&  event.target.name === 'minus') {
-      this.input.value = parseInt(this.input.min);
-    }
   }
 
   validateQtyRules() {
     const value = parseInt(this.input.value);
     if (this.input.min) {
+      const min = parseInt(this.input.min);
       const buttonMinus = this.querySelector(".quantity__button[name='minus']");
-      buttonMinus.classList.toggle('disabled', parseInt(value) <= parseInt(this.input.min));
+      buttonMinus.classList.toggle('disabled', value <= min);
     }
     if (this.input.max) {
       const max = parseInt(this.input.max);
@@ -371,9 +359,8 @@ class MenuDrawer extends HTMLElement {
     this.querySelectorAll('summary').forEach((summary) =>
       summary.addEventListener('click', this.onSummaryClick.bind(this))
     );
-    this.querySelectorAll(
-      'button:not(.localization-selector):not(.country-selector__close-button):not(.country-filter__reset-button)'
-    ).forEach((button) => button.addEventListener('click', this.onCloseButtonClick.bind(this))
+    this.querySelectorAll('button:not(.localization-selector)').forEach((button) =>
+      button.addEventListener('click', this.onCloseButtonClick.bind(this))
     );
   }
 
@@ -779,9 +766,7 @@ class SlideshowComponent extends SliderComponent {
       this.autoplayButtonIsSetToPlay = true;
       this.play();
     } else {
-      this.reducedMotion.matches || this.announcementBarArrowButtonWasClicked
-        ? this.pause()
-        : this.play();
+      this.reducedMotion.matches || this.announcementBarArrowButtonWasClicked ? this.pause() : this.play();
     }
   }
 
@@ -845,10 +830,7 @@ class SlideshowComponent extends SliderComponent {
         event.target === this.sliderAutoplayButton || this.sliderAutoplayButton.contains(event.target);
       if (!this.autoplayButtonIsSetToPlay || focusedOnAutoplayButton) return;
       this.play();
-    } else if (
-      !this.reducedMotion.matches &&
-      !this.announcementBarArrowButtonWasClicked
-    ) {
+    } else if (!this.reducedMotion.matches && !this.announcementBarArrowButtonWasClicked) {
       this.play();
     }
   }
@@ -890,9 +872,7 @@ class SlideshowComponent extends SliderComponent {
 
   autoRotateSlides() {
     const slideScrollPosition =
-      this.currentPage === this.sliderItems.length
-        ? 0
-        : this.slider.scrollLeft + this.sliderItemOffset;
+      this.currentPage === this.sliderItems.length ? 0 : this.slider.scrollLeft + this.sliderItemOffset;
 
     this.setSlidePosition(slideScrollPosition);
     this.applyAnimationToAnnouncementBar();
@@ -956,7 +936,7 @@ class SlideshowComponent extends SliderComponent {
     const slideScrollPosition =
       this.slider.scrollLeft +
       this.sliderFirstItemNode.clientWidth *
-      (this.sliderControlLinksArray.indexOf(event.currentTarget) + 1 - this.currentPage);
+        (this.sliderControlLinksArray.indexOf(event.currentTarget) + 1 - this.currentPage);
     this.slider.scrollTo({
       left: slideScrollPosition,
     });
@@ -971,10 +951,9 @@ class VariantSelects extends HTMLElement {
     this.addEventListener('change', this.onVariantChange);
   }
 
-  onVariantChange(event) {
+  onVariantChange() {
     this.updateOptions();
     this.updateMasterId();
-    this.updateSelectedSwatchValue(event);
     this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
@@ -984,6 +963,7 @@ class VariantSelects extends HTMLElement {
       this.toggleAddButton(true, '', true);
       this.setUnavailable();
     } else {
+      this.updateMedia();
       this.updateURL();
       this.updateVariantInput();
       this.renderProductInfo();
@@ -992,14 +972,7 @@ class VariantSelects extends HTMLElement {
   }
 
   updateOptions() {
-    this.options = Array.from(this.querySelectorAll('select, fieldset'), (element) => {
-      if (element.tagName === 'SELECT') {
-        return element.value;
-      }
-      if (element.tagName === 'FIELDSET') {
-        return Array.from(element.querySelectorAll('input')).find((radio) => radio.checked)?.value;
-      }
-    });
+    this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
   }
 
   updateMasterId() {
@@ -1012,29 +985,19 @@ class VariantSelects extends HTMLElement {
     });
   }
 
-  updateSelectedSwatchValue({ target }) {
-    const { name, value, tagName } = target;
+  updateMedia() {
+    if (!this.currentVariant) return;
+    if (!this.currentVariant.featured_media) return;
 
-    if (tagName === 'SELECT' && target.selectedOptions.length) {
-      const swatchValue = target.selectedOptions[0].dataset.optionSwatchValue;
-      const selectedDropdownSwatchValue = this.querySelector(`[data-selected-dropdown-swatch="${name}"] > .swatch`);
-      if (!selectedDropdownSwatchValue) return;
-      if (swatchValue) {
-        selectedDropdownSwatchValue.style.setProperty('--swatch--background', swatchValue);
-        selectedDropdownSwatchValue.classList.remove('swatch--unavailable');
-      } else {
-        selectedDropdownSwatchValue.style.setProperty('--swatch--background', 'unset');
-        selectedDropdownSwatchValue.classList.add('swatch--unavailable');
-      }
+    const mediaGalleries = document.querySelectorAll(`[id^="MediaGallery-${this.dataset.section}"]`);
+    mediaGalleries.forEach((mediaGallery) =>
+      mediaGallery.setActiveMedia(`${this.dataset.section}-${this.currentVariant.featured_media.id}`, true)
+    );
 
-      selectedDropdownSwatchValue.style.setProperty(
-        '--swatch-focal-point',
-        target.selectedOptions[0].dataset.optionSwatchFocalPoint || 'unset'
-      );
-    } else if (tagName === 'INPUT' && target.type === 'radio') {
-      const selectedSwatchValue = this.querySelector(`[data-selected-swatch-value="${name}"]`);
-      if (selectedSwatchValue) selectedSwatchValue.innerHTML = value;
-    }
+    const modalContent = document.querySelector(`#ProductModal-${this.dataset.section} .product-media-modal__content`);
+    if (!modalContent) return;
+    const newMediaModal = modalContent.querySelector(`[data-media-id="${this.currentVariant.featured_media.id}"]`);
+    modalContent.prepend(newMediaModal);
   }
 
   updateURL() {
@@ -1075,17 +1038,12 @@ class VariantSelects extends HTMLElement {
     });
   }
 
-  setInputAvailability(elementList, availableValuesList) {
-    elementList.forEach((element) => {
-      const value = element.getAttribute('value');
-      const availableElement = availableValuesList.includes(value);
-
-      if (element.tagName === 'INPUT') {
-        element.classList.toggle('disabled', !availableElement);
-      } else if (element.tagName === 'OPTION') {
-        element.innerText = availableElement
-          ? value
-          : window.variantStrings.unavailable_with_option.replace('[value]', value);
+  setInputAvailability(listOfOptions, listOfAvailableOptions) {
+    listOfOptions.forEach((input) => {
+      if (listOfAvailableOptions.includes(input.getAttribute('value'))) {
+        input.innerText = input.getAttribute('value');
+      } else {
+        input.innerText = window.variantStrings.unavailable_with_option.replace('[value]', input.getAttribute('value'));
       }
     });
   }
@@ -1110,70 +1068,13 @@ class VariantSelects extends HTMLElement {
     if (productForm) productForm.handleErrorMessage();
   }
 
-
-  updateMedia(html) {
-    const mediaGallerySource = document.querySelector(`[id^="MediaGallery-${this.dataset.section}"] ul`);
-    const mediaGalleryDestination = html.querySelector(`[id^="MediaGallery-${this.dataset.section}"] ul`);
-
-    const refreshSourceData = () => {
-      const mediaGallerySourceItems = Array.from(mediaGallerySource.querySelectorAll('li[data-media-id]'));
-      const sourceSet = new Set(mediaGallerySourceItems.map(item => item.dataset.mediaId));
-      const sourceMap = new Map(mediaGallerySourceItems.map((item, index) => [item.dataset.mediaId, {item, index}]));
-      return [mediaGallerySourceItems, sourceSet, sourceMap];
-    };
-
-    if (mediaGallerySource && mediaGalleryDestination) {
-      let [mediaGallerySourceItems, sourceSet, sourceMap] = refreshSourceData();
-      const mediaGalleryDestinationItems = Array.from(mediaGalleryDestination.querySelectorAll('li[data-media-id]'));
-      const destinationSet = new Set(mediaGalleryDestinationItems.map(({dataset}) => dataset.mediaId));
-      let shouldRefresh = false;
-
-      // add items from new data not present in DOM
-      for (let i = mediaGalleryDestinationItems.length - 1; i >= 0; i--) {
-        if (!sourceSet.has(mediaGalleryDestinationItems[i].dataset.mediaId)) {
-          mediaGallerySource.prepend(mediaGalleryDestinationItems[i]);
-          shouldRefresh = true;
-        }
-      }
-
-      // remove items from DOM not present in new data
-      for (let i = 0; i < mediaGallerySourceItems.length; i++) {
-        if (!destinationSet.has(mediaGallerySourceItems[i].dataset.mediaId)) {
-          mediaGallerySourceItems[i].remove();
-          shouldRefresh = true;
-        }
-      }
-
-      // refresh
-      if (shouldRefresh) [mediaGallerySourceItems, sourceSet, sourceMap] = refreshSourceData();
-
-      // if media galleries don't match, sort to match new data order
-      mediaGalleryDestinationItems.forEach((destinationItem, destinationIndex) => {
-        const sourceData = sourceMap.get(destinationItem.dataset.mediaId);
-
-        if (sourceData && sourceData.index !== destinationIndex) {
-          mediaGallerySource.insertBefore(sourceData.item, mediaGallerySource.querySelector(`li:nth-of-type(${destinationIndex + 1})`));
-
-          // refresh source now that it has been modified
-          [mediaGallerySourceItems, sourceSet, sourceMap] = refreshSourceData();
-        }
-      });
-    }
-
-    document.querySelector(`[id^="MediaGallery-${this.dataset.section}"]`).setActiveMedia(`${this.dataset.section}-${this.currentVariant.featured_media?.id}`);
-
-    // update media modal
-    const modalContent = document.querySelector(`#ProductModal-${this.dataset.section} .product-media-modal__content`);
-    const newModalContent = html.querySelector(`product-modal`);
-    if (modalContent && newModalContent) modalContent.innerHTML = newModalContent.innerHTML;
-  }
-
   renderProductInfo() {
     const requestedVariantId = this.currentVariant.id;
     const sectionId = this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section;
 
     fetch(
-      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section
+      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${
+        this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section
       }`
     )
       .then((response) => response.text())
@@ -1199,10 +1100,10 @@ class VariantSelects extends HTMLElement {
           `Volume-${this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section}`
         );
 
-        this.updateMedia(html);
-
         const pricePerItemDestination = document.getElementById(`Price-Per-Item-${this.dataset.section}`);
-        const pricePerItemSource = html.getElementById(`Price-Per-Item-${this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section}`);
+        const pricePerItemSource = html.getElementById(
+          `Price-Per-Item-${this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section}`
+        );
 
         const volumePricingDestination = document.getElementById(`Volume-${this.dataset.section}`);
         const qtyRules = document.getElementById(`Quantity-Rules-${this.dataset.section}`);
@@ -1232,8 +1133,7 @@ class VariantSelects extends HTMLElement {
 
         if (price) price.classList.remove('hidden');
 
-        if (inventoryDestination)
-          inventoryDestination.classList.toggle('hidden', inventorySource.innerText === '');
+        if (inventoryDestination) inventoryDestination.classList.toggle('hidden', inventorySource.innerText === '');
 
         const addButtonUpdated = html.getElementById(`ProductSubmitButton-${sectionId}`);
         this.toggleAddButton(
@@ -1300,6 +1200,31 @@ class VariantSelects extends HTMLElement {
 
 customElements.define('variant-selects', VariantSelects);
 
+class VariantRadios extends VariantSelects {
+  constructor() {
+    super();
+  }
+
+  setInputAvailability(listOfOptions, listOfAvailableOptions) {
+    listOfOptions.forEach((input) => {
+      if (listOfAvailableOptions.includes(input.getAttribute('value'))) {
+        input.classList.remove('disabled');
+      } else {
+        input.classList.add('disabled');
+      }
+    });
+  }
+
+  updateOptions() {
+    const fieldsets = Array.from(this.querySelectorAll('fieldset'));
+    this.options = fieldsets.map((fieldset) => {
+      return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
+    });
+  }
+}
+
+customElements.define('variant-radios', VariantRadios);
+
 class ProductRecommendations extends HTMLElement {
   constructor() {
     super();
@@ -1340,22 +1265,154 @@ class ProductRecommendations extends HTMLElement {
 
 customElements.define('product-recommendations', ProductRecommendations);
 
-class AccountIcon extends HTMLElement {
+class HotSpots extends HTMLElement {
   constructor() {
     super();
+    this.el = this;
+    this.buttons = this.querySelectorAll('[data-button]');
+    this.hotspotBlocks = this.querySelectorAll('[data-hotspot-block]');
+    this.blockContainer = this.querySelector('[data-block-container]');
+    this.colorImages = this.querySelectorAll('.grid-product__color-image');
+    this.colorSwatches = this.querySelectorAll('.color-swatch--with-image');
 
-    this.icon = this.querySelector('.icon');
-  }
+    this.bindEvents();
 
-  connectedCallback() {
-    document.addEventListener('storefront:signincompleted', this.handleStorefrontSignInCompleted.bind(this));
-  }
-
-  handleStorefrontSignInCompleted(event) {
-    if (event?.detail?.avatar) {
-      this.icon?.replaceWith(event.detail.avatar.cloneNode());
+    if (this.colorImages.length) {
+      this.colorSwatchHovering();
     }
+  }
+
+  colorSwatchHovering() {
+    this.colorSwatches.forEach((swatch) => {
+      swatch.addEventListener(
+        'mouseenter',
+        function () {
+          this.setActiveColorImage(swatch);
+        }.bind(this)
+      );
+
+      swatch.addEventListener(
+        'touchstart',
+        function (evt) {
+          evt.preventDefault();
+          this.setActiveColorImage(swatch);
+        }.bind(this),
+        { passive: true }
+      );
+
+      swatch.addEventListener(
+        'mouseleave',
+        function () {
+          this.removeActiveColorImage(swatch);
+        }.bind(this)
+      );
+    });
+  }
+
+  setActiveColorImage(swatch) {
+    var id = swatch.dataset.variantId;
+    var image = swatch.dataset.variantImage;
+
+    // Unset all active swatch images
+    this.colorImages.forEach((el) => {
+      el.classList.remove('is-active');
+    });
+
+    // Unset all active swatches
+    this.colorSwatches.forEach((el) => {
+      el.classList.remove('is-active');
+    });
+
+    // Set active image and swatch
+    var imageEl = this.el.querySelector('.grid-product__color-image--' + id);
+    imageEl.style.backgroundImage = 'url(' + image + ')';
+    imageEl.classList.add('is-active');
+    swatch.classList.add('is-active');
+
+    // Update product grid item href with variant URL
+    var variantUrl = swatch.dataset.url;
+    var gridItem = swatch.closest('.grid-item__link');
+
+    if (gridItem) gridItem.setAttribute('href', variantUrl);
+  }
+
+  removeActiveColorImage(swatch) {
+    const id = swatch.dataset.variantId;
+    this.querySelector(`.grid-product__color-image--${id}`).classList.remove('is-active');
+  }
+
+  /* Setup event listeners */
+  bindEvents() {
+    this.buttons.forEach((button) => {
+      const id = button.dataset.button;
+
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.showContent(id);
+      });
+    });
+
+    // Display active hotspot block on theme editor select
+    document.addEventListener('shopify:block:select', (e) => {
+      const blockId = e.detail.blockId;
+      this.showContent(`${blockId}`);
+    });
+  }
+
+  /* Toggle sidebar content */
+  showContent(id) {
+    // Hide all hotspotBlock
+    // Show the hotspotBlock with the id
+    this.hotspotBlocks.forEach((block) => {
+      if (block.dataset.hotspotBlock === id) {
+        block.classList.add('is-active');
+      } else {
+        block.classList.remove('is-active');
+      }
+    });
   }
 }
 
-customElements.define('account-icon', AccountIcon);
+customElements.define('hot-spots', HotSpots);
+// Prevent section from constant switching to 1st tab on re-render
+if (Shopify.designMode) {
+  tabSectionsInit();
+
+  function tabSectionsInit() {
+    let tabSections = document.querySelectorAll('[data-section-type="tabs"]');
+    tabSections.forEach((section) => {
+      initFirstTab(section);
+    });
+  }
+
+  function initFirstTab(section) {
+    let inputs = section.querySelectorAll('input[type="radio"]');
+    inputs[0].checked = true;
+    sessionStorage.setItem('currentTab', inputs[0].id);
+    inputs.forEach((input) => {
+      input.addEventListener('change', () => {
+        sessionStorage.setItem('currentTab', input.id);
+      });
+    });
+  }
+
+  document.addEventListener('shopify:block:select', (event) => {
+    if (event.target.dataset.inputId != undefined) {
+      document.getElementById(event.target.dataset.inputId).checked = true;
+      sessionStorage.setItem('currentTab', event.target.dataset.inputId);
+    }
+  });
+
+  document.addEventListener('shopify:section:load', (event) => {
+    if (event.target.querySelector('[data-section-type="tabs"]') != undefined) {
+      let section = event.target;
+      let currentTab = sessionStorage.getItem('currentTab');
+      if (currentTab != undefined) {
+        initFirstTab(section);
+      } else {
+        section.querySelector('#' + currentTab).checked = true;
+      }
+    }
+  });
+}
