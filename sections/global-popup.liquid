@@ -38,7 +38,7 @@
             {% if section.settings.image %}<br>{% endif %}
           </div>
         {% else %}
-          <div class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item {% endif %}">
+          <div class="popup_image {% if section.settings.layout_row == true %} grid--2-col grid__item popup-row {% endif %}">
             {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
           </div>
         {% endif %}
