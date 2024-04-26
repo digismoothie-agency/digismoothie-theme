@@ -3835,7 +3835,11 @@
     },
     "recently-viewed": {
       "name": "Recently viewed",
+    
       "settings": {
+        "info_header": {
+          "content": "This section will display products that have been recently viewed by the customer."
+        },
         "title": {
           "label": "Heading"
         },
