@@ -212,7 +212,7 @@
         "title": "Recently viewed",
         "heading_size": "h2",
         "columns_desktop": 4,
-        "full_width": true,
+        "full_width": false,
         "color_scheme": "",
         "image_ratio": "adapt",
         "image_shape": "default",
