@@ -5,7 +5,7 @@
 
 <modal-dialog
   id="{{ popupModalId }}"
-  class="global-popup-modal"
+  class="global-popup-modal {% if request.design_mode %}hidden{% endif %} "
 >
   <div
     role="dialog"
@@ -86,8 +86,122 @@
         document.getElementById(window.globalPopup.popupModalId).setAttribute('open', '');
       }
     })
+
+    console.log('IT WORKS 1')
+
+    document.addEventListener('shopify:section:select', function (event) {
+      console.log('IT WORKS 2')
+      const tryPopup = document.getElementById('shopify-section-sections--22075382628545__global_popup_eCnPXX');
+      const windowPopup = document.getElementsByClassName('global-popup-modal')[0];
+
+      console.log('IT_WORKS 3')
+      if (!tryPopup || event.target.id !== 'shopify-section-sections--22075382628545__global_popup_eCnPXX') {
+        console.log('IT WORKS 4 - IT returns and works finally')
+        return;
+      } else {
+        displayPopup()
+      }
+
+      function displayPopup() {
+        if (windowPopup) {
+          windowPopup.classList.remove('hidden');
+          console.log('IT WORKS 5 - it should display the popup')
+        }
+      }
+    });
+
+    document.addEventListener('shopify:section:deselect', function (event) {
+      console.log('IT WORKS 222')
+      const tryPopup = document.getElementById('shopify-section-sections--22075382628545__global_popup_eCnPXX');
+      const windowPopup = document.getElementsByClassName('global-popup-modal')[0];
+
+      console.log('IT_WORKS 333')
+      if (!tryPopup || event.target.id !== 'shopify-section-sections--22075382628545__global_popup_eCnPXX') {
+        console.log('IT WORKS 444 - IT returns and works finally')
+        return;
+      } else {
+        hidePopup()
+      }
+
+      function hidePopup() {
+        if (windowPopup) {
+          windowPopup.classList.add('hidden');
+          console.log('IT WORKS 555 - it should display the popup')
+        }
+      }
+    });
   }
 </script>
+
+{% comment %}
+  <modal-dialog
+  id="{{ popupModalId }}"
+  class="global-popup-modal   {% if request.design_mode %}hidden{% endif %} "
+  >
+  <script>
+    window.globalPopup = {
+      ageOfPopupCookie: 1000 * 60 * 60 * 24 * {{ section.settings.opt_time }},
+      clearCookieCheckmark: {{ section.settings.cookie_checkmark }},
+      popupDelay: {{ section.settings.delay }} * 1000,
+      popupModalId: '{{ popupModalId }}',
+      modalCloseId: '{{ modalCloseId }}'
+    };
+
+    if (Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function (event) {
+        if (event.detail.sectionId === '{{ section.id }}') {
+          document.getElementById(window.globalPopup.popupModalId).setAttribute('open', '');
+        }
+      })
+
+      console.log('IT WORKS 1')
+
+      document.addEventListener('shopify:section:select', function (event) {
+        console.log('IT WORKS 2')
+        const tryPopup = document.getElementById('shopify-section-sections--22075382628545__global_popup_eCnPXX');
+        const windowPopup = document.getElementsByClassName('global-popup-modal')[0];
+
+        console.log('IT_WORKS 3')
+        if (!tryPopup || event.target.id !== 'shopify-section-sections--22075382628545__global_popup_eCnPXX') {
+          console.log('IT WORKS 4 - IT returns and works finally')
+          return;
+        } else {
+          displayPopup()
+        }
+
+        function displayPopup() {
+          if (windowPopup) {
+            windowPopup.classList.remove('hidden');
+            console.log('IT WORKS 5 - it should display the popup')
+          }
+        }
+      });
+
+      document.addEventListener('shopify:section:deselect', function (event) {
+        console.log('IT WORKS 222')
+        const tryPopup = document.getElementById('shopify-section-sections--22075382628545__global_popup_eCnPXX');
+        const windowPopup = document.getElementsByClassName('global-popup-modal')[0];
+
+        console.log('IT_WORKS 333')
+        if (!tryPopup || event.target.id !== 'shopify-section-sections--22075382628545__global_popup_eCnPXX') {
+          console.log('IT WORKS 444 - IT returns and works finally')
+          return;
+        } else {
+          hidePopup()
+        }
+
+        function hidePopup() {
+          if (windowPopup) {
+            windowPopup.classList.add('hidden');
+            console.log('IT WORKS 555 - it should display the popup')
+          }
+        }
+      });
+    }
+  </script>
+
+  Middle refactor
+{% endcomment %}
 
 {% schema %}
 {
