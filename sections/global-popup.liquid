@@ -80,6 +80,9 @@
     modalCloseId: '{{ modalCloseId }}'
   };
 
+  console.log('{{ section.id }}')
+  console.log('shopify-section-{{ section.id }}')
+
   if (Shopify.designMode) {
     document.addEventListener('shopify:section:load', function (event) {
       if (event.detail.sectionId === '{{ section.id }}') {
@@ -87,15 +90,13 @@
       }
     })
 
-    console.log('IT WORKS 1')
-
     document.addEventListener('shopify:section:select', function (event) {
       console.log('IT WORKS 2')
-      const tryPopup = document.getElementById('shopify-section-sections--21600026820801__global_popup_eCnPXX');
+      const tryPopup = document.getElementById('shopify-section-{{ section.id }}');
       const windowPopup = document.getElementsByClassName('global-popup-modal')[0];
 
       console.log('IT_WORKS 3')
-      if (!tryPopup || event.target.id !== 'shopify-section-sections--21600026820801__global_popup_eCnPXX') {
+      if (!tryPopup || event.target.id !== 'shopify-section-{{ section.id }}') {
         console.log('IT WORKS 4 - IT returns and works finally')
         return;
       } else {
@@ -112,11 +113,11 @@
 
     document.addEventListener('shopify:section:deselect', function (event) {
       console.log('IT WORKS 222')
-      const tryPopup = document.getElementById('shopify-section-sections--21600026820801__global_popup_eCnPXX');
+      const tryPopup = document.getElementById('shopify-section-{{ section.id }}');
       const windowPopup = document.getElementsByClassName('global-popup-modal')[0];
 
       console.log('IT_WORKS 333')
-      if (!tryPopup || event.target.id !== 'shopify-section-sections--21600026820801__global_popup_eCnPXX') {
+      if (!tryPopup || event.target.id !== 'shopify-section-{{ section.id }}') {
         console.log('IT WORKS 444 - IT returns and works finally')
         return;
       } else {
