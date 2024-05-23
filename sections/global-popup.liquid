@@ -5,7 +5,7 @@
 
 <modal-dialog
   id="{{ popupModalId }}"
-  class="global-popup-modal {% if request.design_mode %}hidden{% endif %} "
+  class="global-popup-modal  "
 >
   <div
     role="dialog"
@@ -46,9 +46,13 @@
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'heading' -%}
-                <h2 class="{{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
+                <h2 class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+                  {{ block.settings.heading }}
+                </h2>
               {%- when 'text' -%}
-                <p>{{ block.settings.text }}</p>
+                <p class="popup_text" {{ block.shopify_attributes }}>
+                  {{ block.settings.text }}
+                </p>
               {%- when 'button' -%}
                 {%- if block.settings.button_label != blank -%}
                   <a
@@ -80,9 +84,6 @@
     modalCloseId: '{{ modalCloseId }}'
   };
 
-  console.log('{{ section.id }}')
-  console.log('shopify-section-{{ section.id }}')
-
   if (Shopify.designMode) {
     document.addEventListener('shopify:section:load', function (event) {
       if (event.detail.sectionId === '{{ section.id }}') {
@@ -90,46 +91,47 @@
       }
     })
 
+    const popupId = 'shopify-section-{{ section.id }}';
+
+    function getTryPopup() {
+      return document.getElementById(popupId);
+    }
+
+    function getWindowPopup() {
+      return document.getElementsByClassName('global-popup-modal')[0];
+    }
+
+    function isTargetPopup(event) {
+      const tryPopup = getTryPopup();
+      return tryPopup && event.target.id === popupId;
+    }
+
+    function displayPopup() {
+      const windowPopup = getWindowPopup();
+      if (windowPopup) {
+        windowPopup.classList.remove('hidden');
+      }
+    }
+
+    function hidePopup() {
+      const windowPopup = getWindowPopup();
+      if (windowPopup) {
+        windowPopup.classList.add('hidden');
+      }
+    }
+
     document.addEventListener('shopify:section:select', function (event) {
-      console.log('IT WORKS 2')
-      const tryPopup = document.getElementById('shopify-section-{{ section.id }}');
-      const windowPopup = document.getElementsByClassName('global-popup-modal')[0];
-
-      console.log('IT_WORKS 3')
-      if (!tryPopup || event.target.id !== 'shopify-section-{{ section.id }}') {
-        console.log('IT WORKS 4 - IT returns and works finally')
+      if (!isTargetPopup(event)) {
         return;
-      } else {
-        displayPopup()
       }
-
-      function displayPopup() {
-        if (windowPopup) {
-          windowPopup.classList.remove('hidden');
-          console.log('IT WORKS 5 - it should display the popup')
-        }
-      }
+      displayPopup();
     });
 
     document.addEventListener('shopify:section:deselect', function (event) {
-      console.log('IT WORKS 222')
-      const tryPopup = document.getElementById('shopify-section-{{ section.id }}');
-      const windowPopup = document.getElementsByClassName('global-popup-modal')[0];
-
-      console.log('IT_WORKS 333')
-      if (!tryPopup || event.target.id !== 'shopify-section-{{ section.id }}') {
-        console.log('IT WORKS 444 - IT returns and works finally')
+      if (!isTargetPopup(event)) {
         return;
-      } else {
-        hidePopup()
       }
-
-      function hidePopup() {
-        if (windowPopup) {
-          windowPopup.classList.add('hidden');
-          console.log('IT WORKS 555 - it should display the popup')
-        }
-      }
+      hidePopup();
     });
   }
 </script>
