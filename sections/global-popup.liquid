@@ -5,7 +5,7 @@
 
 <modal-dialog
   id="{{ popupModalId }}"
-  class="global-popup-modal  "
+  class="global-popup-modal {% if request.design_mode %}hidden{% endif %}"
 >
   <div
     role="dialog"
@@ -47,11 +47,11 @@
             {%- case block.type -%}
               {%- when 'heading' -%}
                 <h2 class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
-                  {{ block.settings.heading }}
+                  {{- block.settings.heading -}}
                 </h2>
               {%- when 'text' -%}
                 <p class="popup_text" {{ block.shopify_attributes }}>
-                  {{ block.settings.text }}
+                  {{- block.settings.text -}}
                 </p>
               {%- when 'button' -%}
                 {%- if block.settings.button_label != blank -%}
