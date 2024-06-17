@@ -266,6 +266,7 @@
   height: 100%;
   object-fit: contain;
   transform-origin: center;
+  transform: rotate(-90deg);
 }
 .swiper-rtl .swiper-button-next svg,
 .swiper-rtl .swiper-button-prev svg {
@@ -672,4 +673,7 @@ button.swiper-pagination-bullet {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   overflow: hidden;
+}
+.swiper-wrapper.grid {
+  flex-wrap: nowrap;
 }

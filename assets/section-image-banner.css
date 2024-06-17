@@ -542,7 +542,6 @@
 .banner--wrapper .swiper-button-prev svg {
   width: auto;
   height: auto;
-  transform: rotate(-90deg);
 }
 
 .banner--wrapper .media > *:not(.zoom):not(.deferred-media__poster-button) {
