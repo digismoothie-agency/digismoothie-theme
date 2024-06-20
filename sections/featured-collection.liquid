@@ -4,6 +4,12 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
+{% if settings.enable_color_swatches %}
+  {{ 'card-product-swatches.css' | asset_url | stylesheet_tag }}
+  {{ 'component-color-swatches.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'card-product-swatches.js' | asset_url }}" defer="defer"></script>
+{% endif %}
+
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}

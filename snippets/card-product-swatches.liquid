@@ -1,0 +1,21 @@
+<div class="card-product__color-swatches">
+  {%- for option in product.options_with_values -%}
+    {% liquid 
+        assign color_option_name = settings.color_option_name | handleize | split: ','
+        assign option_name = option.name | handleize
+        assign tooltip = settings.product_card_tooltip
+    %}
+    {%- if color_option_name contains option_name and settings.enable_color_swatches -%}
+      <fieldset class="js product-form__input">
+        <legend class="form__label">{{ option.name }}</legend>
+        <div class="product-color-swatches">
+          {% render 'product-card-color-swatches', product: product, option: option, option_limit: 5, tooltip: tooltip, product_card: true %}
+          {% if option.values.size > 5 %}
+          {% assign colors_left = option.values.size | minus: 5 %}
+            + next {{ colors_left }}
+          {% endif %}
+        </div>
+      </fieldset>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

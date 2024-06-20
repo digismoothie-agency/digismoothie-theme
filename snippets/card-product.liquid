@@ -305,6 +305,9 @@
             {%- endif -%}
           </div>
         {%- endif -%}
+        <div class="card__color-swatches">
+          {% render 'card-product-swatches', product: card_product, block: block, product_form_id: product_form_id %}
+        </div>
         <div class="card__badge {{ settings.badge_position }}">
           {%- if card_product.available == false -%}
             <span

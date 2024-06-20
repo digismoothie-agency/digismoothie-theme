@@ -182,7 +182,6 @@
           .map(([key, value]) => `${key}_${value}`)
           .join('+');
         
-        console.log(params)
 
         return fetch(`/collections/all?type=${params}&view=list-products`, {
           method: 'GET',

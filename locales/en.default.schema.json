@@ -238,6 +238,12 @@
         },
         "use_metaobject": {
           "label": "Use metaobject for colors definition?"
+        },
+        "product_card_tooltip": {
+          "label": "Show color name as tooltip (Product cards)"
+        },
+        "product_page_tooltip": {
+          "label": "Show color name as tooltip (Product page)"
         }
       }
     },

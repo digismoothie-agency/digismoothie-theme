@@ -4,6 +4,12 @@
 {{ 'component-modal-video.css' | asset_url | stylesheet_tag }}
 {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
 
+{% if settings.enable_color_swatches %}
+  {{ 'card-product-swatches.css' | asset_url | stylesheet_tag }}
+  {{ 'component-color-swatches.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'card-product-swatches.js' | asset_url }}" defer="defer"></script>
+{% endif %}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.mobile_padding_top }}px;

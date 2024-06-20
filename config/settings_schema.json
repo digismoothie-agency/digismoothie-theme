@@ -465,6 +465,18 @@
         ]
       },
       {
+        "type": "checkbox",
+        "id": "product_card_tooltip",
+        "label": "t:settings_schema.color_swatches.settings.product_card_tooltip.label",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_page_tooltip",
+        "label": "t:settings_schema.color_swatches.settings.product_page_tooltip.label",
+        "default": false
+      },
+      {
         "type": "textarea",
         "id": "color_swatches_defenition",
         "label": "t:settings_schema.color_swatches.settings.color_swatches_defenition.label",

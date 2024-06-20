@@ -25,12 +25,13 @@
         {% liquid 
             assign color_option_name = settings.color_option_name | handleize | split: ','
             assign option_name = option.name | handleize
+            assign tooltip = settings.product_page_tooltip
         %}
         {%- if color_option_name contains option_name and settings.enable_color_swatches -%}
           <fieldset class="js product-form__input">
             <legend class="form__label">{{ option.name }}</legend>
             <div class="product-color-swatches">
-              {% render 'product-color-swatches', product: product, option: option %}
+              {% render 'product-color-swatches', product: product, option: option, tooltip: tooltip %}
             </div>
           </fieldset>
         {%- else -%}   

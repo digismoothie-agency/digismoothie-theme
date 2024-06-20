@@ -7,8 +7,7 @@
   assign product_form_id = 'product-form-' | append: section.id
 -%}
 
-
-{%- for value in option.values -%}
+{%- for value in option.values limit: option_limit -%}
   {%- liquid
     assign option_disabled = true
 
@@ -30,20 +29,32 @@
     endfor
   -%}
 
+  {%- capture variant_url -%}
+    {% for variant in product.variants %}
+      {% if variant.title contains value  %}
+        {{ variant.url }}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {%- endcapture -%}
+
   <input
     type="radio"
-    id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+    id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.handle }}"
     name="{{ option.name }}"
     value="{{ value | escape }}"
     form="{{ product_form_id }}"
-    {% if option.selected_value == value %}
+    {% if product_card and forloop.index == 1 %}
+      checked
+    {% elsif option.selected_value == value %}
       checked
     {% endif %}
     {% if option_disabled %}
       class="disabled"
     {% endif %}
+    data-url="{{ variant_url | strip }}"
   >
-  <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="color-swatch__label">
+  <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.handle }}" class="color-swatch__label">
     {% liquid
         assign swatch_type = settings.color_swatches_type
         assign color_swatches_defenition_list = settings.color_swatches_defenition | split: ';'
@@ -70,13 +81,18 @@
     {%- endcapture -%}
     {% if swatch_type == 'color' %}
       <div class="color-swatch" style="background-color: {{ hex_code | strip }};"></div>
-      {{ value -}}
+      {% if tooltip %}
+        <div class="color-swatch__tooltip">{{ value -}}</div>
+      {% else %}
+        {{ value -}}
+      {% endif %}
       <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
     {% else %}
       <div class="color-swatch">
+        {% assign image_width = settings.color_swatches_width | minus: 5 %}
         {% for variant in product.variants %}
           {% if variant.title contains value and variant.image != blank %}
-            {{ variant.image | image_url: width: settings.color_swatches_width | image_tag: alt: variant.image.alt }}
+            {{ variant.image | image_url: width: image_width | image_tag: alt: variant.image.alt }}
             {% break %}
           {% endif %}
         {% endfor %}
