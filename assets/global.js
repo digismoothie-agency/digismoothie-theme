@@ -1187,10 +1187,10 @@ class WishlistHandler extends HTMLElement {
     this.removeButton = this.querySelector('[data-remove-from-wishlist]');
     this.shopUrl = window.Shopify.shop;
     this.customerId = this.dataset.customerId;
-    this.variantReference = this.dataset.variantReference;
+    this.productReference = this.dataset.productReference;
     this.itemsCount = document.getElementById('wishlist-items-count');
 
-    if (!this.shopUrl || !this.customerId || !this.variantReference) return;
+    if (!this.shopUrl || !this.customerId || !this.productReference) return;
 
     this.bindEvents();
   }
