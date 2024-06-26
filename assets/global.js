@@ -1208,7 +1208,7 @@ class WishlistHandler extends HTMLElement {
   }
 
   updateWishlist(action) {
-    const url = 'https://b2b-testing.dsagency.app/update_wishlist/';
+    const url = 'https://be-testing.dsagency.app/update_wishlist/';
     const data = {
       shop_url: this.shopUrl,
       customer_id: this.customerId,
