@@ -1212,7 +1212,7 @@ class WishlistHandler extends HTMLElement {
     const data = {
       shop_url: this.shopUrl,
       customer_id: this.customerId,
-      variant_reference: this.variantReference,
+      product_reference: this.productReference,
       action: action,
     };
 
