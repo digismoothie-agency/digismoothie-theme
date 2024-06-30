@@ -14,8 +14,14 @@
     aria-describedby="{{ localPosition }}Label"
   >
     <span>
-      {{- localization.country.currency.iso_code }}
-      {{ localization.country.currency.symbol }} | {{ localization.country.name -}}
+      <div class="contry__flag">
+        {{- localization.country | image_url: width: 32 | image_tag -}}
+      </div>
+      {{ localization.country.name -}}
+      <span class="localization-form__currency">
+        {{- localization.country.currency.iso_code }}
+      </span>
+
     </span>
     {% render 'icon-caret' %}
   </button>
@@ -31,11 +37,13 @@
             {% endif %}
             data-value="{{ country.iso_code }}"
           >
+            <div class="contry__flag">
+              {{- country | image_url: width: 32 | image_tag -}}
+            </div>
+            {{- country.name -}}
             <span class="localization-form__currency">
-              {{- country.currency.iso_code }}
-              {{ country.currency.symbol }} |</span
-            >
-            {{ country.name }}
+              {{- country.currency.iso_code -}}
+            </span>
           </a>
         </li>
       {%- endfor -%}
