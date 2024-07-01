@@ -441,6 +441,56 @@
         "heading_element_custom": false,
         "heading_element": "h2"
       }
+    },
+    "testimonials_JPfGDi": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_7EGPHi": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "Author's name 1",
+            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
+            "image_ratio": "rounded"
+          }
+        },
+        "testimonial_EndiCb": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "Author's name",
+            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
+            "image_ratio": "rounded"
+          }
+        },
+        "testimonial_HAz9Mi": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "Author's name",
+            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
+            "image_ratio": "rounded"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_7EGPHi",
+        "testimonial_EndiCb",
+        "testimonial_HAz9Mi"
+      ],
+      "settings": {
+        "heading": "Testimonials",
+        "heading_size": "h1",
+        "columns_desktop": 1,
+        "pagination_type": "bullets",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "heading_element_custom": false,
+        "heading_element": "h2"
+      }
     }
   },
   "order": [
@@ -451,6 +501,7 @@
     "featured_collection",
     "html_section_L6fcQK",
     "slideshow_WpALie",
-    "collection_list_zYCygV"
+    "collection_list_zYCygV",
+    "testimonials_JPfGDi"
   ]
 }
