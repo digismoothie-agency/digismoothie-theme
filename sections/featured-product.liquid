@@ -7,9 +7,10 @@
 {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
 
 {% if settings.enable_color_swatches %}
+  {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
+  {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
+  {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {{ 'card-product-swatches.css' | asset_url | stylesheet_tag }}
-  {{ 'component-color-swatches.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'card-product-swatches.js' | asset_url }}" defer="defer"></script>
 {% endif %}
 
 {%- style -%}

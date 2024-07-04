@@ -410,14 +410,7 @@
         "type": "checkbox",
         "id": "enable_color_swatches",
         "label": "t:settings_schema.color_swatches.settings.enable_color_swatches.label",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "color_option_name",
-        "label": "t:settings_schema.color_swatches.settings.color_option_name.label",
-        "default": "Color",
-        "info": "t:settings_schema.color_swatches.settings.color_option_name.info"
+        "default": true
       },
       {
         "type": "range",
@@ -450,43 +443,56 @@
         "default": 30
       },
       {
-        "type": "select",
-        "id": "color_swatches_type",
-        "label": "t:settings_schema.color_swatches.settings.color_swatches_type.label",
-        "options": [
-          {
-            "value": "color",
-            "label": "t:settings_schema.color_swatches.settings.color_swatches_type.options.label_1"
-          },
-          {
-            "value": "image",
-            "label": "t:settings_schema.color_swatches.settings.color_swatches_type.options.label_2"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "product_card_tooltip",
-        "label": "t:settings_schema.color_swatches.settings.product_card_tooltip.label",
-        "default": true
-      },
-      {
         "type": "checkbox",
         "id": "product_page_tooltip",
         "label": "t:settings_schema.color_swatches.settings.product_page_tooltip.label",
         "default": false
       },
       {
-        "type": "textarea",
-        "id": "color_swatches_defenition",
-        "label": "t:settings_schema.color_swatches.settings.color_swatches_defenition.label",
-        "info": "t:settings_schema.color_swatches.settings.color_swatches_defenition.info"
+        "type": "range",
+        "id": "pc_color_swatches_width",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.color_swatches.settings.pc_color_swatches_width.label",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "pc_color_swatches_height",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.color_swatches.settings.pc_color_swatches_width.label",
+        "default": 30
+      },
+      {
+        "type": "select",
+        "id": "color_swatches_limit",
+        "label": "Number of swacthes in product card",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "50",
+            "label": "All"
+          }
+        ],
+        "default": "5"
       },
       {
         "type": "checkbox",
-        "id": "use_metaobject",
-        "label": "t:settings_schema.color_swatches.settings.use_metaobject.label",
-        "default": false
+        "id": "product_card_tooltip",
+        "label": "t:settings_schema.color_swatches.settings.product_card_tooltip.label",
+        "default": true
       }
     ]
   },

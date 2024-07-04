@@ -948,15 +948,51 @@ class SlideshowComponent extends SliderComponent {
 
 customElements.define('slideshow-component', SlideshowComponent);
 
+
+
+class CardColorSwatches extends HTMLElement {
+  constructor() {
+    super();
+    this.addEventListener('change', this.onVariantChange);
+    this.cardLink = this.closest('.card__content').querySelector('.card__heading a');
+    this.formId = this.closest('.card__content').querySelector('.product-variant-id');
+    this.label = this.closest('.card__content').querySelector('.form__label span');
+    this.variantData = JSON.parse(this.querySelector('[type="application/json"]').textContent);
+    this.swatch = this.querySelector('.swatch-input__label')
+    this.inputs = this.querySelectorAll('.swatch-input__input')
+  }
+
+  onVariantChange(event) {
+    this.inputs.forEach(input =>{
+      input.classList.remove('active');
+    })
+    this.updateProductCard(event);
+  }
+
+  updateProductCard({ target }) {
+    const { value } = target;
+    target.classList.add('active');
+    let defaultLink = this.cardLink.dataset.link;
+    let currentVariant = this.variantData[target.dataset.index];
+    this.cardLink.href = defaultLink + '?variant=' + currentVariant.id;
+    this.formId.value = currentVariant.id;
+    this.label.textContent = value;
+  }
+
+}
+
+customElements.define('card-color-swatches', CardColorSwatches);
+
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('change', this.onVariantChange);
   }
 
-  onVariantChange() {
+  onVariantChange(event) {
     this.updateOptions();
     this.updateMasterId();
+    this.updateSelectedSwatchValue(event);
     this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
@@ -975,7 +1011,14 @@ class VariantSelects extends HTMLElement {
   }
 
   updateOptions() {
-    this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
+    this.options = Array.from(this.querySelectorAll('select, fieldset'), (element) => {
+      if (element.tagName === 'SELECT') {
+        return element.value;
+      }
+      if (element.tagName === 'FIELDSET') {
+        return Array.from(element.querySelectorAll('input')).find((radio) => radio.checked)?.value;
+      }
+    });
   }
 
   updateMasterId() {
@@ -986,6 +1029,26 @@ class VariantSelects extends HTMLElement {
         })
         .includes(false);
     });
+  }
+
+  updateSelectedSwatchValue({ target }) {
+    const { name, value, tagName } = target;
+
+    if (tagName === 'SELECT' && target.selectedOptions.length) {
+      const swatchValue = target.selectedOptions[0].dataset.optionSwatchValue;
+      const selectedDropdownSwatchValue = this.querySelector(`[data-selected-dropdown-swatch="${name}"] > .swatch`);
+      if (!selectedDropdownSwatchValue) return;
+      if (swatchValue) {
+        selectedDropdownSwatchValue.style.setProperty('--swatch--background', swatchValue);
+        selectedDropdownSwatchValue.classList.remove('swatch--unavailable');
+      } else {
+        selectedDropdownSwatchValue.style.setProperty('--swatch--background', 'unset');
+        selectedDropdownSwatchValue.classList.add('swatch--unavailable');
+      }
+    } else if (tagName === 'INPUT' && target.type === 'radio') {
+      const selectedSwatchValue = this.querySelector(`[data-selected-swatch-value="${name}"]`);
+      if (selectedSwatchValue) selectedSwatchValue.innerHTML = value;
+    }
   }
 
   updateMedia() {
@@ -1004,6 +1067,7 @@ class VariantSelects extends HTMLElement {
   }
 
   updateURL() {
+    console.log(this.currentVariant);
     if (!this.currentVariant || this.dataset.updateUrl === 'false') return;
     window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
   }
@@ -1041,12 +1105,17 @@ class VariantSelects extends HTMLElement {
     });
   }
 
-  setInputAvailability(listOfOptions, listOfAvailableOptions) {
-    listOfOptions.forEach((input) => {
-      if (listOfAvailableOptions.includes(input.getAttribute('value'))) {
-        input.innerText = input.getAttribute('value');
-      } else {
-        input.innerText = window.variantStrings.unavailable_with_option.replace('[value]', input.getAttribute('value'));
+  setInputAvailability(elementList, availableValuesList) {
+    elementList.forEach((element) => {
+      const value = element.getAttribute('value');
+      const availableElement = availableValuesList.includes(value);
+
+      if (element.tagName === 'INPUT') {
+        element.classList.toggle('disabled', !availableElement);
+      } else if (element.tagName === 'OPTION') {
+        element.innerText = availableElement
+          ? value
+          : window.variantStrings.unavailable_with_option.replace('[value]', value);
       }
     });
   }
@@ -1076,8 +1145,7 @@ class VariantSelects extends HTMLElement {
     const sectionId = this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section;
 
     fetch(
-      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${
-        this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section
+      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section
       }`
     )
       .then((response) => response.text())
@@ -1104,9 +1172,7 @@ class VariantSelects extends HTMLElement {
         );
 
         const pricePerItemDestination = document.getElementById(`Price-Per-Item-${this.dataset.section}`);
-        const pricePerItemSource = html.getElementById(
-          `Price-Per-Item-${this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section}`
-        );
+        const pricePerItemSource = html.getElementById(`Price-Per-Item-${this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section}`);
 
         const volumePricingDestination = document.getElementById(`Volume-${this.dataset.section}`);
         const qtyRules = document.getElementById(`Quantity-Rules-${this.dataset.section}`);
@@ -1136,7 +1202,8 @@ class VariantSelects extends HTMLElement {
 
         if (price) price.classList.remove('hidden');
 
-        if (inventoryDestination) inventoryDestination.classList.toggle('hidden', inventorySource.innerText === '');
+        if (inventoryDestination)
+          inventoryDestination.classList.toggle('hidden', inventorySource.innerText === '');
 
         const addButtonUpdated = html.getElementById(`ProductSubmitButton-${sectionId}`);
         this.toggleAddButton(
@@ -1202,31 +1269,6 @@ class VariantSelects extends HTMLElement {
 }
 
 customElements.define('variant-selects', VariantSelects);
-
-class VariantRadios extends VariantSelects {
-  constructor() {
-    super();
-  }
-
-  setInputAvailability(listOfOptions, listOfAvailableOptions) {
-    listOfOptions.forEach((input) => {
-      if (listOfAvailableOptions.includes(input.getAttribute('value'))) {
-        input.classList.remove('disabled');
-      } else {
-        input.classList.add('disabled');
-      }
-    });
-  }
-
-  updateOptions() {
-    const fieldsets = Array.from(this.querySelectorAll('fieldset'));
-    this.options = fieldsets.map((fieldset) => {
-      return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
-    });
-  }
-}
-
-customElements.define('variant-radios', VariantRadios);
 
 class ProductRecommendations extends HTMLElement {
   constructor() {

@@ -225,6 +225,12 @@
         "color_swatches_height": {
           "label": "Swatches height"
         },
+        "pc_color_swatches_width": {
+          "label": "Product cards Swatches width"
+        },
+        "pc_color_swatches_height": {
+          "label": "Product cards Swatches height"
+        },
         "color_swatches_type": {
           "label": "Swatches type",
           "options": {
