@@ -448,19 +448,21 @@
         "testimonial_7EGPHi": {
           "type": "testimonial",
           "settings": {
-            "icon": "quote",
-            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "rating": "5-stars",
+            "text": "<p>The product has completely transformed my daily routine. The sleek design and outstanding performance are top-notch. I can't imagine going back to how things were before. Highly recommend!<\/p>",
+            "product": "the-3p-fulfilled-snowboard",
             "author": "Author's name 1",
             "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "rounded"
+            "image_ratio": "adapt"
           }
         },
         "testimonial_EndiCb": {
           "type": "testimonial",
           "settings": {
-            "icon": "5-stars",
-            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
-            "author": "Author's name",
+            "rating": "5-stars",
+            "text": "<p>The product stands out from the rest. The quality and attention to detail are impressive, and customer service is incredibly helpful. It seamlessly integrates into my lifestyle. A true game-changer!<\/p>",
+            "product": "the-collection-snowboard-oxygen",
+            "author": "Michelle",
             "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
             "image_ratio": "rounded"
           }
@@ -468,9 +470,21 @@
         "testimonial_HAz9Mi": {
           "type": "testimonial",
           "settings": {
-            "icon": "quote",
-            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
-            "author": "Author's name",
+            "rating": "5-stars",
+            "text": "<p>Choosing this brand was one of the best decisions I've made. Its innovative features and reliable performance make a significant difference in my daily activities. I'm thoroughly satisfied and highly recommend it!<\/p>",
+            "product": "the-multi-image-snowboard",
+            "author": "Andy",
+            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
+            "image_ratio": "rounded"
+          }
+        },
+        "testimonial_mrprHk": {
+          "type": "testimonial",
+          "settings": {
+            "rating": "5-stars",
+            "text": "<p>The product has completely transformed my daily routine. The sleek design and outstanding performance are top-notch. I can't imagine going back to how things were before. Highly recommend!<\/p>",
+            "product": "the-3p-fulfilled-snowboard",
+            "author": "Author's name 1",
             "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
             "image_ratio": "rounded"
           }
@@ -479,17 +493,75 @@
       "block_order": [
         "testimonial_7EGPHi",
         "testimonial_EndiCb",
-        "testimonial_HAz9Mi"
+        "testimonial_HAz9Mi",
+        "testimonial_mrprHk"
       ],
       "settings": {
+        "full_width": false,
         "heading": "Testimonials",
         "heading_size": "h1",
-        "columns_desktop": 1,
+        "columns_desktop": 2,
         "pagination_type": "bullets",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
+        "card_style": "bordered",
+        "star_color": "#cbcd95",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 32,
         "heading_element_custom": false,
         "heading_element": "h2"
+      }
+    },
+    "rich_text_dfNhdP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XC8e7w": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1",
+            "heading_element_custom": false,
+            "heading_element": "h2"
+          }
+        },
+        "text_Xmhanr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
+            "text_size": "--s0"
+          }
+        },
+        "button_jrCQEj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "link",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_2": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XC8e7w",
+        "text_Xmhanr",
+        "button_jrCQEj"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "text_block_custom_width": false,
+        "text_block_custom_width_desktop": 780,
+        "text_block_custom_width_tablet": 500,
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
       }
     }
   },
@@ -502,6 +574,7 @@
     "html_section_L6fcQK",
     "slideshow_WpALie",
     "collection_list_zYCygV",
-    "testimonials_JPfGDi"
+    "testimonials_JPfGDi",
+    "rich_text_dfNhdP"
   ]
 }
