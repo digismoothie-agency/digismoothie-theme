@@ -462,7 +462,7 @@
             "product": "the-3p-fulfilled-snowboard",
             "author": "Author's name 1",
             "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "adapt"
+            "image_ratio": "rounded"
           }
         },
         "testimonial_EndiCb": {
@@ -508,8 +508,8 @@
       "settings": {
         "full_width": false,
         "heading": "Testimonials",
-        "heading_size": "h1",
-        "columns_desktop": 1,
+        "heading_size": "h0",
+        "columns_desktop": 3,
         "pagination_type": "bullets",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
