@@ -451,74 +451,62 @@
         "heading_element": "h2"
       }
     },
-    "testimonials_JPfGDi": {
-      "type": "testimonials",
+    "collections_carousel_Bfb8nK": {
+      "type": "collections-carousel",
       "blocks": {
-        "testimonial_7EGPHi": {
-          "type": "testimonial",
+        "slide_product_W9qiUk": {
+          "type": "slide_product",
           "settings": {
-            "rating": "5-stars",
-            "text": "<p>The product has completely transformed my daily routine. The sleek design and outstanding performance are top-notch. I can't imagine going back to how things were before. Highly recommend!<\/p>",
             "product": "the-3p-fulfilled-snowboard",
-            "author": "Author's name 1",
-            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "rounded"
+            "heading": "Image slide",
+            "button_label": "Button label",
+            "button_style": "primary"
           }
         },
-        "testimonial_EndiCb": {
-          "type": "testimonial",
+        "slide_wxHHkk": {
+          "type": "slide",
           "settings": {
-            "rating": "5-stars",
-            "text": "<p>The product stands out from the rest. The quality and attention to detail are impressive, and customer service is incredibly helpful. It seamlessly integrates into my lifestyle. A true game-changer!<\/p>",
-            "product": "the-collection-snowboard-oxygen",
-            "author": "Michelle",
-            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "rounded"
+            "heading": "Image slide",
+            "button_label": "Button label",
+            "link": "",
+            "button_style": "primary"
           }
         },
-        "testimonial_HAz9Mi": {
-          "type": "testimonial",
+        "slide_collection_aDz3d7": {
+          "type": "slide_collection",
           "settings": {
-            "rating": "5-stars",
-            "text": "<p>Choosing this brand was one of the best decisions I've made. Its innovative features and reliable performance make a significant difference in my daily activities. I'm thoroughly satisfied and highly recommend it!<\/p>",
-            "product": "the-multi-image-snowboard",
-            "author": "Andy",
-            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "rounded"
+            "collection": "frontpage",
+            "heading": "Collection",
+            "button_label": "Button label",
+            "button_style": "primary"
           }
         },
-        "testimonial_mrprHk": {
-          "type": "testimonial",
+        "slide_article_XVmaQp": {
+          "type": "slide_article",
           "settings": {
-            "rating": "5-stars",
-            "text": "<p>The product has completely transformed my daily routine. The sleek design and outstanding performance are top-notch. I can't imagine going back to how things were before. Highly recommend!<\/p>",
-            "product": "the-3p-fulfilled-snowboard",
-            "author": "Author's name 1",
-            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "rounded"
+            "article": "news\/discover-the-best-binding-types-for-snowboarding",
+            "heading": "Image slide",
+            "button_label": "Button label",
+            "button_style": "primary"
           }
         }
       },
       "block_order": [
-        "testimonial_7EGPHi",
-        "testimonial_EndiCb",
-        "testimonial_HAz9Mi",
-        "testimonial_mrprHk"
+        "slide_product_W9qiUk",
+        "slide_wxHHkk",
+        "slide_collection_aDz3d7",
+        "slide_article_XVmaQp"
       ],
       "settings": {
-        "full_width": false,
-        "heading": "Testimonials",
-        "heading_size": "h0",
+        "heading": "Carousel collection",
+        "heading_size": "h2",
         "columns_desktop": 3,
-        "pagination_type": "fraction",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "card_style": "bordered",
-        "star_color": "#cbcd95",
+        "pagination_type": "bullets",
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "mobile_padding_top": 24,
-        "mobile_padding_bottom": 32,
+        "mobile_padding_bottom": 24,
         "heading_element_custom": false,
         "heading_element": "h2"
       }
@@ -533,6 +521,6 @@
     "html_section_L6fcQK",
     "slideshow_WpALie",
     "collection_list_zYCygV",
-    "testimonials_JPfGDi"
+    "collections_carousel_Bfb8nK"
   ]
 }
