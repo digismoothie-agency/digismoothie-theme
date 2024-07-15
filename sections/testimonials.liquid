@@ -109,7 +109,7 @@
               
               {%- if block.settings.image != blank -%}
                 <figure>
-                  {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', widths: '54', is: 'lazy-image', class: block.id -}}
+                  {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', is: 'lazy-image', class: block.id -}}
                 </figure>
               {%- endif -%}
 
@@ -237,7 +237,7 @@
       "id": "card_style",
       "options": [
         {
-          "value": "side-border",
+          "value": "none",
           "label": "t:sections.testimonials.settings.card_style.options__1.label"
         },
         {
@@ -245,7 +245,7 @@
           "label": "t:sections.testimonials.settings.card_style.options__2.label"
         }
       ],
-      "default": "side-border",
+      "default": "none",
       "label": "t:sections.testimonials.settings.card_style.label"
     },
     {

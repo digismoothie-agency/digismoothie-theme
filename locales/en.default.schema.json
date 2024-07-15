@@ -3977,7 +3977,7 @@
         "card_style": {
           "label": "Card style",
           "options__1": {
-            "label": "Side border"
+            "label": "None"
           },
           "options__2": {
             "label": "Bordered"
