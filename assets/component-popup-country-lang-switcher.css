@@ -1,18 +1,3 @@
-.switcher-popup-modal {
-  background-color: #00000041;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  visibility: hidden;
-  opacity: 0;
-  z-index: -1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .switcher-popup-modal[open] {
   visibility: visible;
   opacity: 1;
@@ -74,6 +59,14 @@
   padding: 0;
   position: absolute;
   right: 25px;
+}
+
+.country-selector__list .disclosure__item {
+  width: 100%;
+}
+
+.localization-form__checkmark {
+  margin-left: auto;
 }
 
 .switcher-popup-modal__content-info h1 {

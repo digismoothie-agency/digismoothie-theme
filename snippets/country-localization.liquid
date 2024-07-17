@@ -66,19 +66,6 @@
             autocapitalize="off"
             spellcheck="false"
           >
-<<<<<<< HEAD
-            <div class="country__flag">
-              {{- country | image_url: width: 32 | image_tag -}}
-            </div>
-            {{- country.name -}}
-            <span class="localization-form__currency">
-              {{- country.currency.iso_code -}}
-            </span>
-          </a>
-        </li>
-      {%- endfor -%}
-    </ul>
-=======
           <label class="field__label" for="country-filter-input">{{ 'localization.search' | t }}</label>
           <button
             type="reset"
@@ -155,24 +142,27 @@
               data-value="{{ country.iso_code }}"
               id="{{ country.name }}"
             >
-              <span
-                {% if country.iso_code != localization.country.iso_code %}
-                  class="visibility-hidden"
-                {% endif %}
-              >
-                {%- render 'icon-checkmark' -%}
-              </span>
+              <div class="country__flag">
+                {{- country | image_url: width: 32 | image_tag -}}
+              </div>
               <span class="country">{{- country.name }}</span>
               <span class="localization-form__currency motion-reduce{% unless show_currencies %} hidden{% endunless %}">
-                {{ country.currency.iso_code }}
-                {{ country.currency.symbol -}}
+                {{ country.currency.symbol }}
+              </span>
+              <span
+                class="localization-form__checkmark
+                {% if country.iso_code != localization.country.iso_code %}
+                  visibility-hidden
+                {% endif %}
+                "
+              >
+                {%- render 'icon-checkmark' -%}
               </span>
             </a>
           </li>
         {%- endfor -%}
       </ul>
     </div>
->>>>>>> 65e84daab0856525f4096200833a3c101086448f
   </div>
   <div class="country-selector__overlay"></div>
 </div>
