@@ -55,14 +55,14 @@
   gap: 10px;
 }
 
-.contry__flag {
+.country__flag {
   border-radius: 100%;
   overflow: hidden;
   width: 32px;
   height: 32px;
 }
 
-.contry__flag img {
+.country__flag img {
   width: 100%;
   height: 100%;
   object-fit: cover;

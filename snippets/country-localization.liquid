@@ -14,7 +14,7 @@
     aria-describedby="{{ localPosition }}Label"
   >
     <span>
-      <div class="contry__flag">
+      <div class="country__flag">
         {{- localization.country | image_url: width: 32 | image_tag -}}
       </div>
       {{ localization.country.name -}}
@@ -37,7 +37,7 @@
             {% endif %}
             data-value="{{ country.iso_code }}"
           >
-            <div class="contry__flag">
+            <div class="country__flag">
               {{- country | image_url: width: 32 | image_tag -}}
             </div>
             {{- country.name -}}
