@@ -36,13 +36,6 @@
                   data-size="{{ link.links.size }}"
                 >
                   {%- for childlink in link.links -%}
-                    {% for collection in collections %}
-                      {% if collection.url == childlink.url %}
-                        {% capture enable_mega_menu_thumbnail %}
-                          {{ collection.metafields.custom.enable_mega_menu_thumbnail  }}
-                        {% endcapture %}
-                      {% endif %}
-                    {% endfor %}
                     {% liquid 
                       assign links_with_banner = false
                       assign title = childlink.title | split: '/' 
