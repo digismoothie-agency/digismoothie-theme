@@ -1117,8 +1117,10 @@ class CardColorSwatches extends HTMLElement {
     let defaultLink = this.cardLink.dataset.link;
     let currentVariant = this.variantData[target.dataset.index];
     let currentVariantImage = target.dataset.variantImage;
-    this.cardImage.src = currentVariantImage;
-    this.cardImage.srcset = currentVariantImage;
+    if (currentVariantImage) {
+      this.cardImage.src = currentVariantImage;
+      this.cardImage.srcset = currentVariantImage;
+    }
     this.cardLink.href = defaultLink + '?variant=' + currentVariant.id;
     this.formId.value = currentVariant.id;
     if (this.label) {

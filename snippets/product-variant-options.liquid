@@ -54,7 +54,9 @@
   {%- capture input_dataset -%}
     data-product-url="{{ value.product_url }}"
     data-option-value-id="{{ value.id }}"
-    data-variant-image="{{ value.variant.featured_image | image_url: width: 533 }}"
+    {% if value.variant.featured_image != blank %}
+      data-variant-image="{{ value.variant.featured_image | image_url: width: 533 }}"
+    {% endif %}
   {%- endcapture -%}
 
   {%- capture index -%}
