@@ -1096,6 +1096,7 @@ class CardColorSwatches extends HTMLElement {
     super();
     this.addEventListener('change', this.onVariantChange);
     this.cardLink = this.closest('.card__content').querySelector('.card__heading a');
+    this.cardImage = this.closest('.card-wrapper ').querySelector('.card__media img');
     this.formId = this.closest('.card__content').querySelector('.product-variant-id');
     this.label = this.closest('.card__content').querySelector('.form__label span');
     this.variantData = JSON.parse(this.querySelector('[type="application/json"]').textContent);
@@ -1115,6 +1116,9 @@ class CardColorSwatches extends HTMLElement {
     target.classList.add('active');
     let defaultLink = this.cardLink.dataset.link;
     let currentVariant = this.variantData[target.dataset.index];
+    let currentVariantImage = target.dataset.variantImage;
+    this.cardImage.src = currentVariantImage;
+    this.cardImage.srcset = currentVariantImage;
     this.cardLink.href = defaultLink + '?variant=' + currentVariant.id;
     this.formId.value = currentVariant.id;
     if (this.label) {

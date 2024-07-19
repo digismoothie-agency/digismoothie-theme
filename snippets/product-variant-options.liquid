@@ -54,6 +54,7 @@
   {%- capture input_dataset -%}
     data-product-url="{{ value.product_url }}"
     data-option-value-id="{{ value.id }}"
+    data-variant-image="{{ value.variant.featured_image | image_url: width: 533 }}"
   {%- endcapture -%}
 
   {%- capture index -%}
@@ -81,9 +82,9 @@
       product_form_id: product_form_id,
       checked: value.selected,
       visually_disabled: option_disabled,
-      shape: block.settings.swatch_shape,
       help_text: help_text,
       additional_props: input_dataset
+      tooltip: tooltip
     %}
   {%- elsif picker_type == 'button' -%}
     <input
