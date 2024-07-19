@@ -49,9 +49,9 @@
         "image_overlay_opacity": 40,
         "image_height": "large",
         "desktop_content_position": "bottom-center",
-        "show_text_box": true,
+        "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-3",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
@@ -68,18 +68,19 @@
         "description_style": "body",
         "collection": "all",
         "products_to_show": 8,
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
-        "enable_desktop_slider": true,
+        "enable_slider": true,
+        "pagination_type": "bullets",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": true,
+        "quick_add": "standard",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
         "padding_top": 28,
@@ -104,7 +105,8 @@
             "collection": "automated-collection",
             "products_to_show": 4,
             "columns_desktop": 4,
-            "enable_desktop_slider": false,
+            "enable_slider": false,
+            "pagination_type": "bullets",
             "image_ratio": "adapt",
             "image_shape": "default",
             "show_secondary_image": false,
@@ -112,7 +114,6 @@
             "show_rating": false,
             "enable_quick_add": false,
             "columns_mobile": "2",
-            "swipe_on_mobile": false,
             "heading_element_custom": false,
             "heading_element": "h4"
           }
@@ -128,7 +129,8 @@
             "collection": "",
             "products_to_show": 4,
             "columns_desktop": 4,
-            "enable_desktop_slider": false,
+            "enable_slider": false,
+            "pagination_type": "bullets",
             "image_ratio": "adapt",
             "image_shape": "default",
             "show_secondary_image": false,
@@ -136,7 +138,6 @@
             "show_rating": false,
             "enable_quick_add": false,
             "columns_mobile": "2",
-            "swipe_on_mobile": false,
             "heading_element_custom": false,
             "heading_element": "h4"
           }
@@ -152,7 +153,8 @@
             "collection": "",
             "products_to_show": 4,
             "columns_desktop": 4,
-            "enable_desktop_slider": false,
+            "enable_slider": false,
+            "pagination_type": "bullets",
             "image_ratio": "adapt",
             "image_shape": "default",
             "show_secondary_image": false,
@@ -160,7 +162,6 @@
             "show_rating": false,
             "enable_quick_add": false,
             "columns_mobile": "2",
-            "swipe_on_mobile": false,
             "heading_element_custom": false,
             "heading_element": "h4"
           }
@@ -324,197 +325,6 @@
         "html": "<table>\n  <thead>\n    <tr>\n      <th>Shipping Method<\/th>\n      <th>Shipping Time<\/th>\n      <th>Shipping Cost<\/th>\n      <th>Delivery Regions<\/th>\n    <\/tr>\n  <\/thead>\n  <tbody>\n    <tr>\n      <td>Standard Shipping<\/td>\n      <td>5-7 days<\/td>\n      <td>$9.99<\/td>\n      <td>EU<\/td>\n    <\/tr>\n    <tr>\n      <td>Express Shipping<\/td>\n      <td>2-3 days<\/td>\n      <td>$19.99<\/td>\n      <td>EU<\/td>\n    <\/tr>\n  <\/tbody>\n<\/table>",
         "layout": "section",
         "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "mobile_padding_top": 24,
-        "mobile_padding_bottom": 24,
-        "heading_element_custom": false,
-        "heading_element": "h2"
-      }
-    },
-    "slideshow_WpALie": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_T8PThX": {
-          "type": "slide",
-          "settings": {
-            "heading": "Image slide",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "right",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-5",
-            "text_alignment_mobile": "center",
-            "heading_element_custom": false,
-            "heading_element": "h2"
-          }
-        },
-        "slide_piHiWm": {
-          "type": "slide",
-          "settings": {
-            "heading": "Image slide",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "text_alignment_mobile": "center",
-            "heading_element_custom": false,
-            "heading_element": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "slide_T8PThX",
-        "slide_piHiWm"
-      ],
-      "settings": {
-        "slide_height": "large",
-        "enable_custom_aspect_ratio": true,
-        "custom_aspect_ratio": "2\/1",
-        "color_scheme": "scheme-1",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "pagination_type": "bullets",
-        "image_behavior": "ambient",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "collection_list_zYCygV": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_gdBVrF": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_TNVy9g": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_gdfGGN": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_gYBHVf": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_8gMe8w": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_gdBVrF",
-        "featured_collection_TNVy9g",
-        "featured_collection_gdfGGN",
-        "featured_collection_gYBHVf",
-        "featured_collection_8gMe8w"
-      ],
-      "settings": {
-        "full_width": false,
-        "title": "Collections",
-        "heading_size": "h1",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "pagination_type": "bullets",
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "mobile_padding_top": 24,
-        "mobile_padding_bottom": 24,
-        "heading_element_custom": false,
-        "heading_element": "h2"
-      }
-    },
-    "testimonials_wNdQBd": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_xPyJbf": {
-          "type": "testimonial",
-          "settings": {
-            "rating": "5-stars",
-            "text": "<p>he product has completely transformed my daily routine. The sleek design and outstanding performance are top-notch. I can't imagine going back to how things were before. Highly recommend!<\/p>",
-            "product": "",
-            "author": "Author's name",
-            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "rounded"
-          }
-        },
-        "testimonial_GiTPex": {
-          "type": "testimonial",
-          "settings": {
-            "rating": "5-stars",
-            "text": "<p>The product stands out from the rest. The quality and attention to detail are impressive, and customer service is incredibly helpful. It seamlessly integrates into my lifestyle. A true game-changer!<\/p>",
-            "product": "the-collection-snowboard-hydrogen",
-            "author": "Author's name",
-            "image": "shopify:\/\/shop_images\/max-kukurudziak-_8h7TrklnHQ-unsplash.jpg",
-            "image_ratio": "square"
-          }
-        },
-        "testimonial_xETwXR": {
-          "type": "testimonial",
-          "settings": {
-            "rating": "4-stars",
-            "text": "<p>Choosing this brand was one of the best decisions I've made. Its innovative features and reliable performance make a significant difference in my daily activities. I'm thoroughly satisfied and highly recommend it!<\/p>",
-            "product": "",
-            "author": "Author's name",
-            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "rounded"
-          }
-        },
-        "testimonial_gFK3tf": {
-          "type": "testimonial",
-          "settings": {
-            "rating": "5-stars",
-            "text": "<p>he product has completely transformed my daily routine. The sleek design and outstanding performance are top-notch. I can't imagine going back to how things were before. Highly recommend!<\/p>",
-            "product": "",
-            "author": "Author's name",
-            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
-            "image_ratio": "rounded"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_xPyJbf",
-        "testimonial_GiTPex",
-        "testimonial_xETwXR",
-        "testimonial_gFK3tf"
-      ],
-      "settings": {
-        "full_width": false,
-        "heading": "Testimonials",
-        "heading_size": "h1",
-        "columns_desktop": 3,
-        "pagination_type": "bullets",
-        "content_alignment": "center",
-        "color_scheme": "scheme-2",
-        "card_style": "none",
-        "star_color": "#a2a677",
         "padding_top": 36,
         "padding_bottom": 36,
         "mobile_padding_top": 24,
