@@ -25,7 +25,7 @@
       %}
       {% if option.values.size > limit %}
         {% assign colors_left = option.values.size | minus: 5 %}
-        <span>{{ 'products.product.more_variants' | t: count: colors_left | escape }}</span>
+        <a href="{{ product.url }}">{{ 'products.product.more_variants' | t: count: colors_left | escape }}</a>
       {% endif %}
     </fieldset>
   {%- endfor -%}

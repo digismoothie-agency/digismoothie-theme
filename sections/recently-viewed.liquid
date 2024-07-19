@@ -142,23 +142,7 @@
     } else {
       return;
     }
-
-    if (showDesktopSlider || showMobileSlider) {
-      sliderElement.classList.add('slider');
-      sliderButtons.classList.remove('hidden');
-
-      if (showDesktopSlider) {
-        sliderComponent.classList.add('slider-component-desktop');
-        sliderComponent.classList.remove('page-width-desktop');
-        sliderElement.classList.add('slider--desktop');
-      }
-
-      if (showMobileSlider) {
-        sliderComponent.classList.remove('page-width');
-        sliderElement.classList.add('slider--tablet', 'slider--peek');
-      }
-    }
-    
+        
     Promise.all(
       recentlyViewedProductHandles.map((handle, index) => {
         const paramsObject = {
