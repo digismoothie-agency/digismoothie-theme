@@ -621,7 +621,7 @@
       "slider": {
         "enable_slider": {
           "label": "Enable slider"
-        },
+        }
       }
     },
     "announcement-bar": {
