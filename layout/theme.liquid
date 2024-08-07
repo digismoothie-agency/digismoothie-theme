@@ -366,6 +366,13 @@
       window.digismoothieWishlistApp = {
         appUrl: '{{ settings.wishlist_app_url }}',
       };
+
+      window.shippingEstimator = {
+        shippingEstimatorNoResults: {{ 'shipping_estimator.no_results' | t | json }},
+        shippingEstimatorOneResult: {{ 'shipping_estimator.one_result' | t | json }},
+        shippingEstimatorMultipleResults: {{ 'shipping_estimator.multiple_results' | t | json }},
+        shippingEstimatorError: {{ 'shipping_estimator.error' | t | json }}
+      }
     </script>
 
     {%- if settings.predictive_search_enabled -%}
