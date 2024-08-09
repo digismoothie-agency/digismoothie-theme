@@ -77,28 +77,38 @@ var ShippingEstimator = class extends HTMLElement {
     this.submitButton.removeAttribute('aria-busy');
   }
   async getAsyncShippingRates(zip, country, province) {
-    const response = await fetch(
-      `${Shopify.routes.root}cart/async_shipping_rates.json?shipping_address[zip]=${zip}&shipping_address[country]=${country}&shipping_address[province]=${province}`
-    );
-    const responseAsText = await response.text();
-    if (responseAsText === 'null') {
-      return this.getAsyncShippingRates(zip, country, province);
-    } else {
-      return JSON.parse(responseAsText)['shipping_rates'];
+    try {
+      const response = await fetch(
+        `${Shopify.routes.root}cart/async_shipping_rates.json?shipping_address[zip]=${zip}&shipping_address[country]=${country}&shipping_address[province]=${province}`
+      );
+      const responseAsText = await response.text();
+      if (responseAsText === 'null') {
+        return this.getAsyncShippingRates(zip, country, province);
+      } else {
+        return JSON.parse(responseAsText)['shipping_rates'];
+      }
+    } catch (error) {
+      console.error(`${window.shippingEstimator.error}:`, error);
+      throw error;
     }
   }
   formatShippingRates(shippingRates) {
     let formattedShippingRates = shippingRates.map((shippingRate) => {
-      return `<li>${shippingRate['presentment_name']}: ${shippingRate['currency']} ${shippingRate['price']}</li>`;
+      console.log(shippingRate);
+      let shippingPrice =
+        shippingRate['price'] > 0
+          ? shippingRate['currency'] + ' ' + shippingRate['price']
+          : window.shippingEstimator.free;
+      return `<li>${shippingRate['presentment_name']}:  ${shippingPrice}</li>`;
     });
     this.resultsElement.innerHTML = `
       <div class="v-stack gap-2">
         <p>${
           shippingRates.length === 0
-            ? window.shippingEstimator.shippingEstimatorNoResults
+            ? window.shippingEstimator.noResults
             : shippingRates.length === 1
-            ? window.shippingEstimator.shippingEstimatorOneResult
-            : window.shippingEstimator.shippingEstimatorMultipleResults
+            ? window.shippingEstimator.oneResult
+            : window.shippingEstimator.multipleResults
         }</p>
         ${
           formattedShippingRates === ''
@@ -114,7 +124,7 @@ var ShippingEstimator = class extends HTMLElement {
     });
     this.resultsElement.innerHTML = `
       <div class="v-stack gap-2">
-        <p>${window.shippingEstimator.shippingEstimatorError}</p>
+        <p>${window.shippingEstimator.error}</p>
         <ul class="list-disc" role="list">${formattedShippingRates}</ul>
       </div>
     `;

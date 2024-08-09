@@ -35,4 +35,6 @@ country-selector .form-control {
 .shipping-estimator p,
 .shipping-estimator ul {
   margin: 0;
+  font-size: 14px;
+  line-height: 18px;
 }
