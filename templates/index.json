@@ -15,23 +15,23 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "Krekry na smažení doma",
             "heading_size": "h0",
             "heading_element_custom": false,
-            "heading_element": "h2"
+            "heading_element": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "Více než 1 200 ⭐ ⭐ ⭐ ⭐ ⭐  recenzí",
             "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Chci křupat",
             "button_link_1": "shopify:\/\/collections\/all",
             "button_style": "primary",
             "button_label_2": "",
@@ -46,6 +46,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/new_hero_desktop-min.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "desktop_content_position": "bottom-center",
