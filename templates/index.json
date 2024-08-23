@@ -137,6 +137,9 @@
     },
     "featured_collection_ckDnyT": {
       "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center;}"
+      ],
       "settings": {
         "title": "Neoblíbenější",
         "heading_size": "h1",
@@ -208,6 +211,9 @@
         "featured_collection_gdfGGN",
         "featured_collection_gYBHVf",
         "featured_collection_8gMe8w"
+      ],
+      "custom_css": [
+        "h2 {text-align: center;}"
       ],
       "settings": {
         "full_width": false,
