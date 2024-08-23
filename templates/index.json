@@ -123,7 +123,7 @@
         "button_label": "",
         "button_link": "",
         "button_style": "primary",
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "enable_desktop_slider": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
