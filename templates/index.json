@@ -113,7 +113,7 @@
         "full_width": false,
         "enable_slider": false,
         "pagination_type": "bullets",
-        "title": "Multicolumn",
+        "title": "",
         "heading_size": "h1",
         "image_width": "third",
         "image_ratio": "adapt",
