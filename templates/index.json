@@ -59,6 +59,82 @@
         "show_text_below": false
       }
     },
+    "multicolumn_DnfkFa": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_w8dAyH": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/check_hp_icon_1.svg",
+            "title": "Výhodná cena",
+            "text": "<p>Z 1 kg krekrů připravíte až 20 pytlíků klasických chipsů.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_NWGb96": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/check_hp_icon_1.svg",
+            "title": "Rychlá příprava",
+            "text": "<p>Krekry usmažíte doma během 10 sekund.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_UTE4ib": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/check_hp_icon_1.svg",
+            "title": "Spousta příchutí",
+            "text": "<p>Více než 10 tvarů Krekrů a 9+ druhů příchutí.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_3iymMQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/check_hp_icon_1.svg",
+            "title": "Ke každé příležitosti",
+            "text": "<p>Ať už chcete křupat s dětmi u filmu, nebo s kamarády u piva.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_w8dAyH",
+        "column_NWGb96",
+        "column_UTE4ib",
+        "column_3iymMQ"
+      ],
+      "settings": {
+        "full_width": false,
+        "enable_slider": false,
+        "pagination_type": "bullets",
+        "title": "Multicolumn",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "Button label",
+        "button_link": "",
+        "button_style": "primary",
+        "color_scheme": "",
+        "enable_desktop_slider": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
+      }
+    },
     "tabs_qgFnDW": {
       "type": "tabs",
       "blocks": {
@@ -701,6 +777,7 @@
   },
   "order": [
     "image_banner",
+    "multicolumn_DnfkFa",
     "tabs_qgFnDW",
     "collage_irbAkV",
     "hot_spots_7APnjn",
