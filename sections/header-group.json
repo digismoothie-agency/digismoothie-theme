@@ -20,10 +20,18 @@
             "text": "Doprava při objednávce nad 1 000 Kč zdarma",
             "link": ""
           }
+        },
+        "announcement_Up6tUL": {
+          "type": "announcement",
+          "settings": {
+            "text": "Balení Krekrů zdarma při objednávce nad 1 300 Kč!",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement-bar-0",
+        "announcement_Up6tUL"
       ],
       "settings": {
         "color_scheme": "",
