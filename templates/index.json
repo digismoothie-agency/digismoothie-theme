@@ -66,7 +66,7 @@
           "type": "column",
           "settings": {
             "image": "shopify:\/\/shop_images\/check_hp_icon_1.svg",
-            "title": "Výhodná cena",
+            "title": "<strong>Výhodná cena<\/strong>",
             "text": "<p>Z 1 kg krekrů připravíte až 20 pytlíků klasických chipsů.<\/p>",
             "link_label": "",
             "link": ""
@@ -76,7 +76,7 @@
           "type": "column",
           "settings": {
             "image": "shopify:\/\/shop_images\/check_hp_icon_1.svg",
-            "title": "Rychlá příprava",
+            "title": "<strong>Rychlá příprava<\/strong>",
             "text": "<p>Krekry usmažíte doma během 10 sekund.<\/p>",
             "link_label": "",
             "link": ""
@@ -86,7 +86,7 @@
           "type": "column",
           "settings": {
             "image": "shopify:\/\/shop_images\/check_hp_icon_1.svg",
-            "title": "Spousta příchutí",
+            "title": "<strong>Spousta příchutí<\/strong>",
             "text": "<p>Více než 10 tvarů Krekrů a 9+ druhů příchutí.<\/p>",
             "link_label": "",
             "link": ""
@@ -96,7 +96,7 @@
           "type": "column",
           "settings": {
             "image": "shopify:\/\/shop_images\/check_hp_icon_1.svg",
-            "title": "Ke každé příležitosti",
+            "title": "<strong>Ke každé příležitosti<\/strong>",
             "text": "<p>Ať už chcete křupat s dětmi u filmu, nebo s kamarády u piva.<\/p>",
             "link_label": "",
             "link": ""
