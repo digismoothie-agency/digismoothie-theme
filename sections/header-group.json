@@ -53,7 +53,7 @@
         "show_line_separator": true,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "",
-        "enable_language_country_selector": true,
+        "enable_language_country_selector": false,
         "ls_popup_title": "Select country and currency",
         "ls_popup_text": "",
         "enable_country_selector": true,
