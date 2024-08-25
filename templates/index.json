@@ -494,6 +494,7 @@
     },
     "html_section_L6fcQK": {
       "type": "html-section",
+      "disabled": true,
       "settings": {
         "heading": "We ship worldwide!",
         "heading_size": "h2",
