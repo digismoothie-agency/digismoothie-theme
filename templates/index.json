@@ -212,6 +212,7 @@
         "featured_collection_gYBHVf",
         "featured_collection_8gMe8w"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {text-align: center;}"
       ],
@@ -315,6 +316,7 @@
         "tab_tj3r9n",
         "tab_C8EUKf"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "heading": "About us",
@@ -391,6 +393,7 @@
         "collection_XqrW8H",
         "video_UQizGK"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "heading": "Multimedia collage",
@@ -415,7 +418,7 @@
         "product_JHpMWA": {
           "type": "product",
           "settings": {
-            "featured_product": "the-videographer-snowboard",
+            "featured_product": "gift-card",
             "vertical": 48,
             "horizontal": 23,
             "vertical_mobile": 42,
@@ -447,10 +450,10 @@
         "heading_size": "h2",
         "heading_position": "left",
         "color_scheme": "",
-        "image": "shopify:\/\/shop_images\/max-kukurudziak-_8h7TrklnHQ-unsplash.jpg",
+        "image": "shopify:\/\/shop_images\/new_hero_desktop-min.jpg",
         "image_position": "left",
         "hotspot_style": "bag",
-        "hotspot_color": "#85a7cf",
+        "hotspot_color": "#f4e73e",
         "padding_top": 36,
         "padding_bottom": 36,
         "mobile_padding_top": 24,
