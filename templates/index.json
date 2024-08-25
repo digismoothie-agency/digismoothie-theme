@@ -543,11 +543,21 @@
         "testimonial_xPyJbf": {
           "type": "testimonial",
           "settings": {
-            "rating": "5-stars",
+            "rating": "none",
             "text": "<p>Koupila jsem poprvé a spokojenost. Rychlost dodání perfektní. Koupila jsem prstýnky a mňam jak se vyjádřila dcera. Určitě vyzkoušíme další druhy. <\/p>",
             "product": "",
-            "author": "Author's name",
+            "author": "Michaela K.",
             "image": "shopify:\/\/shop_images\/Heureka_Icon_7671c261-40bb-4df5-8bc3-75457df83938.svg",
+            "image_ratio": "rounded"
+          }
+        },
+        "testimonial_KM89VL": {
+          "type": "testimonial",
+          "settings": {
+            "rating": "5-stars",
+            "text": "<p>Add customer reviews and testimonials to showcase your store's happy customers.<\/p>",
+            "product": "",
+            "author": "Author's name",
             "image_ratio": "rounded"
           }
         },
@@ -587,6 +597,7 @@
       },
       "block_order": [
         "testimonial_xPyJbf",
+        "testimonial_KM89VL",
         "testimonial_GiTPex",
         "testimonial_xETwXR",
         "testimonial_gFK3tf"
