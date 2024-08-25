@@ -556,6 +556,7 @@
         "slide_T8PThX",
         "slide_piHiWm"
       ],
+      "disabled": true,
       "settings": {
         "slide_height": "large",
         "enable_custom_aspect_ratio": true,
@@ -726,6 +727,7 @@
         "collection_btjVeP",
         "video_V46Hna"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "heading": "Featured collage",
@@ -800,6 +802,7 @@
         "slide_4YrLLf",
         "slide_bzK6HC"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Featured slider",
         "heading_size": "h2",
@@ -812,6 +815,59 @@
         "mobile_padding_bottom": 24,
         "heading_element_custom": false,
         "heading_element": "h2"
+      }
+    },
+    "image_with_text_4d476j": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_R9xRaQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Proč vznikly Krekry?",
+            "heading_size": "h1",
+            "heading_element_custom": false,
+            "heading_element": "h2"
+          }
+        },
+        "text_cpkhRW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>\"Prstýnky, Slaninky a Medvídky jsme  smažili doma během mého dětství a na tyto okamžiky mám radostné vzpomínky. <\/p><p>I nyní v dospělosti, když si Krekry usmažíme s rodinou, vrací mě to do dětských let. Mám radost z toho, že na takto bezstarostné dny budou moje děti vzpomínat také. Skrze stejné Krekry chceme předávat radost a pohodu i vám. Proto jsme založili Krekry.cz.\"<\/p><p>- Pavel Kovanda, zakladatel<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_g7yYE6": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_R9xRaQ",
+        "text_cpkhRW",
+        "button_g7yYE6"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify:\/\/shop_images\/lifestyle_fotka-min.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
       }
     },
     "image_banner_YrC3Fh": {
@@ -879,6 +935,7 @@
     "testimonials_wNdQBd",
     "featured_collage_YBMi4P",
     "featured_slider_9NfdtP",
+    "image_with_text_4d476j",
     "image_banner_YrC3Fh"
   ]
 }
