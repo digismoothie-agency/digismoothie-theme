@@ -577,10 +577,10 @@
           "type": "testimonial",
           "settings": {
             "rating": "5-stars",
-            "text": "<p>he product has completely transformed my daily routine. The sleek design and outstanding performance are top-notch. I can't imagine going back to how things were before. Highly recommend!<\/p>",
+            "text": "<p>Koupila jsem poprvé a spokojenost. Rychlost dodání perfektní. Koupila jsem prstýnky a mňam jak se vyjádřila dcera. Určitě vyzkoušíme další druhy. <\/p>",
             "product": "",
             "author": "Author's name",
-            "image": "shopify:\/\/shop_images\/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg",
+            "image": "shopify:\/\/shop_images\/Heureka_Icon_7671c261-40bb-4df5-8bc3-75457df83938.svg",
             "image_ratio": "rounded"
           }
         },
@@ -591,7 +591,7 @@
             "text": "<p>The product stands out from the rest. The quality and attention to detail are impressive, and customer service is incredibly helpful. It seamlessly integrates into my lifestyle. A true game-changer!<\/p>",
             "product": "the-collection-snowboard-hydrogen",
             "author": "Author's name",
-            "image": "shopify:\/\/shop_images\/max-kukurudziak-_8h7TrklnHQ-unsplash.jpg",
+            "image": "shopify:\/\/shop_images\/Heureka_Icon_7671c261-40bb-4df5-8bc3-75457df83938.svg",
             "image_ratio": "square"
           }
         },
@@ -628,7 +628,7 @@
         "full_width": false,
         "heading": "Testimonials",
         "heading_size": "h1",
-        "columns_desktop": 3,
+        "columns_desktop": 1,
         "pagination_type": "bullets",
         "content_alignment": "center",
         "color_scheme": "scheme-2",
