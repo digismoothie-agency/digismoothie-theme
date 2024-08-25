@@ -820,8 +820,8 @@
         "heading_AxLMEK": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h2",
+            "heading": "Vraťte se zpět do dětství",
+            "heading_size": "h1",
             "heading_element_custom": false,
             "heading_element": "h2"
           }
@@ -829,7 +829,7 @@
         "text_pqM74A": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "",
             "text_style": "body"
           }
         },
@@ -837,7 +837,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Nakoupit",
-            "button_link_1": "",
+            "button_link_1": "shopify:\/\/collections\/all",
             "button_style": "primary",
             "button_label_2": "",
             "button_link_2": "",
@@ -854,7 +854,7 @@
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
-        "show_text_box": true,
+        "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "",
         "image_behavior": "none",
