@@ -656,7 +656,7 @@
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 28,
-        "padding_bottom": 36,
+        "padding_bottom": 0,
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24,
         "heading_element_custom": false,
@@ -814,6 +814,7 @@
         "slide_4YrLLf",
         "slide_article_rikYxV"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {text-align: center;}"
       ],
