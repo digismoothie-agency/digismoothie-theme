@@ -157,9 +157,9 @@
         "color_scheme": "scheme-3",
         "image_ratio": "adapt",
         "image_shape": "default",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
-        "show_rating": false,
+        "show_rating": true,
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -424,7 +424,7 @@
             "vertical_mobile": 42,
             "horizontal_mobile": 23,
             "image_ratio": "adapt",
-            "show_secondary_image": false
+            "show_secondary_image": true
           }
         },
         "product_LmpwX9": {
