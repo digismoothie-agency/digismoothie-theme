@@ -690,7 +690,7 @@
             "image_position": 0,
             "text": "",
             "text_position": "option__5",
-            "button_label": "Shop now",
+            "button_label": "Koupit",
             "button_style": "primary"
           }
         },
@@ -705,7 +705,7 @@
             "image_position": 0,
             "text": "",
             "text_position": "option__5",
-            "button_label": "Buy",
+            "button_label": "Koupit",
             "button_style": "primary"
           }
         },
@@ -721,7 +721,7 @@
             "image_position": 0,
             "text": "",
             "text_position": "option__3",
-            "button_label": "See all",
+            "button_label": "Zobrazit vše",
             "button_style": "primary"
           }
         },
@@ -768,7 +768,7 @@
         "slide_product_rkQhmh": {
           "type": "slide_product",
           "settings": {
-            "product": "the-3p-fulfilled-snowboard",
+            "product": "pizza-posyp",
             "heading": "Product slide",
             "button_label": "Button label",
             "button_style": "primary"
@@ -777,7 +777,7 @@
         "slide_AQwHCQ": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hero-digismoothie.png",
+            "image": "shopify:\/\/shop_images\/krekry_koreni-17_1_0ebd8a10-5006-4ea1-8e0b-248fdc3be6d4.jpg",
             "heading": "Image slide",
             "button_label": "Button label",
             "link": "",
@@ -819,7 +819,6 @@
         "slide_4YrLLf",
         "slide_bzK6HC"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Featured slider",
         "heading_size": "h2",
