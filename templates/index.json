@@ -47,7 +47,6 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/new_hero_desktop-min.jpg",
-        "image_2": "shopify:\/\/shop_images\/Krekry_Mobile_Hero_Best_2_-min.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "desktop_content_position": "bottom-center",
