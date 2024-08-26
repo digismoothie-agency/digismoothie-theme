@@ -111,7 +111,7 @@
       ],
       "settings": {
         "full_width": false,
-        "enable_slider": false,
+        "enable_slider": true,
         "pagination_type": "bullets",
         "title": "",
         "heading_size": "h1",
