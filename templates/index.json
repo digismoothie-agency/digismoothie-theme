@@ -430,7 +430,7 @@
         "product_LmpwX9": {
           "type": "product",
           "settings": {
-            "featured_product": "selling-plans-ski-wax",
+            "featured_product": "pizza-posyp",
             "vertical": 58,
             "horizontal": 70,
             "vertical_mobile": 60,
@@ -444,13 +444,16 @@
         "product_JHpMWA",
         "product_LmpwX9"
       ],
+      "custom_css": [
+
+      ],
       "settings": {
         "full_width": false,
-        "title": "Shop the look",
-        "heading_size": "h2",
-        "heading_position": "left",
+        "title": "Ochutnejte naše bestsellery",
+        "heading_size": "h1",
+        "heading_position": "center",
         "color_scheme": "",
-        "image": "shopify:\/\/shop_images\/new_hero_desktop-min.jpg",
+        "image": "shopify:\/\/shop_images\/Krekry_Desktop_Hero_New-min.png",
         "image_position": "left",
         "hotspot_style": "bag",
         "hotspot_color": "#f4e73e",
