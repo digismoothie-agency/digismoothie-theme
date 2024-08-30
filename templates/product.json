@@ -199,6 +199,25 @@
         "mobile_padding_bottom": 24
       }
     },
+    "video_ixemwJ": {
+      "type": "video",
+      "settings": {
+        "heading": "Video",
+        "heading_size": "h1",
+        "enable_video_looping": true,
+        "video": "shopify:\/\/files\/videos\/Eva_Krekry_Prep_Desktop.mp4",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
+      }
+    },
     "multicolumn": {
       "type": "multicolumn",
       "blocks": {
@@ -255,7 +274,7 @@
       "type": "related-products",
       "settings": {
         "heading": "Mohlo by se vám také líbit",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
@@ -304,6 +323,7 @@
     "breadcrumbs_mQhNYK",
     "main",
     "image-with-text",
+    "video_ixemwJ",
     "multicolumn",
     "related-products",
     "recently_viewed_EYFzkR"
