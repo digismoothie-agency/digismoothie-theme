@@ -32,6 +32,11 @@
             "text_style": "uppercase"
           }
         },
+        "rating_d3DxCG": {
+          "type": "rating",
+          "settings": {
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -117,6 +122,7 @@
       },
       "block_order": [
         "vendor",
+        "rating_d3DxCG",
         "title",
         "caption",
         "price",
@@ -258,7 +264,7 @@
         "show_rating": false,
         "columns_mobile": "2",
         "padding_top": 36,
-        "padding_bottom": 28,
+        "padding_bottom": 64,
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24,
         "heading_element_custom": false,
