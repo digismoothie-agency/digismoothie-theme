@@ -199,10 +199,48 @@
         "mobile_padding_bottom": 24
       }
     },
+    "rich_text_BWgRpa": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_c6zkzB": {
+          "type": "heading",
+          "settings": {
+            "heading": "Příprava je snadná a jednoduchá",
+            "heading_size": "h1",
+            "heading_element_custom": false,
+            "heading_element": "h2"
+          }
+        },
+        "text_aLPFni": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Připravte si pánev, hrnec nebo friťák s olejem nahřátým na teplotu 180°-200°C. Pro kontrolu správné teploty oleje použijte pár zkušebních krekrů. Vložte je do rozpáleného oleje a jestliže po několika sekundách zvětší svůj objem a získají zlatavou barvu, olej má správnou teplotu pro smažení. Naberte nyní hrst krekrů a opatrně je vložte do oleje. Krekry jsou hotové během 5-10 vteřin. Krekry můžete nyní vytáhnout naběračkou (nejlépe děrovanou, abyste s krekry nenabírali i olej). Krekry dochuťte solí nebo naším kořením!<br\/><br\/><\/p>",
+            "text_size": "--s0"
+          }
+        }
+      },
+      "block_order": [
+        "heading_c6zkzB",
+        "text_aLPFni"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "text_block_custom_width": false,
+        "text_block_custom_width_desktop": 780,
+        "text_block_custom_width_tablet": 500,
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
+      }
+    },
     "video_ixemwJ": {
       "type": "video",
       "settings": {
-        "heading": "Video",
+        "heading": "",
         "heading_size": "h1",
         "enable_video_looping": true,
         "video": "shopify:\/\/files\/videos\/Eva_Krekry_Prep_Desktop.mp4",
@@ -210,7 +248,7 @@
         "description": "",
         "full_width": false,
         "color_scheme": "",
-        "padding_top": 36,
+        "padding_top": 0,
         "padding_bottom": 36,
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24,
@@ -323,6 +361,7 @@
     "breadcrumbs_mQhNYK",
     "main",
     "image-with-text",
+    "rich_text_BWgRpa",
     "video_ixemwJ",
     "multicolumn",
     "related-products",
