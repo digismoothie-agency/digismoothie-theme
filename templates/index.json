@@ -137,7 +137,6 @@
     },
     "featured_collection_ckDnyT": {
       "type": "featured-collection",
-      "disabled": true,
       "custom_css": [
         "h2 {text-align: center;}"
       ],
@@ -166,69 +165,6 @@
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 0,
-        "mobile_padding_top": 24,
-        "mobile_padding_bottom": 24,
-        "heading_element_custom": false,
-        "heading_element": "h2"
-      }
-    },
-    "collection_list_zYCygV": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_gdBVrF": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "krekry"
-          }
-        },
-        "featured_collection_TNVy9g": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "koreni"
-          }
-        },
-        "featured_collection_gdfGGN": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_gYBHVf": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_8gMe8w": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_gdBVrF",
-        "featured_collection_TNVy9g",
-        "featured_collection_gdfGGN",
-        "featured_collection_gYBHVf",
-        "featured_collection_8gMe8w"
-      ],
-      "custom_css": [
-        "h2 {text-align: center;}"
-      ],
-      "settings": {
-        "full_width": false,
-        "enable_slider": true,
-        "title": "Nejoblíbenější kolekce",
-        "heading_size": "h1",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "pagination_type": "bullets",
-        "color_scheme": "scheme-3",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36,
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24,
         "heading_element_custom": false,
@@ -629,6 +565,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [
         "h2 {text-align: center;}"
       ],
@@ -657,6 +594,55 @@
         "swipe_on_mobile": true,
         "padding_top": 28,
         "padding_bottom": 0,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
+      }
+    },
+    "collection_list_zYCygV": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_gdBVrF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "krekry"
+          }
+        },
+        "featured_collection_TNVy9g": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "koreni"
+          }
+        },
+        "featured_collection_gdfGGN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_gdBVrF",
+        "featured_collection_TNVy9g",
+        "featured_collection_gdfGGN"
+      ],
+      "custom_css": [
+        "h2 {text-align: center;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "enable_slider": true,
+        "title": "Oblíbené kolekce",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "pagination_type": "bullets",
+        "color_scheme": "scheme-3",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "padding_top": 36,
+        "padding_bottom": 36,
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24,
         "heading_element_custom": false,
@@ -943,7 +929,6 @@
     "image_banner",
     "multicolumn_DnfkFa",
     "featured_collection_ckDnyT",
-    "collection_list_zYCygV",
     "tabs_qgFnDW",
     "collage_irbAkV",
     "html_section_L6fcQK",
@@ -951,6 +936,7 @@
     "testimonials_wNdQBd",
     "hot_spots_7APnjn",
     "featured_collection",
+    "collection_list_zYCygV",
     "featured_collage_YBMi4P",
     "featured_slider_9NfdtP",
     "image_with_text_4d476j",
