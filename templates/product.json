@@ -390,9 +390,10 @@
           "type": "testimonial",
           "settings": {
             "rating": "5-stars",
-            "text": "<p>Add customer reviews and testimonials to showcase your store's happy customers.<\/p>",
+            "text": "<p>Koupila jsem poprvé a spokojenost. Rychlost dodání perfektní. Koupila jsem prstýnky a mňam jak se vyjádřila dcera. Určitě vyzkoušíme další druhy. <\/p>",
             "product": "",
-            "author": "Author's name",
+            "author": "Michaela K.",
+            "image": "shopify:\/\/shop_images\/Heureka_Icon_7671c261-40bb-4df5-8bc3-75457df83938.svg",
             "image_ratio": "rounded"
           }
         },
@@ -400,27 +401,16 @@
           "type": "testimonial",
           "settings": {
             "rating": "5-stars",
-            "text": "<p>Add customer reviews and testimonials to showcase your store's happy customers.<\/p>",
+            "text": "<p>Naprosto dokonalé, jak krekry, tak komunikace s obchodem, který nikdy nezklame a proto doporučuji všem!!!<\/p>",
             "product": "",
-            "author": "Author's name",
-            "image_ratio": "rounded"
-          }
-        },
-        "testimonial_DgJq8N": {
-          "type": "testimonial",
-          "settings": {
-            "rating": "5-stars",
-            "text": "<p>Add customer reviews and testimonials to showcase your store's happy customers.<\/p>",
-            "product": "",
-            "author": "Author's name",
+            "author": "Jitka B.",
             "image_ratio": "rounded"
           }
         }
       },
       "block_order": [
         "testimonial_bUpJ3i",
-        "testimonial_gBKDBn",
-        "testimonial_DgJq8N"
+        "testimonial_gBKDBn"
       ],
       "settings": {
         "full_width": true,
@@ -527,7 +517,7 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/Footer_Banner.svg",
         "image_overlay_opacity": 0,
-        "image_height": "small",
+        "image_height": "medium",
         "desktop_content_position": "middle-center",
         "show_text_box": false,
         "desktop_content_alignment": "center",
