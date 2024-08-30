@@ -80,8 +80,8 @@
         "collapsible-row-0": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Materials",
-            "icon": "leather",
+            "heading": "Detailní popis",
+            "icon": "star",
             "content": "",
             "page": ""
           }
@@ -89,8 +89,8 @@
         "collapsible-row-1": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Shipping & Returns",
-            "icon": "truck",
+            "heading": "Složení",
+            "icon": "nut_free",
             "content": "",
             "page": ""
           }
@@ -98,8 +98,8 @@
         "collapsible-row-2": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Dimensions",
-            "icon": "ruler",
+            "heading": "Alergeny",
+            "icon": "gluten_free",
             "content": "",
             "page": ""
           }
@@ -107,14 +107,15 @@
         "collapsible-row-3": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
+            "heading": "Jak koření skladovat?",
+            "icon": "box",
             "content": "",
             "page": ""
           }
         },
         "share": {
           "type": "share",
+          "disabled": true,
           "settings": {
             "share_label": "Share"
           }
