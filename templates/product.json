@@ -256,6 +256,81 @@
         "heading_element": "h2"
       }
     },
+    "collapsible_content_kyDLr4": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_wxmJd4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Jaký olej je vhodný na smažení používat?",
+            "icon": "none",
+            "row_content": "<p>Doporučujeme řepkový olej a to kvůli jeho chuti, nízkému obsahu nasycených kyselin a také vyššímu bodu přepálení (±200°C).<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_PKbP7L": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Jaký je rozdíl mezi jednotlivými druhy?",
+            "icon": "none",
+            "row_content": "<p>Všechny druhy se dají konzumovat i bez dochucení, avšak většina zákazníků si je okoření nebo dochucuje různými omáčkami. Jednotlivé druhy krekrů mohou chutnat odlišně, záleží na jejich složení. Zejména pokud hlavní složkou jsou brambory (např. Hranolka) nebo pšenice (např. Mřížka), je rozdíl opravdu znatelný. Některé druhy obsahují dalši přidané suroviny, které jejich chuť také ovlivní, např. Cibulový kroužek (obsahuje mletou cibuli).<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jfJhW3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Nejsou Krekry moc mastné?",
+            "icon": "none",
+            "row_content": "<p>Nejsou, pokud správně zvládnete Krekry osušit po usmažení! Aby Krekry nebyly mastné, doporučujeme je smažit v menším množství, abyste měli dostatek času na odkapaní oleje. Je důležité používat naběračku, která má dostatečné velké otvory a poté použít papírové utěrky k odsání zbytku oleje.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_XxcQrN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lze připravit Krekry v horkovzdušné fritéze?",
+            "icon": "none",
+            "row_content": "<p>Od našich zákazníků bohužel víme, že to možné není. Avšak pokud nemáte fritovací hrnec, Krekry lze připravit v obyčejném hrnci nebo pánvi.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_AeRn3h": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Nemám friťák, jak Krekry usmažím?",
+            "icon": "none",
+            "row_content": "<p>Můžete použít obyčejný hrnec nebo pánev. Krekry doporučujeme smažit v menším množství, abyste je včas stihli vytáhnout z oleje a nepřipálili je. Vhodná je velká děrovaná naběračka pro odkapaní oleje.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_wxmJd4",
+        "collapsible_row_PKbP7L",
+        "collapsible_row_jfJhW3",
+        "collapsible_row_XxcQrN",
+        "collapsible_row_AeRn3h"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Časté dotazy",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
+      }
+    },
     "multicolumn": {
       "type": "multicolumn",
       "blocks": {
@@ -282,6 +357,7 @@
         "column-0",
         "column-1"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "enable_slider": false,
@@ -413,6 +489,7 @@
     "image-with-text",
     "rich_text_BWgRpa",
     "video_ixemwJ",
+    "collapsible_content_kyDLr4",
     "multicolumn",
     "related-products",
     "recently_viewed_EYFzkR",
