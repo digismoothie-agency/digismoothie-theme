@@ -355,6 +355,56 @@
         "heading_element_custom": false,
         "heading_element": "h2"
       }
+    },
+    "image_banner_cij4BN": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_hxDdL3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Vraťte se zpět do dětství",
+            "heading_size": "h0",
+            "heading_element_custom": false,
+            "heading_element": "h2"
+          }
+        },
+        "text_7c7P3C": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "buttons_yL8kpW": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Nakoupit",
+            "button_link_1": "shopify:\/\/products\/mix-koreni",
+            "button_style": "primary",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_2": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hxDdL3",
+        "text_7c7P3C",
+        "buttons_yL8kpW"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Footer_Banner.svg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
@@ -365,6 +415,7 @@
     "video_ixemwJ",
     "multicolumn",
     "related-products",
-    "recently_viewed_EYFzkR"
+    "recently_viewed_EYFzkR",
+    "image_banner_cij4BN"
   ]
 }
