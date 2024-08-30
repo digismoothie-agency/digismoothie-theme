@@ -337,8 +337,8 @@
         "column-0": {
           "type": "column",
           "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "title": "Doprava zdarma",
+            "text": "<p>Objednejte zboží v hodnotě nad 1 000 Kč a dopravu od nás dostanete zdarma.<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -346,8 +346,8 @@
         "column-1": {
           "type": "column",
           "settings": {
-            "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "title": "Snadná příprava",
+            "text": "<p>S krekry budete vždy připraveni. Během minuty máte usmaženo a čerstvé, lahodné krekry připravené v misce.<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -357,7 +357,6 @@
         "column-0",
         "column-1"
       ],
-      "disabled": true,
       "settings": {
         "full_width": false,
         "enable_slider": false,
@@ -376,6 +375,63 @@
         "enable_desktop_slider": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24,
+        "heading_element_custom": false,
+        "heading_element": "h2"
+      }
+    },
+    "testimonials_NWpdRn": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_bUpJ3i": {
+          "type": "testimonial",
+          "settings": {
+            "rating": "5-stars",
+            "text": "<p>Add customer reviews and testimonials to showcase your store's happy customers.<\/p>",
+            "product": "",
+            "author": "Author's name",
+            "image_ratio": "rounded"
+          }
+        },
+        "testimonial_gBKDBn": {
+          "type": "testimonial",
+          "settings": {
+            "rating": "5-stars",
+            "text": "<p>Add customer reviews and testimonials to showcase your store's happy customers.<\/p>",
+            "product": "",
+            "author": "Author's name",
+            "image_ratio": "rounded"
+          }
+        },
+        "testimonial_DgJq8N": {
+          "type": "testimonial",
+          "settings": {
+            "rating": "5-stars",
+            "text": "<p>Add customer reviews and testimonials to showcase your store's happy customers.<\/p>",
+            "product": "",
+            "author": "Author's name",
+            "image_ratio": "rounded"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_bUpJ3i",
+        "testimonial_gBKDBn",
+        "testimonial_DgJq8N"
+      ],
+      "settings": {
+        "full_width": true,
+        "heading": "Recenze",
+        "heading_size": "h1",
+        "columns_desktop": 1,
+        "pagination_type": "bullets",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "card_style": "none",
+        "star_color": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "mobile_padding_top": 24,
@@ -491,6 +547,7 @@
     "video_ixemwJ",
     "collapsible_content_kyDLr4",
     "multicolumn",
+    "testimonials_NWpdRn",
     "related-products",
     "recently_viewed_EYFzkR",
     "image_banner_cij4BN"
