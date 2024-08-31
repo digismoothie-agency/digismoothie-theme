@@ -50,11 +50,54 @@
         "mobile_padding_top": 24,
         "mobile_padding_bottom": 24
       }
+    },
+    "image_banner_KKAnkn": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_BGpf3X": {
+          "type": "heading",
+          "settings": {
+            "heading": "Vraťte se zpět do dětství",
+            "heading_size": "h0",
+            "heading_element_custom": false,
+            "heading_element": "h2"
+          }
+        },
+        "buttons_9tVJKM": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Nakoupit",
+            "button_link_1": "shopify:\/\/collections\/krekry",
+            "button_style": "primary",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_2": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BGpf3X",
+        "buttons_9tVJKM"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Footer_Banner.svg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
     "breadcrumbs_EURDeh",
     "banner",
-    "product-grid"
+    "product-grid",
+    "image_banner_KKAnkn"
   ]
 }
