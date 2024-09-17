@@ -63,6 +63,13 @@
             "label": "Card"
           },
           "label": "Style"
+        },
+        "quick_add_button": {
+          "label": "Quick add button style",
+          "options": {
+            "option_1": "Solid",
+            "option_2": "Outline"
+          }
         }
       }
     },
@@ -2958,11 +2965,23 @@
       }
     },
     "multicolumn": {
-      "name": "Multicolumn",
+      "name": "Multicolumn with images",
       "settings": {
         "title": {
           "label": "Heading",
           "default": "Multicolumn"
+        },
+        "heading_alignment": {
+          "label": "Heading alignment",
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Center"
+          },
+          "options__3": {
+            "label": "Right"
+          }
         },
         "image_width": {
           "label": "Image width",
@@ -3066,7 +3085,7 @@
         }
       },
       "presets": {
-        "name": "Multicolumn"
+        "name": "Multicolumn with images"
       }
     },
     "newsletter": {
