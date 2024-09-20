@@ -11,7 +11,7 @@
   "current": {
     "logo": "shopify:\/\/shop_images\/Krekry_Logo_No_Text.svg",
     "logo_width": 90,
-    "use_custom_font": false,
+    "use_custom_font": true,
     "custom_heading_font": "KomuA.otf",
     "custom_heading_font_family": "Komu A",
     "custom_heading_font_other_headings": "PPRightGothic-Medium.otf",
