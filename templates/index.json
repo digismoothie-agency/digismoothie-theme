@@ -47,7 +47,8 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/new_hero_desktop-min.jpg",
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 0,
+        "overlay_color": "#000000",
         "image_height": "large",
         "desktop_content_position": "bottom-center",
         "show_text_box": false,
@@ -381,6 +382,7 @@
             "show_text_box": true,
             "text_alignment": "right",
             "image_overlay_opacity": 0,
+            "overlay_color": "#000000",
             "color_scheme": "scheme-5",
             "text_alignment_mobile": "center",
             "heading_element_custom": false,
@@ -400,6 +402,7 @@
             "show_text_box": true,
             "text_alignment": "center",
             "image_overlay_opacity": 0,
+            "overlay_color": "#000000",
             "color_scheme": "",
             "text_alignment_mobile": "center",
             "heading_element_custom": false,
@@ -913,6 +916,7 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/Footer_Banner.svg",
         "image_overlay_opacity": 0,
+        "overlay_color": "#000000",
         "image_height": "medium",
         "desktop_content_position": "middle-center",
         "show_text_box": false,
