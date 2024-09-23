@@ -495,8 +495,6 @@
         "full_width": false,
         "heading": "Recenze",
         "heading_size": "h1",
-        "heading_alignment": "left",
-        "image_ratio": "square",
         "columns_desktop": 3,
         "pagination_type": "bullets",
         "content_alignment": "center",
