@@ -1498,6 +1498,12 @@
         "payment_enable": {
           "label": "Show payment icons"
         },
+        "header__10": {
+          "content": "Menu link font settings"
+        },
+        "use_unify_font_size": {
+          "label": "Use base font size for menu link?"
+        },
         "header__8": {
           "content": "Policy links",
           "info": "To add store policies, go to your [policy settings](\/admin\/settings\/legal)."
