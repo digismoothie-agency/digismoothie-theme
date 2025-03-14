@@ -16,28 +16,51 @@
 
   {%- assign selected_variant = product.selected_or_first_available_variant -%}
 
+  {%- style -%}
+    .sticky-add-to-cart-bar-{{ section.id }}.sticky-add-to-cart-bar--visible {
+      transform: translateY(-{{ section.settings.bottom_offset }}rem);
+    }
+  {%- endstyle -%}
+
   <div
     id="sticky-add-to-cart-bar"
-    class="sticky-add-to-cart-bar {% if request.design_mode %} sticky-add-to-cart-bar--visible{% endif %}"
+    class="sticky-add-to-cart-bar sticky-add-to-cart-bar-{{ section.id }} {% if request.design_mode %} sticky-add-to-cart-bar--visible{% endif %}"
     data-observer-toggle
     data-observer-class="sticky-add-to-cart-bar--visible"
+    {% if section.settings.hide_on_footer == 'yes' %}
+      data-observer-fade
+      data-observer-fade-class="sticky-add-to-cart-bar--faded"
+    {% endif %}
   >
     <div class="page-width sticky-add-to-cart-bar__outer-wrapper sticky-add-to-cart-bar__position--{{ section.settings.position }}">
       <div class="sticky-add-to-cart-bar__inner-wrapper color-{{ section.settings.color_scheme }} gradient">
         <div class="sticky-add-to-cart-bar__content">
-          {%- assign image_object = selected_variant.featured_image | default: product.featured_image -%}
+          {%- assign image_object = selected_variant.featured_image
+            | default: product.variants
+            | where: 'available', true
+            | map: 'featured_image'
+            | first
+            | default: product.featured_image
+          -%}
+
           <div class="sticky-add-to-cart-bar__top-wrapper">
             <div class="sticky-add-to-cart-bar__image-wrapper">
-              <img
-                src="{{ image_object | image_url: width: 60, height: 60, crop: 'center' }}"
-                width="60"
-                height="60"
-                alt="{{ product.title | escape }}"
-                class="sticky-add-to-cart-bar__image"
-                loading="lazy"
-                aria-label="Product image for {{ product.title }}"
-                data-default-image="{{ image_object | image_url: width: 60, height: 60, crop: 'center' }}"
-              >
+              {%- if image_object -%}
+                <img
+                  src="{{ image_object | image_url: width: 60, height: 60, crop: 'center' }}"
+                  width="60"
+                  height="60"
+                  alt="{{ product.title | escape }}"
+                  class="sticky-add-to-cart-bar__image"
+                  loading="lazy"
+                  data-default-image="{{ image_object | image_url: width: 60, height: 60, crop: 'center' }}"
+                >
+              {%- else -%}
+                <div class="sticky-add-to-cart-bar__placeholder" role="img" aria-label="{{ product.title | escape }}">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+                <span class="visually-hidden">{{ product.title | escape }}</span>
+              {%- endif -%}
             </div>
 
             <div class="sticky-add-to-cart-bar__info">
@@ -57,7 +80,9 @@
                 <span class="sticky-add-to-cart-bar__price-value">
                   {{- selected_variant.price | money_without_currency -}}
                 </span>
-                <span class="sticky-add-to-cart-bar__currency">{{ cart.currency.symbol }}</span>
+                {%- if settings.currency_code_enabled -%}
+                  <span class="sticky-add-to-cart-bar__currency"> {{ cart.currency.symbol }}</span>
+                {%- endif -%}
               </span>
             </div>
           </div>
@@ -121,6 +146,34 @@
       ],
       "default": "center",
       "info": "t:sections.sticky-add-to-cart-bar.position.info"
+    },
+    {
+      "type": "range",
+      "id": "bottom_offset",
+      "label": "t:sections.sticky-add-to-cart-bar.bottom_offset.label",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 5,
+      "unit": "rem",
+      "info": "t:sections.sticky-add-to-cart-bar.bottom_offset.info"
+    },
+    {
+      "type": "select",
+      "id": "hide_on_footer",
+      "label": "t:sections.sticky-add-to-cart-bar.hide_on_footer.label",
+      "options": [
+        {
+          "value": "yes",
+          "label": "t:sections.sticky-add-to-cart-bar.hide_on_footer.yes.label"
+        },
+        {
+          "value": "no",
+          "label": "t:sections.sticky-add-to-cart-bar.hide_on_footer.no.label"
+        }
+      ],
+      "default": "no",
+      "info": "t:sections.sticky-add-to-cart-bar.hide_on_footer.info"
     },
     {
       "type": "color_scheme",

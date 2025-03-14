@@ -3886,7 +3886,21 @@
         "center": {
           "label": "Center"
         },
-        "info": "Choose the position of the sticky bar on the page."
+        "info": "Choose the position of the sticky bar on the page. This setting applies to desktop only."
+      },
+      "bottom_offset": {
+        "label": "Bottom offset",
+        "info": "Set the distance of the sticky bar from the bottom of the page."
+      },
+      "hide_on_footer": {
+        "label": "Hide on footer",
+        "info": "Choose whether the sticky bar should disappear when reaching the footer.",
+        "yes": {
+          "label": "Yes"
+        },
+        "no": {
+          "label": "No"
+        }
       },
       "color_scheme": {
         "label": "Color scheme",

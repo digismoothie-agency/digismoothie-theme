@@ -8,25 +8,26 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const stickyBar = document.getElementById('sticky-add-to-cart-bar');
-  const stickyForm = stickyBar.querySelector('.sticky-add-to-cart-bar__form');
-  const stickyAddToCartButton = stickyBar.querySelector('.sticky-add-to-cart-bar__button');
-  const stickyAddToCartButtonLoadingSpinner = stickyAddToCartButton.querySelector('.loading__spinner');
+  const stickyForm = stickyBar?.querySelector('.sticky-add-to-cart-bar__form');
+  const stickyAddToCartButton = stickyBar?.querySelector('.sticky-add-to-cart-bar__button');
+  const stickyAddToCartButtonLoadingSpinner = stickyAddToCartButton?.querySelector('.loading__spinner');
   const mainForm = document.querySelector('.product-form');
   const quantityInput = stickyBar?.querySelector('.quantity__input');
   const defaultProductImage = stickyBar
-    .querySelector('.sticky-add-to-cart-bar__image')
-    .getAttribute('data-default-image');
-  const variantInput = stickyBar.querySelector("input[name='id']");
-  const stickyVariantImage = stickyBar.querySelector('.sticky-add-to-cart-bar__image');
-  const priceValueElement = stickyBar.querySelector('.sticky-add-to-cart-bar__price-value');
-  const stickyVariantName = stickyBar.querySelector('.sticky-add-to-cart-bar__variant-name');
+    ?.querySelector('.sticky-add-to-cart-bar__image')
+    ?.getAttribute('data-default-image');
+  const variantInput = stickyBar?.querySelector("input[name='id']");
+  const stickyVariantImage = stickyBar?.querySelector('.sticky-add-to-cart-bar__image');
+  const priceValueElement = stickyBar?.querySelector('.sticky-add-to-cart-bar__price-value');
+  const stickyVariantName = stickyBar?.querySelector('.sticky-add-to-cart-bar__variant-name');
   const headerElement = document.querySelector('[id$=header]');
   const cartDrawer = document.querySelector('cart-drawer');
+  const userLocale = Shopify.locale || navigator.language || 'cs-CZ';
 
   if (!stickyBar || !stickyForm || !mainForm) return;
 
   document.addEventListener('variant:change', (event) => {
-    if (!event.detail || !event.detail.id) return;
+    if (!event.detail?.id) return;
     updateStickyAddToCart(event.detail);
   });
 
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       stickyVariantImage.src = variant.image && variant.image !== '' ? variant.image : defaultProductImage;
     }
     if (priceValueElement) {
-      priceValueElement.textContent = new Intl.NumberFormat('cs-CZ', {
+      priceValueElement.textContent = new Intl.NumberFormat(userLocale, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       }).format(variant.price / 100);
@@ -47,8 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   mainForm.addEventListener('submit', () => resetStickyQuantityInput());
 
-  stickyForm.addEventListener('submit', async function (event) {
+  stickyForm?.addEventListener('submit', async function (event) {
     event.preventDefault();
+    if (!stickyAddToCartButton || !stickyAddToCartButtonLoadingSpinner) return;
+
     stickyAddToCartButton.classList.add('loading');
     stickyAddToCartButton.setAttribute('aria-disabled', 'true');
     stickyAddToCartButtonLoadingSpinner.classList.remove('hidden');
@@ -75,18 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getFormData() {
     const formData = new FormData();
-    formData.append('id', variantInput.value);
+    formData.append('id', variantInput?.value);
     formData.append('quantity', quantityInput?.value || 1);
 
     return formData;
   }
 
   function getSectionsToUpdate() {
-    const headerSectionID = headerElement.id.replace('shopify-section-', '');
+    const headerSectionID = headerElement?.id?.replace('shopify-section-', '') || '';
 
     return {
       'cart-drawer': 'cart-drawer',
-      [headerSectionID]: headerSectionID,
+      ...(headerSectionID && { [headerSectionID]: headerSectionID }),
     };
   }
 
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cartDrawer.classList.remove('is-empty');
 
-    if (parsedState.sections && parsedState.sections['cart-drawer']) {
+    if (parsedState.sections?.['cart-drawer']) {
       cartDrawer.renderContents(parsedState);
     }
   }
