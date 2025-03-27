@@ -284,6 +284,15 @@
         "heading_element_custom": false,
         "heading_element": "h2"
       }
+    },
+    "sticky_add_to_cart_bar_VMrAne": {
+      "type": "sticky-add-to-cart-bar",
+      "settings": {
+        "position": "center",
+        "bottom_offset": 5,
+        "hide_on_footer": "yes",
+        "color_scheme": "scheme-1"
+      }
     }
   },
   "order": [
@@ -292,6 +301,7 @@
     "image-with-text",
     "multicolumn",
     "related-products",
-    "recently_viewed_EYFzkR"
+    "recently_viewed_EYFzkR",
+    "sticky_add_to_cart_bar_VMrAne"
   ]
 }
